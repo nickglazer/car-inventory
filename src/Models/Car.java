@@ -1,23 +1,11 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Car
 {
-    public Car (String v, String ma, String mo, String c,
-    String s, int y, int mi, int l)
-    {
-        setVin(v);
-        setMake(ma);
-        setModel(mo);
-        setColor(c);
-        setStatus(s);
-        setYear(y);
-        setMileage(mi);
-        setLot(l);
-    }
-
-    public Car(){}
-
     private int carID;
     private String vin;
     private String make;
@@ -27,105 +15,294 @@ public class Car
     private int year;
     private int mileage;
     private int lot;
-
-    public int getCarID(){ return carID; }
-    public void setCarID(int carID){ this.carID = carID; }
-
-    public void setVin(String arg)
+    private int cylinders;
+    private int engine;
+    private int body;
+    private String vehicleType;
+    private String transmission;
+    private String drivetrain;
+    private String gas;
+    private ArrayList<Date> date;
+    private ArrayList<String> description; 
+    
+    public Car (
+     int carID, String vin, String make, String model, String color, String status,
+     int year, int mileage, int lot, int cylinders, int engine, int body,
+     String vehicleType, String transmission, String drivetrain, String gas)
     {
-        vin = arg;
+        this.carID = carID;
+        this.vin= vin;
+        this.make = make;
+        this.model = model;
+        this.color = color;
+        this.status = status;
+        this.year = year;
+        this.mileage = mileage;
+        this.lot = lot;
+        this.cylinders = cylinders;
+        this.engine = engine;
+        this.body = body;
+        this.vehicleType = vehicleType;
+        this.transmission = transmission;
+        this.drivetrain = drivetrain;
+        this.gas = gas;
+        
+        date = new ArrayList();
+        description = new ArrayList();
     }
-    public String getVin()
-    {
+
+    public Car(){}
+
+    /**
+     * @return the carID
+     */
+    public int getCarID() {
+        return carID;
+    }
+
+    /**
+     * @param carID the carID to set
+     */
+    public void setCarID(int carID) {
+        this.carID = carID;
+    }
+
+    /**
+     * @return the vin
+     */
+    public String getVin() {
         return vin;
     }
-    
-    public void setMake(String arg)
-    {
-        make = arg;
+
+    /**
+     * @param vin the vin to set
+     */
+    public void setVin(String vin) {
+        this.vin = vin;
     }
-    public String getMake()
-    {
+
+    /**
+     * @return the make
+     */
+    public String getMake() {
         return make;
     }
-    
-    public void setModel(String arg)
-    {
-        model = arg;
+
+    /**
+     * @param make the make to set
+     */
+    public void setMake(String make) {
+        this.make = make;
     }
-    public String getModel()
-    {
+
+    /**
+     * @return the model
+     */
+    public String getModel() {
         return model;
     }
-    
-    public void setColor(String arg)
-    {
-        color = arg;
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(String model) {
+        this.model = model;
     }
-    public String getColor()
-    {
+
+    /**
+     * @return the color
+     */
+    public String getColor() {
         return color;
     }
-    
-    public void setStatus(String arg)
-    {
-        status = arg;
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
     }
-    public String getStatus()
-    {
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
         return status;
     }
-    
-    public void setYear(int arg)
-    {
-        year = arg;
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
-    public int getYear()
-    {
+
+    /**
+     * @return the year
+     */
+    public int getYear() {
         return year;
     }
-    
-    public void setMileage(int arg)
-    {
-        mileage = arg;
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(int year) {
+        this.year = year;
     }
-    public int getMileage()
-    {
+
+    /**
+     * @return the mileage
+     */
+    public int getMileage() {
         return mileage;
     }
-    
-    public void setLot(int arg)
-    {
-        lot = arg;
+
+    /**
+     * @param mileage the mileage to set
+     */
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
-    public int getLot()
-    {
+
+    /**
+     * @return the lot
+     */
+    public int getLot() {
         return lot;
     }
-    
-    public void printCarInfo()
-    {
-        System.out.println("VIN: " + getVin());
-        System.out.println("MAKE: " + getMake());
-        System.out.println("MODEL: " + getModel());
-        System.out.println("YEAR: " + getYear());
-        System.out.println("COLOR: " + getColor());
-        System.out.println("MILEAGE: " + getMileage());
-        System.out.println("LOT: " + getLot());
-        System.out.println("STATUS: " + getStatus());
+
+    /**
+     * @param lot the lot to set
+     */
+    public void setLot(int lot) {
+        this.lot = lot;
     }
-    
-    
-    /* Test
-    
-    public static void main (String[] args)
-    {
-        Car testCar = new Car ("000000FFFF", "Ford", "Mustang", "Red", "AVAILABLE", 
-        1978, 203451, 10);
-    
-        testCar.printCarInfo();
+
+    /**
+     * @return the cylinders
+     */
+    public int getCylinders() {
+        return cylinders;
     }
-    
-    */
+
+    /**
+     * @param cylinders the cylinders to set
+     */
+    public void setCylinders(int cylinders) {
+        this.cylinders = cylinders;
+    }
+
+    /**
+     * @return the engine
+     */
+    public int getEngine() {
+        return engine;
+    }
+
+    /**
+     * @param engine the engine to set
+     */
+    public void setEngine(int engine) {
+        this.engine = engine;
+    }
+
+    /**
+     * @return the body
+     */
+    public int getBody() {
+        return body;
+    }
+
+    /**
+     * @param body the body to set
+     */
+    public void setBody(int body) {
+        this.body = body;
+    }
+
+    /**
+     * @return the vehicleType
+     */
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    /**
+     * @param vehicleType the vehicleType to set
+     */
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    /**
+     * @return the transmission
+     */
+    public String getTransmission() {
+        return transmission;
+    }
+
+    /**
+     * @param transmission the transmission to set
+     */
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
+    }
+
+    /**
+     * @return the drivetrain
+     */
+    public String getDrivetrain() {
+        return drivetrain;
+    }
+
+    /**
+     * @param drivetrain the drivetrain to set
+     */
+    public void setDrivetrain(String drivetrain) {
+        this.drivetrain = drivetrain;
+    }
+
+    /**
+     * @return the gas
+     */
+    public String getGas() {
+        return gas;
+    }
+
+    /**
+     * @param gas the gas to set
+     */
+    public void setGas(String gas) {
+        this.gas = gas;
+    }
+
+    /**
+     * @return the date
+     */
+    public ArrayList<Date> getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(ArrayList<Date> date) {
+        this.date = date;
+    }
+
+    /**
+     * @return the description
+     */
+    public ArrayList<String> getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(ArrayList<String> description) {
+        this.description = description;
+    }
 }
 

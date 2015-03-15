@@ -11,5 +11,4 @@ package Models;
  * @author Nicholas
  */
 public class Lot {
-
 }
