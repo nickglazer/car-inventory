@@ -158,13 +158,15 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlMileage" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfMileage" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jcbBodyType" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbVehicleType" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlVehicleType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlBodyType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlMileage" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfMileage" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlVehicleType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlBodyType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -389,6 +391,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlVIN">
       <Properties>
