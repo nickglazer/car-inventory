@@ -1,5 +1,4 @@
-package Controllers;
-import Models.Car;
+package Models;
 import java.sql.*;
 import java.util.ArrayList;
 

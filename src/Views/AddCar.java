@@ -296,8 +296,25 @@ public class AddCar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfVINActionPerformed
 
-    private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
-       int year = Integer.parseInt(jtfYear.getText());
+    private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jbAddActionPerformed\
+
+
+        String make = (String) this.jcbMake.getSelectedItem();
+        String transmission = (String) this.jcbTransmission.getSelectedItem();
+        String color = (String) this.jcbColor.getSelectedItem();
+        String model = (String) this.jcbModel.getSelectedItem();
+        String engineLiters = jlEngine.getText();
+        String cylinders = jlCylinders.getText();
+        String year = jlYear.getText();
+        String driveTrain = (String) this.jcbDrivetrain.getSelectedItem();
+        String gas = (String) this.jcbGasType.getSelectedItem();
+        String mileage = this.jlMileage.getText();
+        String bodyType = (String) this.jcbBodyType.getSelectedItem();
+        String vehicleType = (String) this.jcbVehicleType.getSelectedItem();
+        String vin = this.jlVIN.getText();
+
+
     }//GEN-LAST:event_jbAddActionPerformed
 
 
