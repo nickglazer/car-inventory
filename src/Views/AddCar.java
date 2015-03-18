@@ -5,6 +5,11 @@
  */
 package Views;
 
+import javax.swing.*;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Map;
+
 /**
  *
  * @author Nicholas
@@ -296,23 +301,41 @@ public class AddCar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfVINActionPerformed
 
+    private String stringFromDropDown(JComboBox comboBox)
+    {
+        String dropDownString;
+        if(comboBox.getSelectedIndex() == 0)
+        {
+            return null;
+        }
+
+        return (String) comboBox.getSelectedItem();
+
+    }
+
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jbAddActionPerformed\
 
-
-        String make = (String) this.jcbMake.getSelectedItem();
-        String transmission = (String) this.jcbTransmission.getSelectedItem();
-        String color = (String) this.jcbColor.getSelectedItem();
-        String model = (String) this.jcbModel.getSelectedItem();
+        String make = this.stringFromDropDown(this.jcbMake);
+        String transmission = this.stringFromDropDown(this.jcbTransmission);
+        String color = this.stringFromDropDown(jcbColor);
+        String model = this.stringFromDropDown(this.jcbModel);
         String engineLiters = jlEngine.getText();
         String cylinders = jlCylinders.getText();
         String year = jlYear.getText();
-        String driveTrain = (String) this.jcbDrivetrain.getSelectedItem();
-        String gas = (String) this.jcbGasType.getSelectedItem();
+        String driveTrain = this.stringFromDropDown(this.jcbDrivetrain);
+        String gas = this.stringFromDropDown(this.jcbGasType);
         String mileage = this.jlMileage.getText();
-        String bodyType = (String) this.jcbBodyType.getSelectedItem();
-        String vehicleType = (String) this.jcbVehicleType.getSelectedItem();
+        String bodyType = this.stringFromDropDown(this.jcbBodyType);
+        String vehicleType = this.stringFromDropDown(this.jcbVehicleType);
         String vin = this.jlVIN.getText();
+
+        Map fieldsMap = new HashMap<String, Object>();
+        fieldsMap.put("Vin", "");
+        fieldsMap.put("Make", make);
+        fieldsMap.put("Transmission", transmission);
+        fieldsMap.put("Model", model);
+
 
 
     }//GEN-LAST:event_jbAddActionPerformed
