@@ -311,6 +311,18 @@ public class AddCar extends javax.swing.JPanel {
 
     }
 
+    private String stringFromTextfield(JTextField textField)
+    {
+        String textFieldString;
+
+        if(textField.getText() == "")
+        {
+            return null;
+        }
+
+        return textField.getText();
+    }
+
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
     {                                       
 
@@ -318,21 +330,31 @@ public class AddCar extends javax.swing.JPanel {
         String transmission = this.stringFromDropDown(this.jcbTransmission);
         String color = this.stringFromDropDown(jcbColor);
         String model = this.stringFromDropDown(this.jcbModel);
-        String engineLiters = jlEngine.getText();
-        String cylinders = jlCylinders.getText();
-        String year = jlYear.getText();
+        String engineLiters = jtfEngine.getText();
+        String cylinders = jtfCylinders.getText();
+        String year = jtfYear.getText();
         String driveTrain = this.stringFromDropDown(this.jcbDrivetrain);
         String gas = this.stringFromDropDown(this.jcbGasType);
-        String mileage = this.jlMileage.getText();
+        String mileage = this.jtfMileage.getText();
         String bodyType = this.stringFromDropDown(this.jcbBodyType);
         String vehicleType = this.stringFromDropDown(this.jcbVehicleType);
-        String vin = this.jlVIN.getText();
+        String vin = this.jtfVIN.getText();
 
         Map fieldsMap = new HashMap<String, Object>();
         fieldsMap.put("Vin", "");
         fieldsMap.put("Make", make);
         fieldsMap.put("Transmission", transmission);
         fieldsMap.put("Model", model);
+        fieldsMap.put("Color", color);
+        fieldsMap.put("Year", year);
+        fieldsMap.put("Mileage", mileage);
+        fieldsMap.put("Lot", "");
+        fieldsMap.put("Engine_Cylinders", cylinders);
+        fieldsMap.put("Body_Type", bodyType);
+        fieldsMap.put("Vehicle_Type", vehicleType);
+        fieldsMap.put("Drivetrain", driveTrain);
+        fieldsMap.put("Gas", gas);
+        fieldsMap.put("Status", "New");
 
 
 
