@@ -54,8 +54,6 @@ public class Search extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jtfYear.setText("Year");
-
         jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota" }));
         jcbMake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
