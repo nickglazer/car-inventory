@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Map;
+import Controllers.Database;
 
 /**
  *
@@ -343,23 +344,27 @@ public class AddCar extends javax.swing.JPanel {
         String vehicleType = this.stringFromDropDown(this.jcbVehicleType);
         String vin = this.jtfVIN.getText();
 
-        Map fieldsMap = new HashMap<String, Object>();
-        fieldsMap.put("Vin", "");
-        fieldsMap.put("Make", make);
-        fieldsMap.put("Transmission", transmission);
-        fieldsMap.put("Model", model);
-        fieldsMap.put("Color", color);
-        fieldsMap.put("Year", year);
-        fieldsMap.put("Mileage", mileage);
-        fieldsMap.put("Lot", "");
-        fieldsMap.put("Engine_Cylinders", cylinders);
-        fieldsMap.put("Body_Type", bodyType);
-        fieldsMap.put("Vehicle_Type", vehicleType);
-        fieldsMap.put("Drivetrain", driveTrain);
-        fieldsMap.put("Gas", gas);
-        fieldsMap.put("Status", "New");
+        Map intFields = new HashMap<String, String>();
+        Map stringFields = new HashMap<String, String>();
 
+        stringFields.put("Vin", "");
+        stringFields.put("Make", make);
+        stringFields.put("Transmission", transmission);
+        stringFields.put("Model", model);
+        stringFields.put("Color", color);
+        intFields.put("Year", year);
+        intFields.put("Mileage", mileage);
+        intFields.put("Lot", "");
+        intFields.put("Engine_Liters", engineLiters);
+        intFields.put("Engine_Cylinders", cylinders);
+        intFields.put("Body_Type", bodyType);
+        stringFields.put("Vehicle_Type", vehicleType);
+        stringFields.put("Drivetrain", driveTrain);
+        stringFields.put("Gas", gas);
+        stringFields.put("Status", "New");
 
+        Database database = new Database();
+        database.insertCar(stringFields, intFields);
 
     }                                     
 
