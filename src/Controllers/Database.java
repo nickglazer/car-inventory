@@ -52,7 +52,7 @@ public class Database
 
     public void insertCar(Map stringFields, Map intFields)
     {
-        String[] intKeys = (String[]) intFields.keySet().toArray();
+        String[] intKeys = (String[]) intFields.keySet().toArray(new String[intFields.size()]);
 
         System.out.println();
 
