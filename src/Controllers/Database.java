@@ -3,6 +3,9 @@ import Models.Car;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by recheejozil on 2/19/15.
@@ -45,6 +48,15 @@ public class Database
 
             return null;
         }
+    }
+
+    public void insertCar(Map stringFields, Map intFields)
+    {
+        String[] intKeys = (String[]) intFields.keySet().toArray();
+
+        System.out.println();
+
+
     }
 
     private ResultSet executeQuery(String sqlStatement)
