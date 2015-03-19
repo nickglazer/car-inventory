@@ -71,10 +71,15 @@ public class Database
         return activeCount;
     }
 
+    private String[] keysOfMap(Map targetMap)
+    {
+        return (String[]) targetMap.keySet().toArray(new String[targetMap.size()]);
+    }
+
     private String createCarInsertStatement(Map intFields, Map stringFields)
     {
-        String[] intKeys = (String[]) intFields.keySet().toArray(new String[intFields.size()]);
-        String[] stringKeys = (String[]) stringFields.keySet().toArray(new String[stringFields.size()]);
+        String[] intKeys = this.keysOfMap(intFields);
+        String[] stringKeys = this.keysOfMap(stringFields);
 
         int activeInts = this.activeFieldCount(intKeys, intFields);
         int activeStrings = this.activeFieldCount(stringKeys, stringFields);
@@ -143,6 +148,67 @@ public class Database
         }
 
         return null;
+    }
+
+    public Car searchForCars(Map stringFields, Map intFields)
+    {
+        String[] stringKeys = this.keysOfMap(stringFields);
+        String[] intKeys = this.keysOfMap(intFields);
+
+        int activeStringFields = this.activeFieldCount(stringKeys, stringFields);
+        int activeIntFields = this.activeFieldCount(stringKeys, stringFields);
+
+        int totalActiveFields = activeIntFields + activeIntFields;
+
+        String sqlStatement = "select CarID, Make, Model, Year, Mileague from Cars ";
+
+        int searchCount = 0;
+
+        String whereStatement = "";
+
+        for (String key: stringKeys)
+        {
+            String searchField = (String) stringFields.get(key);
+
+            if(searchField == null || searchField.equals(""))
+            {
+                continue;
+            }
+
+            searchCount++;
+
+            if(searchCount == 1)
+            {
+                whereStatement += String.format("where %s = '%s' ", key, searchField);
+            }
+            else
+            {
+                whereStatement += String.format("and %s = '%s' ", key, searchField);
+            }
+        }
+
+        for (String key: stringKeys)
+        {
+            String searchField = (String) stringFields.get(key);
+
+            if(searchField == null || searchField.equals(""))
+            {
+                continue;
+            }
+
+            searchCount++;
+
+            if(searchCount == 1)
+            {
+                whereStatement += String.format("where %s = %d ", key, Integer.parseInt( searchField));
+            }
+            else
+            {
+                whereStatement += String.format("and %s = %d ", key, Integer.parseInt(searchField));
+            }
+        }
+
+        //TODO: write where statement and then search for the cars
     }
 
     private int executeUpdate(String sqlStatement)

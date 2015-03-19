@@ -5,6 +5,11 @@
  */
 package Views;
 
+import Controllers.FormHandler;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Nicholas
@@ -157,7 +162,26 @@ public class Search extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
-        // TODO add your handling code here:
+
+        String make = FormHandler.stringFromDropDown(jcbMake);
+        String model = FormHandler.stringFromDropDown(jcbModel);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String transmisssion = FormHandler.stringFromDropDown(jcbTransmission);
+        String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+
+        Map stringFields = new HashMap<String, String>();
+        Map intFields = new HashMap<String, String>();
+
+        stringFields.put("Make", make);
+        stringFields.put("Model", model);
+        stringFields.put("Transmission", transmisssion);
+        stringFields.put("Body_Type", bodyType);
+        stringFields.put("Vehicle_Type", vehicleType);
+        stringFields.put("Color", color);
+
+        intFields.put("Year", year);
         
     }//GEN-LAST:event_jbSearchActionPerformed
 

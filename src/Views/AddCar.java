@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Map;
 import Controllers.Database;
+import Controllers.FormHandler;
 
 /**
  *
@@ -327,19 +328,19 @@ public class AddCar extends javax.swing.JPanel {
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
     {                                       
 
-        String make = this.stringFromDropDown(this.jcbMake);
-        String transmission = this.stringFromDropDown(this.jcbTransmission);
-        String color = this.stringFromDropDown(jcbColor);
-        String model = this.stringFromDropDown(this.jcbModel);
-        String engineLiters = jtfEngine.getText();
-        String cylinders = jtfCylinders.getText();
-        String year = jtfYear.getText();
-        String driveTrain = this.stringFromDropDown(this.jcbDrivetrain);
-        String gas = this.stringFromDropDown(this.jcbGasType);
-        String mileage = this.jtfMileage.getText();
-        String bodyType = this.stringFromDropDown(this.jcbBodyType);
-        String vehicleType = this.stringFromDropDown(this.jcbVehicleType);
-        String vin = this.jtfVIN.getText();
+        String make = FormHandler.stringFromDropDown(this.jcbMake);
+        String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+        String model = FormHandler.stringFromDropDown(this.jcbModel);
+        String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
+        String cylinders = FormHandler.stringFromTextfield(jtfCylinders);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String driveTrain = FormHandler.stringFromDropDown(this.jcbDrivetrain);
+        String gas = FormHandler.stringFromDropDown(this.jcbGasType);
+        String mileage = FormHandler.stringFromTextfield(jtfMileage);
+        String bodyType = FormHandler.stringFromDropDown(this.jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(this.jcbVehicleType);
+        String vin = FormHandler.stringFromTextfield(jtfVIN);
 
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
