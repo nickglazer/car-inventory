@@ -316,7 +316,7 @@ public class AddCar extends javax.swing.JPanel {
     {
         String textFieldString;
 
-        if(textField.getText() == "")
+        if(textField.getText().equals(""))
         {
             return null;
         }
@@ -354,7 +354,7 @@ public class AddCar extends javax.swing.JPanel {
         intFields.put("Lot", "");
         intFields.put("Engine_Liters", engineLiters);
         intFields.put("Engine_Cylinders", cylinders);
-        intFields.put("Body_Type", bodyType);
+        stringFields.put("Body_Type", bodyType);
         stringFields.put("Vehicle_Type", vehicleType);
         stringFields.put("Drivetrain", driveTrain);
         stringFields.put("Gas", gas);

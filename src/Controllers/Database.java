@@ -20,17 +20,12 @@ public class Database
     private static final String USER = "recheej";
     private static final String PASS = "usf_dev1992";
 
-    private static Connection databaseConnection;
-
     public Database()
     {
-        if(Database.databaseConnection == null)
-        {
-            Database.databaseConnection = Database.getDatabaseConnection();
-        }
+
     }
 
-    private static Connection getDatabaseConnection()
+    private Connection getDatabaseConnection()
     {
         Connection databaseConnection;
 
@@ -52,18 +47,125 @@ public class Database
 
     public void insertCar(Map stringFields, Map intFields)
     {
+        String insertStatement = this.createCarInsertStatement(intFields, stringFields);
+
+        int affectedRows = this.executeUpdate(insertStatement);
+
+        System.out.println(affectedRows);
+
+
+    }
+
+    private int activeFieldCount(String[] keys, Map fields)
+    {
+        int activeCount = 0;
+        for(String key : keys)
+        {
+            String field = (String) fields.get(key);
+            if(field != null && !field.equals(""))
+            {
+                activeCount++;
+            }
+        }
+
+        return activeCount;
+    }
+
+    private String createCarInsertStatement(Map intFields, Map stringFields)
+    {
         String[] intKeys = (String[]) intFields.keySet().toArray(new String[intFields.size()]);
+        String[] stringKeys = (String[]) stringFields.keySet().toArray(new String[stringFields.size()]);
 
-        System.out.println();
+        int activeInts = this.activeFieldCount(intKeys, intFields);
+        int activeStrings = this.activeFieldCount(stringKeys, stringFields);
 
+        int totalInsertSize = activeInts + activeStrings;
 
+        int insertCount = 0;
+
+        String columnStatement = "(";
+
+        String valuesStatement = "(";
+
+        for(String key: intKeys)
+        {
+            String fieldToInsert = (String) intFields.get(key);
+
+            if(fieldToInsert == null || fieldToInsert.equals(""))
+            {
+                continue;
+            }
+
+            insertCount++;
+
+            if(insertCount == totalInsertSize)
+            {
+                columnStatement += String.format("%s)", key);
+
+                valuesStatement += String.format("%d)", Integer.parseInt(fieldToInsert));
+
+                return String.format("insert into Cars %s values %s", columnStatement, valuesStatement);
+            }
+            else
+            {
+                columnStatement += String.format("%s, ", key);
+
+                valuesStatement += String.format("%d, ", Integer.parseInt(fieldToInsert));
+            }
+        }
+
+        for(String key: stringKeys)
+        {
+            String fieldToInsert = (String) stringFields.get(key);
+
+            if(fieldToInsert == null || fieldToInsert.equals(""))
+            {
+                continue;
+            }
+
+            insertCount++;
+
+            if(insertCount == totalInsertSize)
+            {
+                columnStatement += String.format("%s)", key);
+
+                valuesStatement += String.format("'%s')", fieldToInsert);
+
+                return String.format("insert into Cars %s values %s", columnStatement, valuesStatement);
+            }
+            else
+            {
+                columnStatement += String.format("%s, ", key);
+
+                valuesStatement += String.format("'%s', ", fieldToInsert);
+            }
+
+        }
+
+        return null;
+    }
+
+    private int executeUpdate(String sqlStatement)
+    {
+        try
+        {
+            Statement executeStatement = this.getDatabaseConnection().createStatement();
+            return executeStatement.executeUpdate(sqlStatement);
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Error executing query");
+            System.out.println(e);
+
+            return 0;
+        }
     }
 
     private ResultSet executeQuery(String sqlStatement)
     {
         try
         {
-            Statement executeStatement = Database.databaseConnection.createStatement();
+            Statement executeStatement = this.getDatabaseConnection().createStatement();
             return executeStatement.executeQuery(sqlStatement);
         }
         catch (SQLException e)
