@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 import Models.Car;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nicholas
@@ -188,7 +190,23 @@ public class Search extends javax.swing.JPanel {
         Database database = new Database();
         Car[] cars = database.searchForCars(stringFields, intFields);
 
-        System.out.println();
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        for(int i = 0; i < tableModel.getRowCount(); i++)
+        {
+            //Delete the existing rows
+            tableModel.removeRow(i);
+        }
+
+        this.jTable1.updateUI();
+
+        for(Car currentCar : cars)
+        {
+            String[] carModel = {currentCar.getMake(), currentCar.getModel(),Integer.toString(currentCar.getYear()),Integer.toString(currentCar.getMileage())};
+            tableModel.addRow(carModel);
+        }
+
+        this.jTable1.setModel(tableModel);
         
     }//GEN-LAST:event_jbSearchActionPerformed
 
