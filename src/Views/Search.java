@@ -170,7 +170,7 @@ public class Search extends javax.swing.JPanel {
         String make = FormHandler.stringFromDropDown(jcbMake);
         String model = FormHandler.stringFromDropDown(jcbModel);
         String year = FormHandler.stringFromTextfield(jtfYear);
-        String transmisssion = FormHandler.stringFromDropDown(jcbTransmission);
+        String transmission = FormHandler.stringFromDropDown(jcbTransmission);
         String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
         String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
         String color = FormHandler.stringFromDropDown(jcbColor);
@@ -180,7 +180,7 @@ public class Search extends javax.swing.JPanel {
 
         stringFields.put("Make", make);
         stringFields.put("Model", model);
-        stringFields.put("Transmission", transmisssion);
+        stringFields.put("Transmission", transmission);
         stringFields.put("Body_Type", bodyType);
         stringFields.put("Vehicle_Type", vehicleType);
         stringFields.put("Color", color);
@@ -192,13 +192,13 @@ public class Search extends javax.swing.JPanel {
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        for(int i = 0; i < tableModel.getRowCount(); i++)
-        {
-            //Delete the existing rows
-            tableModel.removeRow(i);
-        }
+        //Delete all rows
+        tableModel.setRowCount(0);
 
-        this.jTable1.updateUI();
+        if(cars == null)
+        {
+            return;
+        }
 
         for(Car currentCar : cars)
         {
