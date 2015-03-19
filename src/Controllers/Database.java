@@ -150,17 +150,49 @@ public class Database
         return null;
     }
 
-    public Car searchForCars(Map stringFields, Map intFields)
+    public Car[] searchForCars(Map stringFields, Map intFields)
     {
+        String sqlStatement = this.carSearchSQL(stringFields, intFields);
+
+        ResultSet results = this.executeQuery(sqlStatement);
+
+        ArrayList<Car> cars = new ArrayList<Car>(1);
+
+        int rowCount = 0;
+        try
+        {
+            while(results.next())
+            {
+                rowCount++;
+
+                Car resultCar = new Car();
+                resultCar.setCarID(results.getInt("CarID"));
+                resultCar.setMake(results.getString("Make"));
+                resultCar.setModel(results.getString("Model"));
+                resultCar.setYear(results.getInt("Year"));
+                resultCar.setMileage(results.getInt("Mileage"));
+
+                cars.add(resultCar);
+            }
+
+            if(rowCount == 0)
+            {
+                return null;
+            }
+
+            return cars.toArray(new Car[cars.size()]);
+        }
+        catch(SQLException e)
+        {
+            return null;
+        }
+    }
+
+    private String carSearchSQL(Map stringFields, Map intFields) {
         String[] stringKeys = this.keysOfMap(stringFields);
         String[] intKeys = this.keysOfMap(intFields);
 
-        int activeStringFields = this.activeFieldCount(stringKeys, stringFields);
-        int activeIntFields = this.activeFieldCount(stringKeys, stringFields);
-
-        int totalActiveFields = activeIntFields + activeIntFields;
-
-        String sqlStatement = "select CarID, Make, Model, Year, Mileague from Cars ";
+        String sqlStatement = "select CarID, Make, Model, Year, Mileage from Cars ";
 
         int searchCount = 0;
 
@@ -187,9 +219,9 @@ public class Database
             }
         }
 
-        for (String key: stringKeys)
+        for (String key: intKeys)
         {
-            String searchField = (String) stringFields.get(key);
+            String searchField = (String) intFields.get(key);
 
             if(searchField == null || searchField.equals(""))
             {
@@ -208,7 +240,9 @@ public class Database
             }
         }
 
-        //TODO: write where statement and then search for the cars
+        sqlStatement += whereStatement;
+
+        return sqlStatement;
     }
 
     private int executeUpdate(String sqlStatement)

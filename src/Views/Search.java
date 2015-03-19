@@ -5,10 +5,12 @@
  */
 package Views;
 
+import Controllers.Database;
 import Controllers.FormHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+import Models.Car;
 
 /**
  *
@@ -182,6 +184,11 @@ public class Search extends javax.swing.JPanel {
         stringFields.put("Color", color);
 
         intFields.put("Year", year);
+
+        Database database = new Database();
+        Car[] cars = database.searchForCars(stringFields, intFields);
+
+        System.out.println();
         
     }//GEN-LAST:event_jbSearchActionPerformed
 
