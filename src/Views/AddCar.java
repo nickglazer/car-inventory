@@ -345,7 +345,7 @@ public class AddCar extends javax.swing.JPanel {
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
 
-        stringFields.put("Vin", "");
+        stringFields.put("Vin", vin);
         stringFields.put("Make", make);
         stringFields.put("Transmission", transmission);
         stringFields.put("Model", model);
