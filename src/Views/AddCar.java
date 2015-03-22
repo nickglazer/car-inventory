@@ -6,11 +6,13 @@
 package Views;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Map;
 import Controllers.Database;
 import Controllers.FormHandler;
+import java.awt.Component;
 
 /**
  *
@@ -21,8 +23,34 @@ public class AddCar extends javax.swing.JPanel {
     /**
      * Creates new form AddCar
      */
-    public AddCar() {
+
+    private JTextField[] textFields;
+    private JComboBox[] comboBoxes;
+    public AddCar()
+    {
         initComponents();
+        ArrayList<JTextField> textFieldList = new ArrayList<JTextField>();
+        ArrayList<JComboBox> comoBoxList = new ArrayList<JComboBox>();
+
+        Component[] components = this.getComponents();
+
+        for(Component panelComponent : components)
+        {
+            if(panelComponent.getClass() == JTextField.class)
+            {
+                textFieldList.add((JTextField) panelComponent);
+            }
+
+            if(panelComponent.getClass() == JComboBox.class)
+            {
+                comoBoxList.add((JComboBox) panelComponent);
+            }
+        }
+
+        this.textFields = textFieldList.toArray(new JTextField[textFieldList.size()]);
+        this.comboBoxes = comoBoxList.toArray(new JComboBox[comoBoxList.size()]);
+
+        int something;
     }
 
     /**
@@ -325,6 +353,19 @@ public class AddCar extends javax.swing.JPanel {
         return textField.getText();
     }
 
+    private void clearFields()
+    {
+        for(JTextField panelTextField : this.textFields)
+        {
+            panelTextField.setText("");
+        }
+
+        for(JComboBox panelComboBox : this.comboBoxes)
+        {
+            panelComboBox.setSelectedIndex(0);
+        }
+    }
+
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
     {                                       
 
@@ -363,6 +404,8 @@ public class AddCar extends javax.swing.JPanel {
 
         Database database = new Database();
         database.insertCar(stringFields, intFields);
+
+        this.clearFields();
 
     }                                     
 

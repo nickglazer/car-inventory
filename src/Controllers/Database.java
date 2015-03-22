@@ -365,6 +365,26 @@ public class Database
 
             return null;
         }
+    }
 
+    private int deleteCars(Car[] carsToDelete)
+    {
+        String deleteStatement = "delete from Cars where CarID = ";
+
+        for(int i = 0; i < carsToDelete.length; i++)
+        {
+            Car currentCar = carsToDelete[i];
+
+            if(i == 0)
+            {
+                deleteStatement += Integer.toString(currentCar.getCarID());
+            }
+            else
+            {
+                deleteStatement += String.format(" and CarID = %d", currentCar.getCarID());
+            }
+        }
+
+        return this.executeUpdate(deleteStatement);
     }
 }

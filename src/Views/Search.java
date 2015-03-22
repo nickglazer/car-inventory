@@ -233,9 +233,11 @@ public class Search extends javax.swing.JPanel
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
 
-        int selectedRow = this.jTable1.getSelectedRow();
+        int[] selectedRows = this.jTable1.getSelectedRows();
 
-        if(selectedRow == -1)
+        int totalRows = this.jTable1.getRowCount();
+
+        if(selectedRows.length == 0)
         {
             /**
              * If there's nothing selected, let's get out
@@ -244,17 +246,34 @@ public class Search extends javax.swing.JPanel
             return;
         }
 
-        Car selectedCar = this.currentCars[selectedRow];
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        String deleteStatement = "delete from Cars where CarID = " + Integer.toString(selectedCar.getCarID());
+        String deleteStatement = "delete from Cars where CarID = ";
+
+        int numDeletedRows = 0;
+        for(int i = totalRows - 1; i > -1; i--)
+        {
+            if(this.jTable1.isRowSelected(i))
+            {
+                Car selectedCar = this.currentCars[i];
+
+                if(numDeletedRows == 0)
+                {
+                    deleteStatement += Integer.toString(selectedCar.getCarID());
+                }
+                else
+                {
+                    deleteStatement += String.format(" or CarID = %d", selectedCar.getCarID());
+                }
+
+                tableModel.removeRow(i);
+                numDeletedRows++;
+            }
+        }
 
         Database database = new Database();
 
         int affectedRows = database.executeUpdate(deleteStatement);
-
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
-
-        tableModel.removeRow(selectedRow);
 
         this.jTable1.setModel(tableModel);
 
