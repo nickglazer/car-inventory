@@ -29,6 +29,9 @@ public class AddCar extends javax.swing.JPanel {
     public AddCar()
     {
         initComponents();
+
+        //Let's go through and add the textfields and comboboxes to their own arrays
+
         ArrayList<JTextField> textFieldList = new ArrayList<JTextField>();
         ArrayList<JComboBox> comoBoxList = new ArrayList<JComboBox>();
 
@@ -353,6 +356,9 @@ public class AddCar extends javax.swing.JPanel {
         return textField.getText();
     }
 
+    /**
+     * Clear all the textfields and combo boxes
+     */
     private void clearFields()
     {
         for(JTextField panelTextField : this.textFields)
