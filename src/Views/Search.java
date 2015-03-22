@@ -18,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Nicholas
  */
-public class Search extends javax.swing.JPanel {
+public class Search extends javax.swing.JPanel
+{
+    private Car[] currentCars;
 
     /**
      * Creates new form Search
@@ -188,21 +190,21 @@ public class Search extends javax.swing.JPanel {
         intFields.put("Year", year);
 
         Database database = new Database();
-        Car[] cars = database.searchForCars(stringFields, intFields);
+        this.currentCars = database.searchForCars(stringFields, intFields);
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         //Delete all rows
         tableModel.setRowCount(0);
 
-        if(cars == null)
+        if(this.currentCars == null)
         {
             return;
         }
 
-        for(Car currentCar : cars)
+        for(Car currentCar : this.currentCars)
         {
-            String[] carModel = {currentCar.getMake(), currentCar.getModel(),Integer.toString(currentCar.getYear()),Integer.toString(currentCar.getMileage())};
+            String[] carModel = this.carModel(currentCar);
             tableModel.addRow(carModel);
         }
 
@@ -210,6 +212,17 @@ public class Search extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jbSearchActionPerformed
 
+    /**
+     * Takes a car and returns its car model. A "car model" is an array that is used in the search page's table
+     * @param carToModel The car that you're interesting in getting its model
+     * @return A string array that represents the car's model.
+     */
+    private String[] carModel(Car carToModel)
+    {
+        String[] model = {carToModel.getMake(), carToModel.getModel(),Integer.toString(carToModel.getYear()),Integer.toString(carToModel.getMileage())};
+
+        return model;
+    }
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbMakeActionPerformed
@@ -219,7 +232,32 @@ public class Search extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbBodyTypeActionPerformed
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
-        // TODO add your handling code here:
+
+        int selectedRow = this.jTable1.getSelectedRow();
+
+        if(selectedRow == -1)
+        {
+            /**
+             * If there's nothing selected, let's get out
+             * TODO: Show error message
+             */
+            return;
+        }
+
+        Car selectedCar = this.currentCars[selectedRow];
+
+        String deleteStatement = "delete from Cars where CarID = " + Integer.toString(selectedCar.getCarID());
+
+        Database database = new Database();
+
+        int affectedRows = database.executeUpdate(deleteStatement);
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        tableModel.removeRow(selectedRow);
+
+        this.jTable1.setModel(tableModel);
+
     }//GEN-LAST:event_jbDeleteActionPerformed
 
 

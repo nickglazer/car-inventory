@@ -290,7 +290,7 @@ public class Database
      * @return An int that indicates the amount of rows that were updated
      * or 0 if there was something wrong updated or the query doesn't affect any rows
      */
-    private int executeUpdate(String sqlStatement)
+    public int executeUpdate(String sqlStatement)
     {
         try
         {
@@ -311,7 +311,7 @@ public class Database
      * @param sqlStatement The select query you want to run
      * @return A ResultSet object if select was successful. Null otherwise
      */
-    private ResultSet executeQuery(String sqlStatement)
+    public ResultSet executeQuery(String sqlStatement)
     {
         try
         {
