@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by recheejozil on 2/19/15.
+ * Used for all database operations
+ * @author Rechee Jozil
  */
 public class Database
 {
@@ -25,6 +26,10 @@ public class Database
 
     }
 
+    /**
+     * Returns a Connection from the database which is then used to run queries
+     * @return A connection object if we can successfully connect to database. Null otherwise
+     */
     private Connection getDatabaseConnection()
     {
         Connection databaseConnection;
@@ -45,6 +50,11 @@ public class Database
         }
     }
 
+    /**
+     * Inserts a new car record into database
+     * @param stringFields A map which has database columns as keys and database value as value. (String columns only).
+     * @param intFields A map which has database columns as keys and database value as value. (Integer columns only).
+     */
     public void insertCar(Map stringFields, Map intFields)
     {
         String insertStatement = this.createCarInsertStatement(intFields, stringFields);
@@ -52,10 +62,15 @@ public class Database
         int affectedRows = this.executeUpdate(insertStatement);
 
         System.out.println(affectedRows);
-
-
     }
 
+    /**
+     * Returns the number of database fields which are not null from a map object
+     * @param keys An array of the keys of the passed in fields
+     * @param fields A map of the database columns, with their associated values
+     * @see Controllers.Database#insertCar(java.util.Map, java.util.Map)
+     * @return int that has the count of active fields
+     */
     private int activeFieldCount(String[] keys, Map fields)
     {
         int activeCount = 0;
@@ -71,11 +86,22 @@ public class Database
         return activeCount;
     }
 
+    /**
+     * Takes a database column map and returns the keys as an array
+     * @param targetMap Map that has the database columns as keys
+     * @return String array that contains keys of database map
+     */
     private String[] keysOfMap(Map targetMap)
     {
         return (String[]) targetMap.keySet().toArray(new String[targetMap.size()]);
     }
 
+    /**
+     * Takes database maps and returns the insert query statement
+     * @param intFields Database map for the int columns
+     * @param stringFields Database map for string columns
+     * @return String value of car insert statement
+     */
     private String createCarInsertStatement(Map intFields, Map stringFields)
     {
         String[] intKeys = this.keysOfMap(intFields);
@@ -150,6 +176,12 @@ public class Database
         return null;
     }
 
+    /**
+     * Returns list of cars for given search fields
+     * @param stringFields Database map for the string columns
+     * @param intFields Database map for the int columns
+     * @return Array of cars returned from search or null if there's no cars for that search
+     */
     public Car[] searchForCars(Map stringFields, Map intFields)
     {
         String sqlStatement = this.carSearchSQL(stringFields, intFields);
@@ -188,6 +220,13 @@ public class Database
         }
     }
 
+    /**
+     * Very similar to how we get the insert SQL
+     * @see Controllers.Database#insertCar(java.util.Map, java.util.Map)
+     * @param stringFields Database map for the string columns
+     * @param intFields Database map for the int columns
+     * @return String for car search sql
+     */
     private String carSearchSQL(Map stringFields, Map intFields) {
         String[] stringKeys = this.keysOfMap(stringFields);
         String[] intKeys = this.keysOfMap(intFields);
@@ -245,6 +284,12 @@ public class Database
         return sqlStatement;
     }
 
+    /**
+     * Used for executing SQL statements other than SELECT
+     * @param sqlStatement The sql statement you want to execute
+     * @return An int that indicates the amount of rows that were updated
+     * or 0 if there was something wrong updated or the query doesn't affect any rows
+     */
     private int executeUpdate(String sqlStatement)
     {
         try
@@ -261,6 +306,11 @@ public class Database
         }
     }
 
+    /**
+     * Used to execute SELECT queries
+     * @param sqlStatement The select query you want to run
+     * @return A ResultSet object if select was successful. Null otherwise
+     */
     private ResultSet executeQuery(String sqlStatement)
     {
         try
