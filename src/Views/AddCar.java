@@ -6,10 +6,13 @@
 package Views;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Map;
 import Controllers.Database;
+import Controllers.FormHandler;
+import java.awt.Component;
 
 /**
  *
@@ -20,8 +23,37 @@ public class AddCar extends javax.swing.JPanel {
     /**
      * Creates new form AddCar
      */
-    public AddCar() {
+
+    private JTextField[] textFields;
+    private JComboBox[] comboBoxes;
+    public AddCar()
+    {
         initComponents();
+
+        //Let's go through and add the textfields and comboboxes to their own arrays
+
+        ArrayList<JTextField> textFieldList = new ArrayList<JTextField>();
+        ArrayList<JComboBox> comoBoxList = new ArrayList<JComboBox>();
+
+        Component[] components = this.getComponents();
+
+        for(Component panelComponent : components)
+        {
+            if(panelComponent.getClass() == JTextField.class)
+            {
+                textFieldList.add((JTextField) panelComponent);
+            }
+
+            if(panelComponent.getClass() == JComboBox.class)
+            {
+                comoBoxList.add((JComboBox) panelComponent);
+            }
+        }
+
+        this.textFields = textFieldList.toArray(new JTextField[textFieldList.size()]);
+        this.comboBoxes = comoBoxList.toArray(new JComboBox[comoBoxList.size()]);
+
+        int something;
     }
 
     /**
@@ -319,7 +351,7 @@ public class AddCar extends javax.swing.JPanel {
     {
         String textFieldString;
 
-        if(textField.getText() == "")
+        if(textField.getText().equals(""))
         {
             return null;
         }
@@ -327,27 +359,43 @@ public class AddCar extends javax.swing.JPanel {
         return textField.getText();
     }
 
+    /**
+     * Clear all the textfields and combo boxes
+     */
+    private void clearFields()
+    {
+        for(JTextField panelTextField : this.textFields)
+        {
+            panelTextField.setText("");
+        }
+
+        for(JComboBox panelComboBox : this.comboBoxes)
+        {
+            panelComboBox.setSelectedIndex(0);
+        }
+    }
+
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
     {                                       
 
-        String make = this.stringFromDropDown(this.jcbMake);
-        String transmission = this.stringFromDropDown(this.jcbTransmission);
-        String color = this.stringFromDropDown(jcbColor);
-        String model = this.stringFromDropDown(this.jcbModel);
-        String engineLiters = jtfEngine.getText();
-        String cylinders = jtfCylinders.getText();
-        String year = jtfYear.getText();
-        String driveTrain = this.stringFromDropDown(this.jcbDrivetrain);
-        String gas = this.stringFromDropDown(this.jcbGasType);
-        String mileage = this.jtfMileage.getText();
-        String bodyType = this.stringFromDropDown(this.jcbBodyType);
-        String vehicleType = this.stringFromDropDown(this.jcbVehicleType);
-        String vin = this.jtfVIN.getText();
+        String make = FormHandler.stringFromDropDown(this.jcbMake);
+        String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+        String model = FormHandler.stringFromDropDown(this.jcbModel);
+        String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
+        String cylinders = FormHandler.stringFromTextfield(jtfCylinders);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String driveTrain = FormHandler.stringFromDropDown(this.jcbDrivetrain);
+        String gas = FormHandler.stringFromDropDown(this.jcbGasType);
+        String mileage = FormHandler.stringFromTextfield(jtfMileage);
+        String bodyType = FormHandler.stringFromDropDown(this.jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(this.jcbVehicleType);
+        String vin = FormHandler.stringFromTextfield(jtfVIN);
 
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
 
-        stringFields.put("Vin", "");
+        stringFields.put("Vin", vin);
         stringFields.put("Make", make);
         stringFields.put("Transmission", transmission);
         stringFields.put("Model", model);
@@ -357,7 +405,7 @@ public class AddCar extends javax.swing.JPanel {
         intFields.put("Lot", "");
         intFields.put("Engine_Liters", engineLiters);
         intFields.put("Engine_Cylinders", cylinders);
-        intFields.put("Body_Type", bodyType);
+        stringFields.put("Body_Type", bodyType);
         stringFields.put("Vehicle_Type", vehicleType);
         stringFields.put("Drivetrain", driveTrain);
         stringFields.put("Gas", gas);
@@ -365,6 +413,8 @@ public class AddCar extends javax.swing.JPanel {
 
         Database database = new Database();
         database.insertCar(stringFields, intFields);
+
+        this.clearFields();
 
     }                                     
 

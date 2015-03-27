@@ -5,11 +5,22 @@
  */
 package Views;
 
+import Controllers.Database;
+import Controllers.FormHandler;
+
+import java.util.HashMap;
+import java.util.Map;
+import Models.Car;
+
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nicholas
  */
-public class Search extends javax.swing.JPanel {
+public class Search extends javax.swing.JPanel
+{
+    private Car[] currentCars;
 
     /**
      * Creates new form Search
@@ -157,10 +168,61 @@ public class Search extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
-        // TODO add your handling code here:
+
+        String make = FormHandler.stringFromDropDown(jcbMake);
+        String model = FormHandler.stringFromDropDown(jcbModel);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String transmission = FormHandler.stringFromDropDown(jcbTransmission);
+        String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+
+        Map stringFields = new HashMap<String, String>();
+        Map intFields = new HashMap<String, String>();
+
+        stringFields.put("Make", make);
+        stringFields.put("Model", model);
+        stringFields.put("Transmission", transmission);
+        stringFields.put("Body_Type", bodyType);
+        stringFields.put("Vehicle_Type", vehicleType);
+        stringFields.put("Color", color);
+
+        intFields.put("Year", year);
+
+        Database database = new Database();
+        this.currentCars = database.searchForCars(stringFields, intFields);
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows
+        tableModel.setRowCount(0);
+
+        if(this.currentCars == null)
+        {
+            return;
+        }
+
+        for(Car currentCar : this.currentCars)
+        {
+            String[] carModel = this.carModel(currentCar);
+            tableModel.addRow(carModel);
+        }
+
+        this.jTable1.setModel(tableModel);
         
     }//GEN-LAST:event_jbSearchActionPerformed
 
+    /**
+     * Takes a car and returns its car model. A "car model" is an array that is used in the search page's table
+     * @param carToModel The car that you're interesting in getting its model
+     * @return A string array that represents the car's model.
+     */
+    private String[] carModel(Car carToModel)
+    {
+        String[] model = {carToModel.getMake(), carToModel.getModel(),Integer.toString(carToModel.getYear()),Integer.toString(carToModel.getMileage())};
+
+        return model;
+    }
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbMakeActionPerformed
@@ -170,7 +232,51 @@ public class Search extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbBodyTypeActionPerformed
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
-        // TODO add your handling code here:
+
+        int[] selectedRows = this.jTable1.getSelectedRows();
+
+        int totalRows = this.jTable1.getRowCount();
+
+        if(selectedRows.length == 0)
+        {
+            /**
+             * If there's nothing selected, let's get out
+             * TODO: Show error message
+             */
+            return;
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        String deleteStatement = "delete from Cars where CarID = ";
+
+        int numDeletedRows = 0;
+        for(int i = totalRows - 1; i > -1; i--)
+        {
+            if(this.jTable1.isRowSelected(i))
+            {
+                Car selectedCar = this.currentCars[i];
+
+                if(numDeletedRows == 0)
+                {
+                    deleteStatement += Integer.toString(selectedCar.getCarID());
+                }
+                else
+                {
+                    deleteStatement += String.format(" or CarID = %d", selectedCar.getCarID());
+                }
+
+                tableModel.removeRow(i);
+                numDeletedRows++;
+            }
+        }
+
+        Database database = new Database();
+
+        int affectedRows = database.executeUpdate(deleteStatement);
+
+        this.jTable1.setModel(tableModel);
+
     }//GEN-LAST:event_jbDeleteActionPerformed
 
 
