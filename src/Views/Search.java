@@ -171,8 +171,29 @@ public class Search extends javax.swing.JPanel
         this.currentCars = database.getAllCars();
 
         this.performSearch();
-
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void performSearch()
+    {
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows
+        tableModel.setRowCount(0);
+
+        if(this.currentCars == null)
+        {
+            return;
+        }
+
+        for(Car currentCar : this.currentCars)
+        {
+            String[] carModel = this.carModel(currentCar);
+            tableModel.addRow(carModel);
+        }
+
+        this.jTable1.setModel(tableModel);
+    }
 
     private void setCurrentCars()
     {
@@ -200,8 +221,31 @@ public class Search extends javax.swing.JPanel
         this.currentCars = database.searchForCars(stringFields, intFields);
     }
 
-    private void performSearch()
-    {
+    private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
+
+        String make = FormHandler.stringFromDropDown(jcbMake);
+        String model = FormHandler.stringFromDropDown(jcbModel);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String transmission = FormHandler.stringFromDropDown(jcbTransmission);
+        String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+
+        Map stringFields = new HashMap<String, String>();
+        Map intFields = new HashMap<String, String>();
+
+        stringFields.put("Make", make);
+        stringFields.put("Model", model);
+        stringFields.put("Transmission", transmission);
+        stringFields.put("Body_Type", bodyType);
+        stringFields.put("Vehicle_Type", vehicleType);
+        stringFields.put("Color", color);
+
+        intFields.put("Year", year);
+
+        Database database = new Database();
+        this.currentCars = database.searchForCars(stringFields, intFields);
+
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         //Delete all rows
@@ -219,11 +263,7 @@ public class Search extends javax.swing.JPanel
         }
 
         this.jTable1.setModel(tableModel);
-    }
-
-
-    private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
-
+        
     }//GEN-LAST:event_jbSearchActionPerformed
 
     /**
