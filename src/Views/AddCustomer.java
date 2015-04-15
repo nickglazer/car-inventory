@@ -27,85 +27,19 @@ public class AddCustomer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtfFirstName = new javax.swing.JTextField();
-        jtfLastName = new javax.swing.JTextField();
-        jtfEmail = new javax.swing.JTextField();
-        jtfPhone = new javax.swing.JTextField();
-        jtfAddress = new javax.swing.JTextField();
-        jbSubmit = new javax.swing.JButton();
-
-        jtfFirstName.setText("First Name");
-
-        jtfLastName.setText("Last Name");
-        jtfLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfLastNameActionPerformed(evt);
-            }
-        });
-
-        jtfEmail.setText("Email");
-        jtfEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfEmailActionPerformed(evt);
-            }
-        });
-
-        jtfPhone.setText("Phone");
-
-        jtfAddress.setText("Address");
-
-        jbSubmit.setText("Submit");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jtfAddress, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfPhone, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfLastName, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jbSubmit))
-                .addContainerGap(306, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jbSubmit)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfLastNameActionPerformed
-
-    private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfEmailActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbSubmit;
-    private javax.swing.JTextField jtfAddress;
-    private javax.swing.JTextField jtfEmail;
-    private javax.swing.JTextField jtfFirstName;
-    private javax.swing.JTextField jtfLastName;
-    private javax.swing.JTextField jtfPhone;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,7 +62,18 @@ public class Search extends javax.swing.JPanel
                 "Make", "Model", "Year", "Mileage"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        jtfYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfYearActionPerformed(evt);
+            }
+        });
 
         jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota" }));
         jcbMake.addActionListener(new java.awt.event.ActionListener() {
@@ -72,9 +83,18 @@ public class Search extends javax.swing.JPanel
         });
 
         jcbModel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Model-" }));
-
+        jcbModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbModelActionPerformed(evt);
+            }
+        });
 
         jcbTransmission.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Transmission-", "Automatic", "Manual", "Combo" }));
+        jcbTransmission.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTransmissionActionPerformed(evt);
+            }
+        });
 
         jcbBodyType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Body-", "2 Door", "4 Door" }));
         jcbBodyType.addActionListener(new java.awt.event.ActionListener() {
@@ -84,10 +104,25 @@ public class Search extends javax.swing.JPanel
         });
 
         jcbColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Color-", "Black", "Blue", "Brown", "Green", "Orange", "Red", "White", "Yellow" }));
+        jcbColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbColorActionPerformed(evt);
+            }
+        });
 
         jbBuy.setText("Buy");
+        jbBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuyActionPerformed(evt);
+            }
+        });
 
         jcbCarType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Style-", "Coupe", "Hatchback", "Sedan", "Van" }));
+        jcbCarType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCarTypeActionPerformed(evt);
+            }
+        });
 
         jbDelete.setText("Delete");
         jbDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -152,66 +187,10 @@ public class Search extends javax.swing.JPanel
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbBuy, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(jbBuy)))
                 .addContainerGap())
         );
-
-        Database database = new Database();
-
-        this.currentCars = database.getAllCars();
-
-        this.performSearch();
     }// </editor-fold>//GEN-END:initComponents
-
-
-    private void performSearch()
-    {
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
-
-        //Delete all rows
-        tableModel.setRowCount(0);
-
-        if(this.currentCars == null)
-        {
-            return;
-        }
-
-        for(Car currentCar : this.currentCars)
-        {
-            String[] carModel = this.carModel(currentCar);
-            tableModel.addRow(carModel);
-        }
-
-        this.jTable1.setModel(tableModel);
-    }
-
-    private void setCurrentCars()
-    {
-        String make = FormHandler.stringFromDropDown(jcbMake);
-        String model = FormHandler.stringFromDropDown(jcbModel);
-        String year = FormHandler.stringFromTextfield(jtfYear);
-        String transmission = FormHandler.stringFromDropDown(jcbTransmission);
-        String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
-        String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
-        String color = FormHandler.stringFromDropDown(jcbColor);
-
-        Map stringFields = new HashMap<String, String>();
-        Map intFields = new HashMap<String, String>();
-
-        stringFields.put("Make", make);
-        stringFields.put("Model", model);
-        stringFields.put("Transmission", transmission);
-        stringFields.put("Body_Type", bodyType);
-        stringFields.put("Vehicle_Type", vehicleType);
-        stringFields.put("Color", color);
-
-        intFields.put("Year", year);
-
-        Database database = new Database();
-        this.currentCars = database.searchForCars(stringFields, intFields);
-    }
-
 
     /**
      * Takes a car and returns its car model. A "car model" is an array that is used in the search page's table
@@ -279,6 +258,34 @@ public class Search extends javax.swing.JPanel
         this.jTable1.setModel(tableModel);
 
     }//GEN-LAST:event_jbDeleteActionPerformed
+
+    private void jcbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbModelActionPerformed
+
+    private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfYearActionPerformed
+
+    private void jcbTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTransmissionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTransmissionActionPerformed
+
+    private void jcbCarTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCarTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCarTypeActionPerformed
+
+    private void jcbColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbColorActionPerformed
+
+    private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuyActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
