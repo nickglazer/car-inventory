@@ -19,38 +19,33 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbSave" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbSave" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlDownPayment" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlBank" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlLoanNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlLoanDuration" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlOrderID" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jtfDate" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtfOrderID" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtfLoanDuration" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtfLoanNumber" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtfBank" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtfDownPayment" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jbViewCustomer" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jbAddCustomer" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jlDownPayment" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlBank" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlLoanNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlLoanDuration" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlOrderID" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jtfDate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtfOrderID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtfLoanDuration" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtfLoanNumber" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtfBank" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtfDownPayment" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jbViewCustomer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jbAddCustomer" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="277" max="32767" attributes="0"/>
+              <EmptySpace pref="466" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

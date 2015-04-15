@@ -21,7 +21,6 @@
                   <Component id="jcbMake" max="32767" attributes="0"/>
                   <Component id="jcbModel" max="32767" attributes="0"/>
                   <Component id="jtfYear" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jbSearch" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbTransmission" alignment="1" max="32767" attributes="0"/>
                   <Component id="jcbBodyType" alignment="1" max="32767" attributes="0"/>
                   <Component id="jcbColor" alignment="1" max="32767" attributes="0"/>
@@ -81,10 +80,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbSearch" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbBuy" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jbBuy" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -178,14 +174,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbModelActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbSearch">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Search"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSearchActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbTransmission">
