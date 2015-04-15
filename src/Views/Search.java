@@ -44,7 +44,6 @@ public class Search extends javax.swing.JPanel
         jtfYear = new javax.swing.JTextField();
         jcbMake = new javax.swing.JComboBox();
         jcbModel = new javax.swing.JComboBox();
-        jbSearch = new javax.swing.JButton();
         jcbTransmission = new javax.swing.JComboBox();
         jcbBodyType = new javax.swing.JComboBox();
         jcbColor = new javax.swing.JComboBox();
@@ -74,11 +73,6 @@ public class Search extends javax.swing.JPanel
 
         jcbModel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Model-" }));
 
-        jbSearch.setText("Search");
-        jbSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
 
         jcbTransmission.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Transmission-", "Automatic", "Manual", "Combo" }));
 
@@ -111,7 +105,6 @@ public class Search extends javax.swing.JPanel
                     .addComponent(jcbMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbModel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfYear)
-                    .addComponent(jbSearch)
                     .addComponent(jcbTransmission, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbBodyType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbColor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,7 +153,6 @@ public class Search extends javax.swing.JPanel
                                 .addComponent(jbDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbSearch, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jbBuy, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
@@ -295,7 +287,6 @@ public class Search extends javax.swing.JPanel
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbBuy;
     private javax.swing.JButton jbDelete;
-    private javax.swing.JButton jbSearch;
     private javax.swing.JComboBox jcbBodyType;
     private javax.swing.JComboBox jcbCarType;
     private javax.swing.JComboBox jcbColor;
