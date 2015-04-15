@@ -10,12 +10,12 @@ import Controllers.FormHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import Models.Car;
 
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
  * @author Nicholas
  */
 public class Search extends javax.swing.JPanel
@@ -52,15 +52,15 @@ public class Search extends javax.swing.JPanel
         jbDelete = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Make", "Model", "Year", "Mileage"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Make", "Model", "Year", "Mileage"
+                }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,35 +75,35 @@ public class Search extends javax.swing.JPanel
             }
         });
 
-        jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota" }));
+        jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota"}));
         jcbMake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbMakeActionPerformed(evt);
             }
         });
 
-        jcbModel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Model-" }));
+        jcbModel.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Model-"}));
         jcbModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbModelActionPerformed(evt);
             }
         });
 
-        jcbTransmission.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Transmission-", "Automatic", "Manual", "Combo" }));
+        jcbTransmission.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Transmission-", "Automatic", "Manual", "Combo"}));
         jcbTransmission.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbTransmissionActionPerformed(evt);
             }
         });
 
-        jcbBodyType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Body-", "2 Door", "4 Door" }));
+        jcbBodyType.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Body-", "2 Door", "4 Door"}));
         jcbBodyType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbBodyTypeActionPerformed(evt);
             }
         });
 
-        jcbColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Color-", "Black", "Blue", "Brown", "Green", "Orange", "Red", "White", "Yellow" }));
+        jcbColor.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Color-", "Black", "Blue", "Brown", "Green", "Orange", "Red", "White", "Yellow"}));
         jcbColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbColorActionPerformed(evt);
@@ -117,7 +117,7 @@ public class Search extends javax.swing.JPanel
             }
         });
 
-        jcbCarType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Style-", "Coupe", "Hatchback", "Sedan", "Van" }));
+        jcbCarType.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"-Style-", "Coupe", "Hatchback", "Sedan", "Van"}));
         jcbCarType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbCarTypeActionPerformed(evt);
@@ -134,81 +134,145 @@ public class Search extends javax.swing.JPanel
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jcbMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jcbModel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtfYear)
-                    .addComponent(jcbTransmission, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jcbBodyType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jcbColor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jcbCarType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbDelete)
-                            .addComponent(jbBuy))))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jcbMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbModel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jtfYear)
+                                        .addComponent(jcbTransmission, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbBodyType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbColor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbCarType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(30, 30, 30)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jbDelete)
+                                                        .addComponent(jbBuy))))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jcbMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jcbModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbBodyType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbCarType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jbBuy)))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jcbMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(2, 2, 2)
+                                                                .addComponent(jcbModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jtfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jcbTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jcbBodyType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jcbCarType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jcbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jbDelete)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                .addComponent(jbBuy)))
+                                .addContainerGap())
         );
+
+
+        this.showAllCars();
+
     }// </editor-fold>//GEN-END:initComponents
+
+    private void showAllCars()
+    {
+        Database database = new Database();
+
+        this.currentCars = database.getAllCars();
+        this.performSearch();
+    }
+
+    private void performFilter()
+    {
+        this.setCurrentCars();
+        this.performSearch();
+    }
+
+    private void performSearch() {
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows 
+        tableModel.setRowCount(0);
+
+        if (this.currentCars == null) {
+            return;
+        }
+
+        for (Car currentCar : this.currentCars) {
+            String[] carModel = this.carModel(currentCar);
+            tableModel.addRow(carModel);
+        }
+
+        this.jTable1.setModel(tableModel);
+    }
+
+    private void setCurrentCars()
+    {
+        String make = FormHandler.stringFromDropDown(jcbMake);
+        String model = FormHandler.stringFromDropDown(jcbModel);
+        String year = FormHandler.stringFromTextfield(jtfYear);
+        String transmission = FormHandler.stringFromDropDown(jcbTransmission);
+        String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
+        String vehicleType = FormHandler.stringFromDropDown(jcbCarType);
+        String color = FormHandler.stringFromDropDown(jcbColor);
+
+        Map stringFields = new HashMap<String, String>();
+        Map intFields = new HashMap<String, String>();
+        stringFields.put("Make", make);
+        stringFields.put("Model", model);
+        stringFields.put("Transmission", transmission);
+        stringFields.put("Body_Type", bodyType);
+        stringFields.put("Vehicle_Type", vehicleType);
+        stringFields.put("Color", color);
+        intFields.put("Year", year);
+
+        Database database = new Database();
+        this.currentCars = database.searchForCars(stringFields, intFields);
+    }
 
     /**
      * Takes a car and returns its car model. A "car model" is an array that is used in the search page's table
+     *
      * @param carToModel The car that you're interesting in getting its model
      * @return A string array that represents the car's model.
      */
-    private String[] carModel(Car carToModel)
-    {
-        String[] model = {carToModel.getMake(), carToModel.getModel(),Integer.toString(carToModel.getYear()),Integer.toString(carToModel.getMileage())};
+    private String[] carModel(Car carToModel) {
+        String[] model = {carToModel.getMake(), carToModel.getModel(), Integer.toString(carToModel.getYear()), Integer.toString(carToModel.getMileage())};
 
         return model;
     }
+
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbMakeActionPerformed
 
     private void jcbBodyTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBodyTypeActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbBodyTypeActionPerformed
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
@@ -217,8 +281,7 @@ public class Search extends javax.swing.JPanel
 
         int totalRows = this.jTable1.getRowCount();
 
-        if(selectedRows.length == 0)
-        {
+        if (selectedRows.length == 0) {
             /**
              * If there's nothing selected, let's get out
              * TODO: Show error message
@@ -231,18 +294,13 @@ public class Search extends javax.swing.JPanel
         String deleteStatement = "delete from Cars where CarID = ";
 
         int numDeletedRows = 0;
-        for(int i = totalRows - 1; i > -1; i--)
-        {
-            if(this.jTable1.isRowSelected(i))
-            {
+        for (int i = totalRows - 1; i > -1; i--) {
+            if (this.jTable1.isRowSelected(i)) {
                 Car selectedCar = this.currentCars[i];
 
-                if(numDeletedRows == 0)
-                {
+                if (numDeletedRows == 0) {
                     deleteStatement += Integer.toString(selectedCar.getCarID());
-                }
-                else
-                {
+                } else {
                     deleteStatement += String.format(" or CarID = %d", selectedCar.getCarID());
                 }
 
@@ -261,22 +319,27 @@ public class Search extends javax.swing.JPanel
 
     private void jcbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbModelActionPerformed
 
     private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jtfYearActionPerformed
 
     private void jcbTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTransmissionActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbTransmissionActionPerformed
 
     private void jcbCarTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCarTypeActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbCarTypeActionPerformed
 
     private void jcbColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbColorActionPerformed
         // TODO add your handling code here:
+        this.performFilter();
     }//GEN-LAST:event_jcbColorActionPerformed
 
     private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
