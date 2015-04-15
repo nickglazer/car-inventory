@@ -165,10 +165,17 @@ public class Search extends javax.swing.JPanel
                             .addComponent(jbBuy, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
+
+        Database database = new Database();
+
+        this.currentCars = database.getAllCars();
+
+        this.performSearch();
+
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
-
+    private void setCurrentCars()
+    {
         String make = FormHandler.stringFromDropDown(jcbMake);
         String model = FormHandler.stringFromDropDown(jcbModel);
         String year = FormHandler.stringFromTextfield(jtfYear);
@@ -191,7 +198,10 @@ public class Search extends javax.swing.JPanel
 
         Database database = new Database();
         this.currentCars = database.searchForCars(stringFields, intFields);
+    }
 
+    private void performSearch()
+    {
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         //Delete all rows
@@ -209,7 +219,11 @@ public class Search extends javax.swing.JPanel
         }
 
         this.jTable1.setModel(tableModel);
-        
+    }
+
+
+    private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
+
     }//GEN-LAST:event_jbSearchActionPerformed
 
     /**
