@@ -46,20 +46,37 @@ public class CarInventory extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jtbSearch.setMinimumSize(new java.awt.Dimension(750, 450));
+        jtbSearch.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtbSearchStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 401, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jtbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jtbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtbSearchStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtbSearchStateChanged
+        // TODO add your handling code here:
+        int index = jtbSearch.getSelectedIndex();
+        if ((jtbSearch.getTitleAt(index)).contains("Search")) {
+            searchPanel.showAllCars();
+        }
+    }//GEN-LAST:event_jtbSearchStateChanged
 
     /**
      * @param args the command line arguments

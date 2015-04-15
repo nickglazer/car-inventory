@@ -69,6 +69,7 @@ public class Search extends javax.swing.JPanel
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jtfYear.setText("Year");
         jtfYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfYearActionPerformed(evt);
