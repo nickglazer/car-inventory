@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Models.Car;
+import javax.swing.JFrame;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -345,6 +346,11 @@ public class Search extends javax.swing.JPanel
 
     private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
         // TODO add your handling code here:
+        JFrame frame = new JFrame(); 
+        Orders order = new Orders();
+        order.setVisible(true);
+        frame.add(order);
+        frame.setVisible(true);
     }//GEN-LAST:event_jbBuyActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

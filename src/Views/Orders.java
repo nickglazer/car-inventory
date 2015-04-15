@@ -5,6 +5,8 @@
  */
 package Views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Nicholas
@@ -138,6 +140,11 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
         // TODO add your handling code here:
+        JFrame frame = new JFrame(); 
+        AddCustomer add = new AddCustomer();
+        add.setVisible(true);
+        frame.add(add);
+        frame.setVisible(true);
     }//GEN-LAST:event_jbSelectCustomerActionPerformed
 
     private void jtfLoanNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLoanNumberActionPerformed
