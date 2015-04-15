@@ -7,6 +7,7 @@ package Controllers;
 
 import Views.Search;
 import Views.AddCar;
+import Views.OrderSearch;
 
 /**
  *
@@ -16,7 +17,7 @@ public class CarInventory extends javax.swing.JFrame {
 
     Search searchPanel;
     AddCar addCar;
-    
+    OrderSearch orderSearch;
     /**
      * Creates new form NewJFrame
      */
@@ -24,8 +25,10 @@ public class CarInventory extends javax.swing.JFrame {
         initComponents();
         searchPanel = new Search();
         addCar = new AddCar();
+        orderSearch = new OrderSearch();
         jtbSearch.addTab("Search", searchPanel);
         jtbSearch.addTab("Add Car", addCar);
+        jtbSearch.addTab("Orders", orderSearch);
 
     }
 

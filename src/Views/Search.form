@@ -138,12 +138,18 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfYear">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfYearActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbMake">
       <Properties>
@@ -170,6 +176,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbModelActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbSearch">
       <Properties>
@@ -190,6 +199,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbTransmissionActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbBodyType">
       <Properties>
@@ -221,11 +233,17 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbColorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbBuy">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buy"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuyActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbCarType">
       <Properties>
@@ -239,6 +257,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbCarTypeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbDelete">
       <Properties>
