@@ -197,7 +197,7 @@ public class Search extends javax.swing.JPanel
 
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showAllCars()
+    public void showAllCars()
     {
         Database database = new Database();
 
