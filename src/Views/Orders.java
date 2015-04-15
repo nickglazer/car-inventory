@@ -39,9 +39,8 @@ public class Orders extends javax.swing.JPanel {
         jtfLoanDuration = new javax.swing.JTextField();
         jtfOrderID = new javax.swing.JTextField();
         jtfDate = new javax.swing.JTextField();
-        jbViewCustomer = new javax.swing.JButton();
         jbSave = new javax.swing.JButton();
-        jbAddCustomer = new javax.swing.JButton();
+        jbSelectCustomer = new javax.swing.JButton();
 
         jlDownPayment.setText("Down Payment");
 
@@ -61,8 +60,6 @@ public class Orders extends javax.swing.JPanel {
             }
         });
 
-        jbViewCustomer.setText("View Customer");
-
         jbSave.setText("Submit");
         jbSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,10 +67,10 @@ public class Orders extends javax.swing.JPanel {
             }
         });
 
-        jbAddCustomer.setText("Add Customer");
-        jbAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+        jbSelectCustomer.setText("Select Customer");
+        jbSelectCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAddCustomerActionPerformed(evt);
+                jbSelectCustomerActionPerformed(evt);
             }
         });
 
@@ -101,19 +98,14 @@ public class Orders extends javax.swing.JPanel {
                             .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbViewCustomer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbAddCustomer)))
-                .addContainerGap(466, Short.MAX_VALUE))
+                    .addComponent(jbSelectCustomer))
+                .addContainerGap(570, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbViewCustomer)
-                    .addComponent(jbAddCustomer))
+                .addComponent(jbSelectCustomer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDownPayment)
@@ -144,9 +136,9 @@ public class Orders extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddCustomerActionPerformed
+    private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbAddCustomerActionPerformed
+    }//GEN-LAST:event_jbSelectCustomerActionPerformed
 
     private void jtfLoanNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLoanNumberActionPerformed
         // TODO add your handling code here:
@@ -158,9 +150,8 @@ public class Orders extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbAddCustomer;
     private javax.swing.JButton jbSave;
-    private javax.swing.JButton jbViewCustomer;
+    private javax.swing.JButton jbSelectCustomer;
     private javax.swing.JLabel jlBank;
     private javax.swing.JLabel jlDate;
     private javax.swing.JLabel jlDownPayment;

@@ -39,13 +39,9 @@
                           <Component id="jtfDownPayment" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jbViewCustomer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jbAddCustomer" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jbSelectCustomer" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="466" max="32767" attributes="0"/>
+              <EmptySpace pref="570" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,10 +49,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbViewCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbAddCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jbSelectCustomer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlDownPayment" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,11 +133,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfDate">
     </Component>
-    <Component class="javax.swing.JButton" name="jbViewCustomer">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Customer"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jbSave">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submit"/>
@@ -153,12 +141,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSaveActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbAddCustomer">
+    <Component class="javax.swing.JButton" name="jbSelectCustomer">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Customer"/>
+        <Property name="text" type="java.lang.String" value="Select Customer"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAddCustomerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSelectCustomerActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
