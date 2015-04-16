@@ -8,11 +8,16 @@ package Views;
 import Controllers.Database;
 import Controllers.FormHandler;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.HashMap;
 import java.util.Map;
 
 import Models.Car;
-import javax.swing.JFrame;
+
+import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -193,6 +198,25 @@ public class Search extends javax.swing.JPanel
                                 .addContainerGap())
         );
 
+        this.jtfYear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("test something");
+            }
+        });
+
+        this.jtfYear.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                JTextField textField = (JTextField) e.getComponent();
+                textField.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+
+            }
+        });
 
         this.showAllCars();
 
@@ -346,8 +370,20 @@ public class Search extends javax.swing.JPanel
 
     private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
         // TODO add your handling code here:
+
+        int[] selectedRows = this.jTable1.getSelectedRows();
+
+        if(selectedRows.length == 0 || selectedRows.length > 1)
+        {
+            System.out.println("You must select only one car to buy.");
+            return;
+        }
+
+        Car selectedCar = this.currentCars[selectedRows[0]];
+
         JFrame frame = new JFrame(); 
         Orders order = new Orders();
+        order.purchaseCar = selectedCar;
         order.setVisible(true);
         frame.add(order);
         frame.setVisible(true);

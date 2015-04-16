@@ -52,8 +52,6 @@ public class AddCar extends javax.swing.JPanel {
 
         this.textFields = textFieldList.toArray(new JTextField[textFieldList.size()]);
         this.comboBoxes = comoBoxList.toArray(new JComboBox[comoBoxList.size()]);
-
-        int something;
     }
 
     /**

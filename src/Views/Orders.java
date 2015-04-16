@@ -5,6 +5,8 @@
  */
 package Views;
 
+import Models.Car;
+
 import javax.swing.JFrame;
 
 /**
@@ -16,6 +18,8 @@ public class Orders extends javax.swing.JPanel {
     /**
      * Creates new form Orders
      */
+
+    public Car purchaseCar;
     public Orders() {
         initComponents();
     }

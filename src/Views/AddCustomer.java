@@ -5,6 +5,13 @@
  */
 package Views;
 
+import Controllers.FormHandler;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 /**
  *
  * @author Nicholas
@@ -16,6 +23,24 @@ public class AddCustomer extends javax.swing.JPanel {
      */
     public AddCustomer() {
         initComponents();
+
+        JTextField[] textFields = FormHandler.panelTextFields(this);
+
+        for(JTextField textField : textFields)
+        {
+            textField.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                    JTextField textField = (JTextField) e.getComponent();
+                    textField.setText("");
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+
+                }
+            });
+        }
     }
 
     /**
