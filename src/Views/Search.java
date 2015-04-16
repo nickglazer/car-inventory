@@ -17,6 +17,7 @@ import java.util.Map;
 
 import Models.Car;
 
+import javax.print.DocFlavor;
 import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
@@ -292,8 +293,16 @@ public class Search extends javax.swing.JPanel
     }
 
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
-        // TODO add your handling code here:
-        this.performFilter();
+
+        this.jcbModel.removeAllItems();
+
+        String selectedMake = (String) this.jcbMake.getSelectedItem();
+        for(String model : Car.modelDictionary().get(selectedMake))
+        {
+            this.jcbModel.addItem(model);
+        }
+
+        //this.performFilter();
     }//GEN-LAST:event_jcbMakeActionPerformed
 
     private void jcbBodyTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBodyTypeActionPerformed

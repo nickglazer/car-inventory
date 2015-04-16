@@ -1,7 +1,8 @@
 package Models;
 
-import java.util.ArrayList;
-import java.util.Date;
+import javax.print.DocFlavor;
+import java.lang.reflect.Array;
+import java.util.*;
 
 
 public class Car
@@ -22,7 +23,32 @@ public class Car
     private String drivetrain;
     private String gas;
     private ArrayList<Date> date;
-    private ArrayList<String> description; 
+    private ArrayList<String> description;
+
+    public static Map<String, String[]> modelDictionary()
+    {
+        Map models = new HashMap<String, String[]>();
+
+        String[] acuraModels = {"ILX", "MDX", "RDX", "RLX", "TLX", "Legend", "Integra", "ZDX"};
+        Arrays.sort(acuraModels);
+        models.put("Acura", acuraModels);
+
+        String[] chevroletModels = {"Malibu", "Caprice", "Impala", "SS", "Volt", "Corvette", "Camaro", "Tahoe", "Silverado"};
+        Arrays.sort(chevroletModels);
+        models.put("Chevrolet", chevroletModels);
+
+        String[] dodgeModels = {"Grand Caravan", "Challenger", "Charger", "Dart", "Durango", "Journey", "Viper"};
+        Arrays.sort(dodgeModels);
+        models.put("Dodge", dodgeModels);
+
+        String[] hondaModels = {"Accord", "Civic", "Civic Coupe", "CR-V", "Odyssey", "Pilot"};
+        models.put("Honda", hondaModels);
+
+        String[] toyotaModels = {"Avalon", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV4", "Sienna", "Tacoma"};
+        models.put("Toyota", toyotaModels);
+
+        return models;
+    }
     
     public Car (
      int carID, String vin, String make, String model, String color, String status,
