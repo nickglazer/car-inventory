@@ -401,7 +401,6 @@ public class AddCar extends javax.swing.JPanel {
         stringFields.put("Color", color);
         intFields.put("Year", year);
         intFields.put("Mileage", mileage);
-        intFields.put("Lot", "");
         intFields.put("Engine_Liters", engineLiters);
         intFields.put("Engine_Cylinders", cylinders);
         stringFields.put("Body_Type", bodyType);

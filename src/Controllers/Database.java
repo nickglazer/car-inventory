@@ -351,7 +351,6 @@ public class Database
                 resultCar.setStatus(result.getString("Status"));
                 resultCar.setYear(result.getInt("Year"));
                 resultCar.setMileage(result.getInt("Mileage"));
-                resultCar.setLot(result.getInt("Lot"));
 
                 cars.add(resultCar);
             }

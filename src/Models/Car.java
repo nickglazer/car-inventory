@@ -14,7 +14,6 @@ public class Car
     private String status;
     private int year;
     private int mileage;
-    private int lot;
     private int cylinders;
     private int engine;
     private int body;
@@ -27,7 +26,7 @@ public class Car
     
     public Car (
      int carID, String vin, String make, String model, String color, String status,
-     int year, int mileage, int lot, int cylinders, int engine, int body,
+     int year, int mileage, int cylinders, int engine, int body,
      String vehicleType, String transmission, String drivetrain, String gas)
     {
         this.carID = carID;
@@ -38,7 +37,6 @@ public class Car
         this.status = status;
         this.year = year;
         this.mileage = mileage;
-        this.lot = lot;
         this.cylinders = cylinders;
         this.engine = engine;
         this.body = body;
@@ -163,20 +161,6 @@ public class Car
      */
     public void setMileage(int mileage) {
         this.mileage = mileage;
-    }
-
-    /**
-     * @return the lot
-     */
-    public int getLot() {
-        return lot;
-    }
-
-    /**
-     * @param lot the lot to set
-     */
-    public void setLot(int lot) {
-        this.lot = lot;
     }
 
     /**
