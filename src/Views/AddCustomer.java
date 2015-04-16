@@ -23,7 +23,7 @@ public class AddCustomer extends javax.swing.JPanel {
      */
     public AddCustomer() {
         initComponents();
-
+        /**
         JTextField[] textFields = FormHandler.panelTextFields(this);
 
         for(JTextField textField : textFields)
@@ -41,6 +41,7 @@ public class AddCustomer extends javax.swing.JPanel {
                 }
             });
         }
+         */
     }
 
     /**

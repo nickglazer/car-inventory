@@ -1,5 +1,6 @@
 package Controllers;
 import Models.Car;
+import Models.Customer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -385,5 +386,27 @@ public class Database
         }
 
         return this.executeUpdate(deleteStatement);
+    }
+
+    /**
+     * Inserts new customer into database
+     * @param customerToInsert The customer object that you want to insert
+     * @return True if insert was successful. False otherwise
+     */
+    public boolean addCustomer(Customer customerToInsert)
+    {
+        String sqlStatement = "insert into Customers (First_Name, Last_Name, Email, Phone, Address) ";
+
+        sqlStatement += String.format("values (%s, %s, %s, %s, %s", customerToInsert.getFirstName(), customerToInsert.getLastName(),
+                customerToInsert.getEmail(), customerToInsert.getPhoneNumber(), customerToInsert.getAddress());
+
+        int rowsAffected = this.executeUpdate(sqlStatement);
+
+        if(rowsAffected == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

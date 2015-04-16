@@ -6,6 +6,7 @@
 package Views;
 
 import Models.Car;
+import Models.Customer;
 
 import javax.swing.JFrame;
 
@@ -20,6 +21,7 @@ public class Orders extends javax.swing.JPanel {
      */
 
     public Car purchaseCar;
+    public Customer customer;
     public Orders() {
         initComponents();
     }
