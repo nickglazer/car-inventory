@@ -407,7 +407,6 @@ public class AddCar extends javax.swing.JPanel {
     {            
         ArrayList<String> errors = new ArrayList<>();
         int result;
-        double dresult;
         
         String make = FormHandler.stringFromDropDown(this.jcbMake);
         if (make == null) {
@@ -424,7 +423,7 @@ public class AddCar extends javax.swing.JPanel {
         String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
         if (engineLiters != null) {
             try {
-                dresult = Double.parseDouble(engineLiters);
+                result = Integer.parseInt(engineLiters);
             } catch(NumberFormatException e){
                 errors.add("Invalid Engine Displacement");
             }
