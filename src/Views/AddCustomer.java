@@ -6,6 +6,7 @@
 package Views;
 
 import Controllers.FormHandler;
+import Models.Customer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -152,6 +153,8 @@ public class AddCustomer extends javax.swing.JPanel {
 
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
+
+        Customer newCustomer = new Customer();
     }//GEN-LAST:event_jtfEmailActionPerformed
 
     private void jtfPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPhoneActionPerformed
