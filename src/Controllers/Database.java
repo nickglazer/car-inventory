@@ -374,8 +374,7 @@ public class Database
 
     public Car[] allNewCars()
     {
-        String sqlStatement = "SELECT * FROM CarSales.Cars inner join Car_History on Cars.CarID = Car_History.Car_ID ";
-        sqlStatement += "where Car_History.Description <> 'Purchased'";
+        String sqlStatement = "select * from Cars where Status <> 'Purchased'";
 
         return this.carsFromResults(this.executeQuery(sqlStatement));
     }
@@ -480,6 +479,13 @@ public class Database
         }
 
         return true;
+    }
+
+    public void setCarStatus(Car car, String status)
+    {
+        String sqlStatement = String.format("update Cars set Status = '%s' where CarID = '%s'", status, car.getCarID());
+
+        this.executeUpdate(sqlStatement);
     }
 
     /**

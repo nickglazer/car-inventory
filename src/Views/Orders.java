@@ -157,7 +157,8 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         // TODO add your handling code here:
-        if (selectedCustomer != null) {
+        if (selectedCustomer != null)
+        {
             float price = Float.parseFloat(jtfSalePrice.getText());
             int downPayment = Integer.parseInt(jtfDownPayment.getText());
             String bank = jtfBank.getText();
@@ -173,19 +174,19 @@ public class Orders extends javax.swing.JPanel {
             Database database = new Database();
             database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
             database.recordCarHistory(this.purchaseCar, "Purchased");
-            database.executeUpdate(String.format("delete from Cars where CarID = %d", purchaseCar.getCarID()));
+            database.setCarStatus(this.purchaseCar, "Purchased");
         
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
-        } else {
+        }
+        else
+        {
             JOptionPane.showMessageDialog(this,
                 "Select a Customer",
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
         }
-        Database database = new Database();
-        database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
-        database.recordCarHistory(this.purchaseCar, "Purchased");
+
     }//GEN-LAST:event_jbSaveActionPerformed
 
 
