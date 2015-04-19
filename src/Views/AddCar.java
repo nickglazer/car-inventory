@@ -495,8 +495,8 @@ public class AddCar extends javax.swing.JPanel {
         stringFields.put("Gas", gas);
         stringFields.put("Status", "New");
 
-        //Database database = new Database();
-        //database.insertCar(stringFields, intFields);
+        Database database = new Database();
+        database.insertCar(stringFields, intFields);
 
         this.clearFields();
 
