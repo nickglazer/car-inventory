@@ -6,6 +6,8 @@
 package Views;
 
 import Models.Car;
+import Models.History;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,9 +19,8 @@ public class CarHistory extends javax.swing.JPanel {
      * Creates new form CarHistory
      */
 
-    public CarHistory(Car viewCar) {
+    public CarHistory(Car viewCar, History[] carHistory) {
         initComponents();
-        //((viewCar.getBody() == 0) ? "" : "" + viewCar.getBody());
         jtfBodyType.setText("" + viewCar.getBody());
         jtfColor.setText(viewCar.getColor());
         jtfCylinders.setText("" + viewCar.getCylinders());
@@ -33,11 +34,22 @@ public class CarHistory extends javax.swing.JPanel {
         jtfVIN.setText(viewCar.getVin());
         jtfVehicleType.setText(viewCar.getVehicleType());
         jtfYear.setText("" + viewCar.getYear());
-                
-     /**
-      * @TODO add history to text field
-      */           
+        
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows 
+        tableModel.setRowCount(0);
+
+        for (History history : carHistory) {
+            String[] customerModel = {history.readableDate, history.getDescription()};
+            tableModel.addRow(customerModel);
+        }
+
+        this.jTable1.setModel(tableModel);
+            
     }
+    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.

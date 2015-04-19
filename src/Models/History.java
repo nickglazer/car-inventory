@@ -8,9 +8,9 @@ import java.util.Date;
 /**
  * Created by Frank Brandstetter on 4/19/2015.
  */
-public class CarHistory
+public class History
 {
-    public CarHistory(){}
+    public History(){}
 
     public int getHistoryID() {
         return historyID;
