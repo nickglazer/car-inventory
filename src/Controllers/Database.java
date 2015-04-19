@@ -555,4 +555,31 @@ public class Database
             return null;
         }
     }
+
+    public Order[] ordersByName(String firstName, String lastName)
+    {
+        String sqlStatement = "SELECT * FROM CarSales.Orders inner join Customers on Customers.Customer_ID = Orders.Customer_ID ";
+        sqlStatement += String.format("and Customers.First_Name = '%s' and Customers.Last_Name = '%s'", firstName, lastName);
+
+        ResultSet results = this.executeQuery(sqlStatement);
+
+        try
+        {
+            while(results.next())
+            {
+                Order newOrder = new Order();
+
+
+            }
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Error querying results");
+            System.out.println(e);
+
+            return null;
+        }
+
+
+    }
 }
