@@ -168,12 +168,12 @@ public class AddCustomer extends javax.swing.JPanel {
         newCustomer.setFirstName(this.jtfFirstName.getText());
         newCustomer.setLastName(this.jtfLastName.getText());
         newCustomer.setEmail(this.jtfEmail.getText());
-        newCustomer.setPhoneNumber(Integer.parseInt(this.jtfPhone.getText()));
+        newCustomer.setPhoneNumber(this.jtfPhone.getText());
 
         Database database = new Database();
-        boolean insertSuccesful = database.addCustomer(newCustomer);
+        boolean insertSuccessful = database.addCustomer(newCustomer);
 
-        if(!insertSuccesful)
+        if(!insertSuccessful)
         {
             System.out.println("insert customer failed");
         }
