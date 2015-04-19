@@ -400,6 +400,7 @@ public class Search extends javax.swing.JPanel
         Car selectedCar = this.currentCars[selectedRows[0]];
 
         JFrame frame = new JFrame(); 
+        frame.setSize(500,400);
         Orders order = new Orders();
         order.purchaseCar = selectedCar;
         order.setVisible(true);
@@ -423,8 +424,8 @@ public class Search extends javax.swing.JPanel
         Car selectedCar = this.currentCars[selectedRows[0]];
         
         JFrame frame = new JFrame(); 
-        CarHistory history = new CarHistory();
-        history.viewCar = selectedCar;
+        frame.setSize(500,400);
+        CarHistory history = new CarHistory(selectedCar);
         history.setVisible(true);
         frame.add(history);
         frame.setVisible(true);
