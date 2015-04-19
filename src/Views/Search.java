@@ -84,6 +84,12 @@ public class Search extends javax.swing.JPanel
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabel1FocusGained(evt);
+            }
+        });
+
         jtfYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfYearActionPerformed(evt);
@@ -229,7 +235,7 @@ public class Search extends javax.swing.JPanel
         this.performSearch();
     }
 
-    private void performFilter()
+    public void performFilter()
     {
         this.setCurrentCars();
         this.performSearch();
@@ -403,7 +409,7 @@ public class Search extends javax.swing.JPanel
 
         JFrame frame = new JFrame(); 
         frame.setSize(500,400);
-        Orders order = new Orders();
+        Orders order = new Orders(this);
         order.purchaseCar = selectedCar;
         order.setVisible(true);
         frame.add(order);
@@ -436,6 +442,11 @@ public class Search extends javax.swing.JPanel
         frame.setVisible(true);
         
     }//GEN-LAST:event_jbViewActionPerformed
+
+    private void jLabel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel1FocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jLabel1FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
