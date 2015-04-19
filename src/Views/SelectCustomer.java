@@ -5,9 +5,7 @@
  */
 package Views;
 
-import Models.Car;
 import Models.Customer;
-import Models.Order;
 
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -143,7 +141,7 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
         // TODO add your handling code here:
 
-        this.orderView.customer = customers[this.jTable1.getSelectedRow()];
+        this.orderView.selectedCustomer = customers[this.jTable1.getSelectedRow()];
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSelectActionPerformed
