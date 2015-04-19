@@ -286,7 +286,15 @@ public class Database
             }
         }
 
-        whereStatement += "and Status <> 'Purchased'";
+        if(searchCount == 0)
+        {
+            whereStatement += "where Status <> 'Purchased'";
+        }
+        else
+        {
+            whereStatement += "and Status <> 'Purchased'";
+        }
+
 
         sqlStatement += whereStatement;
 
