@@ -399,10 +399,10 @@ public class Database
      */
     public boolean addCustomer(Customer customerToInsert)
     {
-        String sqlStatement = "insert into Customers (First_Name, Last_Name, Email, Phone, Address) ";
+        String sqlStatement = "insert into Customers (First_Name, Last_Name, Email, Phone) ";
 
-        sqlStatement += String.format("values (%s, %s, %s, %s, %s", customerToInsert.getFirstName(), customerToInsert.getLastName(),
-                customerToInsert.getEmail(), customerToInsert.getPhoneNumber(), customerToInsert.getAddress());
+        sqlStatement += String.format("values ('%s', '%s', '%s', '%s'", customerToInsert.getFirstName(), customerToInsert.getLastName(),
+                customerToInsert.getEmail(), customerToInsert.getPhoneNumber());
 
         int rowsAffected = this.executeUpdate(sqlStatement);
 

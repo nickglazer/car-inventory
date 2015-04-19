@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Controllers.Database;
 import Controllers.FormHandler;
 import Models.Customer;
 
@@ -114,10 +115,10 @@ public class AddCustomer extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jtfPhone, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                            .addComponent(jtfPhone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfFirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
                 .addContainerGap(304, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,8 +154,6 @@ public class AddCustomer extends javax.swing.JPanel {
 
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
-
-        Customer newCustomer = new Customer();
     }//GEN-LAST:event_jtfEmailActionPerformed
 
     private void jtfPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPhoneActionPerformed
@@ -163,6 +162,21 @@ public class AddCustomer extends javax.swing.JPanel {
 
     private void jbSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSubmitActionPerformed
         // TODO add your handling code here:
+
+        Customer newCustomer = new Customer();
+
+        newCustomer.setFirstName(this.jtfFirstName.getText());
+        newCustomer.setLastName(this.jtfLastName.getText());
+        newCustomer.setEmail(this.jtfEmail.getText());
+        newCustomer.setPhoneNumber(Integer.parseInt(this.jtfPhone.getText()));
+
+        Database database = new Database();
+        boolean insertSuccesful = database.addCustomer(newCustomer);
+
+        if(!insertSuccesful)
+        {
+            System.out.println("insert customer failed");
+        }
     }//GEN-LAST:event_jbSubmitActionPerformed
 
 

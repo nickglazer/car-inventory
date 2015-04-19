@@ -14,20 +14,16 @@ public class Customer {
 
     private String firstName;
     private String lastName;
-    private String initial;
     private String email;
     private int phoneNumber;
-    private String address;
     private int ID;
 
     public Customer(){}
-    public Customer (String firstName, String lastName, String initial, 
-            String email, int phoneNumber, String address, int ID) {
+    public Customer (String firstName, String lastName,
+            String email, int phoneNumber, int ID) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.initial = initial;
         this.email = email;
-        this.address = address;
         this.ID = ID; 
     }
 
@@ -59,19 +55,6 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    /**
-     * @return the initial
-     */
-    public String getInitial() {
-        return initial;
-    }
-
-    /**
-     * @param initial the initial to set
-     */
-    public void setInitial(String initial) {
-        this.initial = initial;
-    }
 
     /**
      * @return the email
@@ -101,19 +84,6 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     /**
      * @return the ID
