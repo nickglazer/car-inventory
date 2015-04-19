@@ -6,6 +6,8 @@
 
 package Models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -23,6 +25,8 @@ public class Order {
     private int loanMonths;
     private int orderID;
     private Date orderDate;
+    public String readableDate;
+    public Car orderCar;
 
     public Order() {
         
@@ -163,8 +167,13 @@ public class Order {
     /**
      * @param orderDate the orderDate to set
      */
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(Date orderDate)
+    {
         this.orderDate = orderDate;
+
+        DateFormat readableFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        this.readableDate = readableFormat.format(this.orderDate);
     }
     
     

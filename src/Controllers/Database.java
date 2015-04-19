@@ -556,21 +556,40 @@ public class Database
         }
     }
 
+
     public Order[] ordersByName(String firstName, String lastName)
     {
-        String sqlStatement = "SELECT * FROM CarSales.Orders inner join Customers on Customers.Customer_ID = Orders.Customer_ID ";
+        String sqlStatement = "SELECT * FROM CarSales.Orders inner join Cars on Cars.CarID = Orders.Car_ID " +
+                "inner join Customers on Customers.Customer_ID = Orders.Customer_ID ";
         sqlStatement += String.format("and Customers.First_Name = '%s' and Customers.Last_Name = '%s'", firstName, lastName);
 
         ResultSet results = this.executeQuery(sqlStatement);
+
+        ArrayList<Order> orders = new ArrayList<Order>(1);
 
         try
         {
             while(results.next())
             {
+                sqlStatement = String.format("select * from Cars where CarID = %d", results.getInt("CarID"));
+
+                Car orderCar = this.carsFromResults(this.executeQuery(sqlStatement))[0];
+
                 Order newOrder = new Order();
+                newOrder.orderCar = orderCar;
+                newOrder.setOrderID(results.getInt("Order_ID"));
+                newOrder.setCustomerID(results.getInt("Customer_ID"));
+                newOrder.setCarID(orderCar.getCarID());
+                newOrder.setOrderDate(results.getDate("Order_Date"));
+                newOrder.setSalesPrice(results.getFloat("Down_Payment"));
+                newOrder.setBank(results.getString("Bank"));
+                newOrder.setLoanNumber(results.getInt("Loan_Number"));
+                newOrder.setLoanMonths(results.getInt("Loan_Months"));
 
-
+                orders.add(newOrder);
             }
+
+            return (Order[]) orders.toArray(new Order[orders.size()]);
         }
         catch(SQLException e)
         {
@@ -579,7 +598,6 @@ public class Database
 
             return null;
         }
-
-
     }
+
 }

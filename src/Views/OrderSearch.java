@@ -5,8 +5,11 @@
  */
 package Views;
 
+import Controllers.Database;
 import Models.Customer;
 import Models.Order;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +23,11 @@ public class OrderSearch extends javax.swing.JPanel {
      */
     public OrderSearch() {
         initComponents();
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows 
+        tableModel.setRowCount(0);
     }
 
     /**
@@ -151,9 +159,18 @@ public class OrderSearch extends javax.swing.JPanel {
 
         //Delete all rows 
         tableModel.setRowCount(0);
-        Order[] orders = {};
+
+        String firstName = this.jTextField1.getText();
+        String lastName = this.jTextField2.getText();
+
+        Database database = new Database();
+
+        Order[] orders = database.ordersByName(firstName, lastName);
+
         for (Order order : orders) {
-            String[] orderModel = {};
+            String[] orderModel = {order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
+                    firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate};
+
             tableModel.addRow(orderModel);
         }
 
