@@ -225,7 +225,7 @@ public class Search extends javax.swing.JPanel
     {
         Database database = new Database();
 
-        this.currentCars = database.getAllCars();
+        this.currentCars = database.allNewCars();
         this.performSearch();
     }
 

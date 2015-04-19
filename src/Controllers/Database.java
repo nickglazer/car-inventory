@@ -372,6 +372,14 @@ public class Database
         }
     }
 
+    public Car[] allNewCars()
+    {
+        String sqlStatement = "SELECT * FROM CarSales.Cars inner join Car_History on Cars.CarID = Car_History.Car_ID ";
+        sqlStatement += "where Car_History.Description <> 'Purchased'";
+
+        return this.carsFromResults(this.executeQuery(sqlStatement));
+    }
+
     private int deleteCars(Car[] carsToDelete)
     {
         String deleteStatement = "delete from Cars where CarID = ";
