@@ -17,9 +17,26 @@ public class CarHistory extends javax.swing.JPanel {
      * Creates new form CarHistory
      */
 
-    public Car viewCar;
-    public CarHistory() {
+    public CarHistory(Car viewCar) {
         initComponents();
+        //((viewCar.getBody() == 0) ? "" : "" + viewCar.getBody());
+        jtfBodyType.setText("" + viewCar.getBody());
+        jtfColor.setText(viewCar.getColor());
+        jtfCylinders.setText("" + viewCar.getCylinders());
+        jtfDrivetrain.setText(viewCar.getDrivetrain());
+        jtfEngine.setText("" + viewCar.getEngine());
+        jtfGas.setText(viewCar.getGas());
+        jtfMake.setText(viewCar.getMake());
+        jtfModel.setText(viewCar.getModel());
+        jtfMileage.setText("" + viewCar.getMileage());
+        jtfTransmission.setText(viewCar.getTransmission());
+        jtfVIN.setText(viewCar.getVin());
+        jtfVehicleType.setText(viewCar.getVehicleType());
+        jtfYear.setText("" + viewCar.getYear());
+                
+     /**
+      * @TODO add history to text field
+      */           
     }
 
     /**
