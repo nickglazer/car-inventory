@@ -20,24 +20,26 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbSave" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbSelectCustomer" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlDownPayment" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlBank" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlLoanNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlLoanDuration" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlDownPayment1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jtfDate" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfLoanDuration" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfLoanNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfBank" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfDownPayment" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jtfSalePrice" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jtfLoanDuration" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfLoanNumber" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfBank" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfDownPayment" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Component id="jbSelectCustomer" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="570" max="32767" attributes="0"/>
           </Group>
@@ -48,6 +50,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jbSelectCustomer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlDownPayment1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfSalePrice" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlDownPayment" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -67,11 +74,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jtfLoanDuration" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlLoanDuration" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfDate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="210" max="32767" attributes="0"/>
               <Component id="jbSave" min="-2" max="-2" attributes="0"/>
@@ -101,11 +103,6 @@
         <Property name="text" type="java.lang.String" value="Loan Duration"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlDate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jtfDownPayment">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfBank">
@@ -116,8 +113,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfLoanDuration">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtfDate">
     </Component>
     <Component class="javax.swing.JButton" name="jbSave">
       <Properties>
@@ -134,6 +129,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSelectCustomerActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtfSalePrice">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlDownPayment1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sale Price"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
