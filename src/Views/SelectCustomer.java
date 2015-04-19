@@ -32,6 +32,7 @@ public class SelectCustomer extends javax.swing.JPanel {
         jbAddCustomer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jbSelect = new javax.swing.JButton();
 
         jbAddCustomer.setText("Add Customer");
         jbAddCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -53,12 +54,21 @@ public class SelectCustomer extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jbSelect.setText("Select");
+        jbSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSelectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbSelect)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbAddCustomer)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -72,7 +82,9 @@ public class SelectCustomer extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbAddCustomer)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAddCustomer)
+                    .addComponent(jbSelect))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -87,10 +99,15 @@ public class SelectCustomer extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_jbAddCustomerActionPerformed
 
+    private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSelectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbAddCustomer;
+    private javax.swing.JButton jbSelect;
     // End of variables declaration//GEN-END:variables
 }
