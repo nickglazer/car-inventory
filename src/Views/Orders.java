@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Controllers.Database;
 import Models.Car;
 import Models.Customer;
 import Models.Order;
@@ -137,9 +138,10 @@ public class Orders extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:\
+        Database database = new Database();
         JFrame frame = new JFrame(); 
-        SelectCustomer add = new SelectCustomer();
+        SelectCustomer add = new SelectCustomer(database.allCustomers());
         add.setVisible(true);
         frame.setSize(500,400);
         frame.add(add);

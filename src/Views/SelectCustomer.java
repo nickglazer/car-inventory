@@ -7,7 +7,9 @@ package Views;
 
 import Models.Car;
 import Models.Customer;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -136,6 +138,8 @@ public class SelectCustomer extends javax.swing.JPanel {
 
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
         // TODO add your handling code here:
+        JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSelectActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
