@@ -5,6 +5,8 @@
  */
 package Views;
 
+import Models.Car;
+
 /**
  *
  * @author Nicholas
@@ -14,6 +16,8 @@ public class CarHistory extends javax.swing.JPanel {
     /**
      * Creates new form CarHistory
      */
+
+    public Car viewCar;
     public CarHistory() {
         initComponents();
     }
