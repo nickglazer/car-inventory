@@ -390,9 +390,6 @@ public class Search extends javax.swing.JPanel
     private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
         // TODO add your handling code here:
 
-        Database database = new Database();
-        database.recordCarHistory(new Car(), "test");
-
         int[] selectedRows = this.jTable1.getSelectedRows();
 
         if(selectedRows.length == 0 || selectedRows.length > 1)

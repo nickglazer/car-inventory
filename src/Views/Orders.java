@@ -23,7 +23,7 @@ public class Orders extends javax.swing.JPanel {
      */
 
     public Car purchaseCar;
-    public Customer customer;
+    public Customer selectedCustomer;
     public Orders() {
         initComponents();
     }
@@ -90,20 +90,20 @@ public class Orders extends javax.swing.JPanel {
                     .addComponent(jbSave)
                     .addComponent(jbSelectCustomer)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlDownPayment)
-                            .addComponent(jlBank)
-                            .addComponent(jlLoanNumber)
-                            .addComponent(jlLoanDuration)
-                            .addComponent(jlDownPayment1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlDownPayment)
+                                    .addComponent(jlBank)
+                                    .addComponent(jlLoanNumber)
+                                    .addComponent(jlLoanDuration)
+                                    .addComponent(jlDownPayment1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(570, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,7 +141,7 @@ public class Orders extends javax.swing.JPanel {
         // TODO add your handling code here:\
         Database database = new Database();
         JFrame frame = new JFrame(); 
-        SelectCustomer add = new SelectCustomer(database.allCustomers());
+        SelectCustomer add = new SelectCustomer(database.allCustomers(), this);
         add.setVisible(true);
         frame.setSize(500,400);
         frame.add(add);
@@ -165,6 +165,11 @@ public class Orders extends javax.swing.JPanel {
         order.setBank(bank);
         order.setLoanNumber(loanNumber);
         order.setLoanMonths(loanMonths);
+
+        Database database = new Database();
+        database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
+        database.recordCarHistory(this.purchaseCar, "Purchased");
+        database.executeUpdate(String.format("delete from Cars where CarID = %d", purchaseCar.getCarID()));
     }//GEN-LAST:event_jbSaveActionPerformed
 
 
