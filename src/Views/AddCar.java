@@ -410,7 +410,7 @@ public class AddCar extends javax.swing.JPanel {
         double dresult;
         
         String make = FormHandler.stringFromDropDown(this.jcbMake);
-        if (make != null) {
+        if (make == null) {
             errors.add("Invalid Make");
         }
         String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
