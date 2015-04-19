@@ -1,6 +1,7 @@
 package Controllers;
 import Models.Car;
 import Models.Customer;
+import Models.Order;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -452,6 +453,24 @@ public class Database
         Calendar currentCalender = Calendar.getInstance();
 
         return mysqlFormat.format(currentCalender.getTime());
+    }
+
+    public boolean insertOrder(Order order, int carID, int customerID)
+    {
+        String sqlStatement = "insert into Orders (Customer_ID, Car_ID, Order_Date, Price, Down_Payment, ";
+        sqlStatement += "Bank, Loan_Number, Loan_Months) values ";
+        sqlStatement += String.format("(%d, %d, '%s', %f, %d, '%s', %d, %d)", customerID, carID,
+                Database.currentDate(), order.getSalesPrice(), order.getDownPayment(), order.getBank(),
+                order.getLoanNumber(), order.getLoanMonths());
+
+        int affectedRecords = this.executeUpdate(sqlStatement);
+
+        if(affectedRecords == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     /**

@@ -165,6 +165,11 @@ public class Orders extends javax.swing.JPanel {
         order.setBank(bank);
         order.setLoanNumber(loanNumber);
         order.setLoanMonths(loanMonths);
+
+        Database database = new Database();
+        database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
+        database.recordCarHistory(this.purchaseCar, "Purchased");
+        database.executeUpdate(String.format("delete from Cars where CarID = %d", purchaseCar.getCarID()));
     }//GEN-LAST:event_jbSaveActionPerformed
 
 

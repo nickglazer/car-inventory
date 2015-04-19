@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Order {
 
-    private int salesPrice;
+    private float salesPrice;
     private int customerID;
     private int carID;
     private int downPayment;
@@ -28,7 +28,7 @@ public class Order {
         
     }
     
-    public Order (int salesPrice, int customerID, int carID, int downPayment,
+    public Order (float salesPrice, int customerID, int carID, int downPayment,
      String bank, int loanNumber, int loanMonths, int orderID, Date orderDate) {
         this.salesPrice = salesPrice;
         this.customerID = customerID;
@@ -44,14 +44,14 @@ public class Order {
     /**
      * @return the salesPrice
      */
-    public int getSalesPrice() {
+    public float getSalesPrice() {
         return salesPrice;
     }
 
     /**
      * @param salesPrice the salesPrice to set
      */
-    public void setSalesPrice(int salesPrice) {
+    public void setSalesPrice(float salesPrice) {
         this.salesPrice = salesPrice;
     }
 
