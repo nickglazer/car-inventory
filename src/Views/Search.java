@@ -29,11 +29,15 @@ public class Search extends javax.swing.JPanel
 {
     private Car[] currentCars;
 
+    private Map<String, String[]> carDictionary;
+
     /**
      * Creates new form Search
      */
     public Search() {
         initComponents();
+
+        this.carDictionary = Car.modelDictionary();
     }
 
     /**
@@ -277,10 +281,13 @@ public class Search extends javax.swing.JPanel
 
         this.jcbModel.removeAllItems();
 
-        String selectedMake = (String) this.jcbMake.getSelectedItem();
-        for(String model : Car.modelDictionary().get(selectedMake))
+        if(this.jcbMake.getSelectedIndex() != 0)
         {
-            this.jcbModel.addItem(model);
+            String selectedMake = (String) this.jcbMake.getSelectedItem();
+            for(String model : this.carDictionary.get(selectedMake))
+            {
+                this.jcbModel.addItem(model);
+            }
         }
 
         this.performFilter();

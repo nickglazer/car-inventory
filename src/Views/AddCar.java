@@ -12,6 +12,8 @@ import java.util.Objects;
 import java.util.Map;
 import Controllers.Database;
 import Controllers.FormHandler;
+import Models.Car;
+
 import java.awt.Component;
 
 /**
@@ -26,6 +28,7 @@ public class AddCar extends javax.swing.JPanel {
 
     private JTextField[] textFields;
     private JComboBox[] comboBoxes;
+    private Map<String, String[]> modelDictionary;
     public AddCar()
     {
         initComponents();
@@ -52,6 +55,8 @@ public class AddCar extends javax.swing.JPanel {
 
         this.textFields = textFieldList.toArray(new JTextField[textFieldList.size()]);
         this.comboBoxes = comoBoxList.toArray(new JComboBox[comoBoxList.size()]);
+
+        this.modelDictionary = Car.modelDictionary();
     }
 
     /**
@@ -339,6 +344,18 @@ public class AddCar extends javax.swing.JPanel {
 
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
         // TODO add your handling code here:
+
+        this.jcbModel.removeAllItems();
+
+        if(this.jcbMake.getSelectedIndex() != 0)
+        {
+            String selectedMake = (String) this.jcbMake.getSelectedItem();
+            for(String model : this.modelDictionary.get(selectedMake))
+            {
+                this.jcbModel.addItem(model);
+            }
+        }
+
     }//GEN-LAST:event_jcbMakeActionPerformed
 
     private String stringFromDropDown(JComboBox comboBox)
@@ -377,6 +394,11 @@ public class AddCar extends javax.swing.JPanel {
 
         for(JComboBox panelComboBox : this.comboBoxes)
         {
+            if(panelComboBox == this.jcbModel)
+            {
+                this.jcbModel.addItem("-Model-");
+            }
+
             panelComboBox.setSelectedIndex(0);
         }
     }
@@ -390,7 +412,12 @@ public class AddCar extends javax.swing.JPanel {
         String make = FormHandler.stringFromDropDown(this.jcbMake);
         String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
         String color = FormHandler.stringFromDropDown(jcbColor);
-        String model = FormHandler.stringFromDropDown(this.jcbModel);
+        String model = (String) this.jcbModel.getSelectedItem();
+
+        if(model.equals("-Model-"))
+        {
+            model = null;
+        }
         String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
         if (engineLiters != null) {
             try {
