@@ -154,7 +154,7 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         // TODO add your handling code here:
-        int price = Integer.parseInt(jtfSalePrice.getText());
+        float price = Float.parseFloat(jtfSalePrice.getText());
         int downPayment = Integer.parseInt(jtfDownPayment.getText());
         String bank = jtfBank.getText();
         int loanNumber = Integer.parseInt(jtfLoanNumber.getText());

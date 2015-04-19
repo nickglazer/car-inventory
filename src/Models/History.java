@@ -48,9 +48,9 @@ public class History
         this.description = description;
     }
 
-    public int historyID;
-    public int carID;
-    public Date actionDate;
-    public String description;
+    private int historyID;
+    private int carID;
+    private Date actionDate;
+    private String description;
     public String readableDate;
 }
