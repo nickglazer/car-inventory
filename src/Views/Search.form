@@ -144,6 +144,9 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jLabel1FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfYear">
       <Events>

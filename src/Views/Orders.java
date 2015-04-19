@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -24,11 +25,12 @@ public class Orders extends javax.swing.JPanel {
     /**
      * Creates new form Orders
      */
-
+    public Search search;
     public Car purchaseCar;
     public Customer selectedCustomer;
-    public Orders() {
+    public Orders(Search search) {
         initComponents();
+        this.search  = search;
     }
 
     /**
@@ -176,6 +178,7 @@ public class Orders extends javax.swing.JPanel {
             database.recordCarHistory(this.purchaseCar, "Purchased");
             database.setCarStatus(this.purchaseCar, "Purchased");
         
+            search.performFilter();
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
         }
