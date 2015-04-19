@@ -7,6 +7,7 @@ package Views;
 
 import Models.Car;
 import Models.Customer;
+import Models.Order;
 
 import javax.swing.JFrame;
 
@@ -39,14 +40,14 @@ public class Orders extends javax.swing.JPanel {
         jlBank = new javax.swing.JLabel();
         jlLoanNumber = new javax.swing.JLabel();
         jlLoanDuration = new javax.swing.JLabel();
-        jlDate = new javax.swing.JLabel();
         jtfDownPayment = new javax.swing.JTextField();
         jtfBank = new javax.swing.JTextField();
         jtfLoanNumber = new javax.swing.JTextField();
         jtfLoanDuration = new javax.swing.JTextField();
-        jtfDate = new javax.swing.JTextField();
         jbSave = new javax.swing.JButton();
         jbSelectCustomer = new javax.swing.JButton();
+        jtfSalePrice = new javax.swing.JTextField();
+        jlDownPayment1 = new javax.swing.JLabel();
 
         jlDownPayment.setText("Down Payment");
 
@@ -55,8 +56,6 @@ public class Orders extends javax.swing.JPanel {
         jlLoanNumber.setText("Loan Number");
 
         jlLoanDuration.setText("Loan Duration");
-
-        jlDate.setText("Date");
 
         jtfLoanNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +77,8 @@ public class Orders extends javax.swing.JPanel {
             }
         });
 
+        jlDownPayment1.setText("Sale Price");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,21 +87,22 @@ public class Orders extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbSave)
+                    .addComponent(jbSelectCustomer)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlDownPayment)
                             .addComponent(jlBank)
                             .addComponent(jlLoanNumber)
                             .addComponent(jlLoanDuration)
-                            .addComponent(jlDate))
+                            .addComponent(jlDownPayment1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtfDate, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jbSelectCustomer))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(570, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,6 +110,10 @@ public class Orders extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jbSelectCustomer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlDownPayment1)
+                    .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDownPayment)
@@ -124,10 +130,6 @@ public class Orders extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfLoanDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlLoanDuration))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDate)
-                    .addComponent(jtfDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addComponent(jbSave)
                 .addContainerGap())
@@ -150,6 +152,17 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         // TODO add your handling code here:
+        int price = Integer.parseInt(jtfSalePrice.getText());
+        int downPayment = Integer.parseInt(jtfDownPayment.getText());
+        String bank = jtfBank.getText();
+        int loanNumber = Integer.parseInt(jtfLoanNumber.getText());
+        int loanMonths = Integer.parseInt(jtfLoanDuration.getText());
+        Order order = new Order();
+        order.setSalesPrice(price);
+        order.setDownPayment(downPayment);
+        order.setBank(bank);
+        order.setLoanNumber(loanNumber);
+        order.setLoanMonths(loanMonths);
     }//GEN-LAST:event_jbSaveActionPerformed
 
 
@@ -157,14 +170,14 @@ public class Orders extends javax.swing.JPanel {
     private javax.swing.JButton jbSave;
     private javax.swing.JButton jbSelectCustomer;
     private javax.swing.JLabel jlBank;
-    private javax.swing.JLabel jlDate;
     private javax.swing.JLabel jlDownPayment;
+    private javax.swing.JLabel jlDownPayment1;
     private javax.swing.JLabel jlLoanDuration;
     private javax.swing.JLabel jlLoanNumber;
     private javax.swing.JTextField jtfBank;
-    private javax.swing.JTextField jtfDate;
     private javax.swing.JTextField jtfDownPayment;
     private javax.swing.JTextField jtfLoanDuration;
     private javax.swing.JTextField jtfLoanNumber;
+    private javax.swing.JTextField jtfSalePrice;
     // End of variables declaration//GEN-END:variables
 }

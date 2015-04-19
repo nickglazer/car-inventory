@@ -24,6 +24,10 @@ public class Order {
     private int orderID;
     private Date orderDate;
 
+    public Order() {
+        
+    }
+    
     public Order (int salesPrice, int customerID, int carID, int downPayment,
      String bank, int loanNumber, int loanMonths, int orderID, Date orderDate) {
         this.salesPrice = salesPrice;
