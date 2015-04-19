@@ -9,8 +9,11 @@ import Controllers.Database;
 import Models.Car;
 import Models.Customer;
 import Models.Order;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -154,18 +157,32 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         // TODO add your handling code here:
-        float price = Float.parseFloat(jtfSalePrice.getText());
-        int downPayment = Integer.parseInt(jtfDownPayment.getText());
-        String bank = jtfBank.getText();
-        int loanNumber = Integer.parseInt(jtfLoanNumber.getText());
-        int loanMonths = Integer.parseInt(jtfLoanDuration.getText());
-        Order order = new Order();
-        order.setSalesPrice(price);
-        order.setDownPayment(downPayment);
-        order.setBank(bank);
-        order.setLoanNumber(loanNumber);
-        order.setLoanMonths(loanMonths);
+        if (selectedCustomer != null) {
+            float price = Float.parseFloat(jtfSalePrice.getText());
+            int downPayment = Integer.parseInt(jtfDownPayment.getText());
+            String bank = jtfBank.getText();
+            int loanNumber = Integer.parseInt(jtfLoanNumber.getText());
+            int loanMonths = Integer.parseInt(jtfLoanDuration.getText());
+            Order order = new Order();
+            order.setSalesPrice(price);
+            order.setDownPayment(downPayment);
+            order.setBank(bank);
+            order.setLoanNumber(loanNumber);
+            order.setLoanMonths(loanMonths);
 
+            Database database = new Database();
+            database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
+            database.recordCarHistory(this.purchaseCar, "Purchased");
+            database.executeUpdate(String.format("delete from Cars where CarID = %d", purchaseCar.getCarID()));
+        
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "Select a Customer",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
         Database database = new Database();
         database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
         database.recordCarHistory(this.purchaseCar, "Purchased");
