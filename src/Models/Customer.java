@@ -6,6 +6,8 @@
 
 package Models;
 
+import javax.print.DocFlavor;
+
 /**
  *
  * @author Nicholas
@@ -24,7 +26,8 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.ID = ID; 
+        this.ID = ID;
+        this.phoneNumber = phoneNumber;
     }
 
     /**

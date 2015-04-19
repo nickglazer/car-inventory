@@ -401,7 +401,7 @@ public class Database
     {
         String sqlStatement = "insert into Customers (First_Name, Last_Name, Email, Phone) ";
 
-        sqlStatement += String.format("values ('%s', '%s', '%s', '%s'", customerToInsert.getFirstName(), customerToInsert.getLastName(),
+        sqlStatement += String.format("values ('%s', '%s', '%s', '%s')", customerToInsert.getFirstName(), customerToInsert.getLastName(),
                 customerToInsert.getEmail(), customerToInsert.getPhoneNumber());
 
         int rowsAffected = this.executeUpdate(sqlStatement);
@@ -412,6 +412,37 @@ public class Database
         }
 
         return true;
+    }
+
+    public Customer[] allCustomers()
+    {
+        ResultSet result = this.executeQuery("select * from Customers");
+
+        ArrayList<Customer> customers = new ArrayList<Customer>(1);
+
+        try
+        {
+            while(result.next())
+            {
+                Customer resultCustomer = new Customer();
+
+                resultCustomer.setFirstName(result.getString("First_Name"));
+                resultCustomer.setLastName(result.getString("Last_Name"));
+                resultCustomer.setEmail(result.getString("Email"));
+                resultCustomer.setPhoneNumber(result.getString("Phone"));
+
+                customers.add(resultCustomer);
+            }
+
+            return (Customer[]) customers.toArray(new Customer[customers.size()]);
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Error querying results");
+            System.out.println(e);
+
+            return null;
+        }
     }
 
     public static String currentDate()
