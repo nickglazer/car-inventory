@@ -435,7 +435,7 @@ public class Database
 
         String sqlStatement = "insert into Car_History (Car_ID, Action_Date, Description) values ";
 
-        sqlStatement += String.format("(%d, '%s, '%s')", car.getCarID(), currentDate, description);
+        sqlStatement += String.format("(%d, '%s', '%s')", car.getCarID(), currentDate, description);
 
         int affectedRecords = this.executeUpdate(sqlStatement);
 

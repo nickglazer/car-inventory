@@ -19,7 +19,8 @@ public class Customer {
     private int phoneNumber;
     private String address;
     private int ID;
-    
+
+    public Customer(){}
     public Customer (String firstName, String lastName, String initial, 
             String email, int phoneNumber, String address, int ID) {
         this.firstName = firstName;
