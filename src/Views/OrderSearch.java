@@ -81,6 +81,11 @@ public class OrderSearch extends javax.swing.JPanel {
         jLabel2.setText("First Name");
 
         jbSearch.setText("Search");
+        jbSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,6 +140,10 @@ public class OrderSearch extends javax.swing.JPanel {
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbDeleteActionPerformed
+
+    private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
