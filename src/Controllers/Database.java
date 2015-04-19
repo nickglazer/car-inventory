@@ -431,6 +431,7 @@ public class Database
                 resultCustomer.setLastName(result.getString("Last_Name"));
                 resultCustomer.setEmail(result.getString("Email"));
                 resultCustomer.setPhoneNumber(result.getString("Phone"));
+                resultCustomer.setID(result.getInt("Customer_ID"));
 
                 customers.add(resultCustomer);
             }
