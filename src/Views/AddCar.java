@@ -149,6 +149,11 @@ public class AddCar extends javax.swing.JPanel {
         });
 
         jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota" }));
+        jcbMake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMakeActionPerformed(evt);
+            }
+        });
 
         jcbTransmission.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Transmission-", "Automatic", "Manual", "Combo" }));
 
@@ -331,6 +336,10 @@ public class AddCar extends javax.swing.JPanel {
     private void jtfVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfVINActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfVINActionPerformed
+
+    private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMakeActionPerformed
 
     private String stringFromDropDown(JComboBox comboBox)
     {
