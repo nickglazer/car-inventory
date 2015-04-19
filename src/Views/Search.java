@@ -427,8 +427,10 @@ public class Search extends javax.swing.JPanel
         
         JFrame frame = new JFrame();
         frame.setSize(500,400);
-        History[] histories = new History[1];
-        CarHistory history = new CarHistory(selectedCar, histories);
+
+        Database database = new Database();
+        History[] carHistory = database.historyForCar(selectedCar);
+        CarHistory history = new CarHistory(selectedCar, carHistory);
         history.setVisible(true);
         frame.add(history);
         frame.setVisible(true);

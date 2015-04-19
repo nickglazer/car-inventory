@@ -1,6 +1,7 @@
 package Controllers;
 import Models.Car;
 import Models.Customer;
+import Models.History;
 import Models.Order;
 
 import java.sql.*;
@@ -285,6 +286,8 @@ public class Database
             }
         }
 
+        whereStatement += "and Status <> 'Purchased'";
+
         sqlStatement += whereStatement;
 
         return sqlStatement;
@@ -510,7 +513,38 @@ public class Database
         }
 
         return true;
+    }
 
+    public History[] historyForCar(Car car)
+    {
+        String sqlStatement = String.format("select * from Car_History where Car_ID = %d", car.getCarID());
 
+        ResultSet results = this.executeQuery(sqlStatement);
+
+        ArrayList<History> carHistory = new ArrayList<History>(1);
+
+        try
+        {
+            while(results.next())
+            {
+                History newHistory = new History();
+
+                newHistory.setHistoryID(results.getInt("History_ID"));
+                newHistory.setCarID(results.getInt("Car_ID"));
+                newHistory.setActionDate(results.getDate("Action_Date"));
+                newHistory.setDescription(results.getString("Description"));
+
+                carHistory.add(newHistory);
+            }
+
+            return (History[]) carHistory.toArray(new History[carHistory.size()]);
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Error querying results");
+            System.out.println(e);
+
+            return null;
+        }
     }
 }
