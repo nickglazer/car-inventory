@@ -382,22 +382,74 @@ public class AddCar extends javax.swing.JPanel {
     }
 
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
-    {                                       
-
+    {            
+        ArrayList<String> errors = new ArrayList<>();
+        int result;
+        double dresult;
+        
         String make = FormHandler.stringFromDropDown(this.jcbMake);
         String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
         String color = FormHandler.stringFromDropDown(jcbColor);
         String model = FormHandler.stringFromDropDown(this.jcbModel);
         String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
+        if (engineLiters != null) {
+            try {
+                dresult = Double.parseDouble(engineLiters);
+            } catch(NumberFormatException e){
+                errors.add("Invalid Engine Displacement");
+            }
+        }
+        
         String cylinders = FormHandler.stringFromTextfield(jtfCylinders);
+        if (cylinders != null) {
+            try {
+                result = Integer.parseInt(cylinders);
+            } catch(NumberFormatException e){
+                errors.add("Invalid Cylinders");
+            }
+        }
+        
         String year = FormHandler.stringFromTextfield(jtfYear);
+        if (year != null) {
+            try {
+                result = Integer.parseInt(year);
+            } catch(NumberFormatException e){
+                errors.add("Invalid Year");
+            }
+        }
         String driveTrain = FormHandler.stringFromDropDown(this.jcbDrivetrain);
         String gas = FormHandler.stringFromDropDown(this.jcbGasType);
         String mileage = FormHandler.stringFromTextfield(jtfMileage);
+        if (mileage != null) {
+            try {
+                result = Integer.parseInt(mileage);
+            } catch(NumberFormatException e){
+                errors.add("Invalid Mileage");
+            }
+        }
         String bodyType = FormHandler.stringFromDropDown(this.jcbBodyType);
         String vehicleType = FormHandler.stringFromDropDown(this.jcbVehicleType);
         String vin = FormHandler.stringFromTextfield(jtfVIN);
+        if (vin != null) {
+            if (!(vin.length() == 17 && vin.matches("^.*[^a-zA-Z0-9 ].*$"))) {
+                errors.add("Invalid Vin");
+            }
+        }
 
+        if (!errors.isEmpty()) {
+            System.out.println("Errors");
+            StringBuilder builder = new StringBuilder();
+            for (String substring : errors) {
+                builder.append(substring);
+                builder.append("\n");
+            }
+            String message = builder.toString();
+            JOptionPane.showMessageDialog(this,
+                message,
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+                return;
+        }
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
 
@@ -416,8 +468,8 @@ public class AddCar extends javax.swing.JPanel {
         stringFields.put("Gas", gas);
         stringFields.put("Status", "New");
 
-        Database database = new Database();
-        database.insertCar(stringFields, intFields);
+        //Database database = new Database();
+        //database.insertCar(stringFields, intFields);
 
         this.clearFields();
 

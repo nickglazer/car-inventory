@@ -340,7 +340,17 @@ public class Search extends javax.swing.JPanel
 
     private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
         // TODO add your handling code here:
-        this.performFilter();
+        try {
+            int result = Integer.parseInt(jtfYear.getText());
+            this.performFilter();
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,
+            "Invalid Year.",
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+        }
+            
+        
     }//GEN-LAST:event_jtfYearActionPerformed
 
     private void jcbTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTransmissionActionPerformed
