@@ -62,6 +62,7 @@ public class Search extends javax.swing.JPanel
         jcbCarType = new javax.swing.JComboBox();
         jbDelete = new javax.swing.JButton();
         jlYear = new javax.swing.JLabel();
+        jbView = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,6 +146,13 @@ public class Search extends javax.swing.JPanel
 
         jlYear.setText("Year");
 
+        jbView.setText("View");
+        jbView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,7 +180,8 @@ public class Search extends javax.swing.JPanel
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbDelete)
-                            .addComponent(jbBuy))))
+                            .addComponent(jbBuy)
+                            .addComponent(jbView))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -183,7 +192,9 @@ public class Search extends javax.swing.JPanel
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbBuy))
@@ -400,6 +411,26 @@ public class Search extends javax.swing.JPanel
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jbViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbViewActionPerformed
+        // TODO add your handling code here:
+        int[] selectedRows = this.jTable1.getSelectedRows();
+
+        if(selectedRows.length == 0 || selectedRows.length > 1)
+        {
+            System.out.println("You must select only one car to buy.");
+            return;
+        }
+        Car selectedCar = this.currentCars[selectedRows[0]];
+        
+        JFrame frame = new JFrame(); 
+        CarHistory history = new CarHistory();
+        history.viewCar = selectedCar;
+        history.setVisible(true);
+        frame.add(history);
+        frame.setVisible(true);
+        
+    }//GEN-LAST:event_jbViewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -407,6 +438,7 @@ public class Search extends javax.swing.JPanel
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbBuy;
     private javax.swing.JButton jbDelete;
+    private javax.swing.JButton jbView;
     private javax.swing.JComboBox jcbBodyType;
     private javax.swing.JComboBox jcbCarType;
     private javax.swing.JComboBox jcbColor;

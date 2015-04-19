@@ -410,6 +410,9 @@ public class AddCar extends javax.swing.JPanel {
         double dresult;
         
         String make = FormHandler.stringFromDropDown(this.jcbMake);
+        if (make != null) {
+            errors.add("Invalid Make");
+        }
         String transmission = FormHandler.stringFromDropDown(this.jcbTransmission);
         String color = FormHandler.stringFromDropDown(jcbColor);
         String model = (String) this.jcbModel.getSelectedItem();
@@ -444,6 +447,7 @@ public class AddCar extends javax.swing.JPanel {
                 errors.add("Invalid Year");
             }
         }
+        
         String driveTrain = FormHandler.stringFromDropDown(this.jcbDrivetrain);
         String gas = FormHandler.stringFromDropDown(this.jcbGasType);
         String mileage = FormHandler.stringFromTextfield(jtfMileage);
@@ -454,11 +458,12 @@ public class AddCar extends javax.swing.JPanel {
                 errors.add("Invalid Mileage");
             }
         }
+        
         String bodyType = FormHandler.stringFromDropDown(this.jcbBodyType);
         String vehicleType = FormHandler.stringFromDropDown(this.jcbVehicleType);
         String vin = FormHandler.stringFromTextfield(jtfVIN);
         if (vin != null) {
-            if (!(vin.length() == 17 && vin.matches("^.*[^a-zA-Z0-9 ].*$"))) {
+            if (!vin.matches("^[^\\Wioq]{17}$")) {
                 errors.add("Invalid Vin");
             }
         }

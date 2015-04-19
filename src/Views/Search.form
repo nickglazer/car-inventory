@@ -44,6 +44,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jbDelete" min="-2" max="-2" attributes="0"/>
                           <Component id="jbBuy" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbView" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -59,7 +60,9 @@
                   <Component id="jScrollPane1" pref="438" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace pref="224" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jbView" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbDelete" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbBuy" min="-2" max="-2" attributes="0"/>
@@ -261,6 +264,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Year"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbView">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbViewActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
