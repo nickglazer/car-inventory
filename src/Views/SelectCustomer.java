@@ -5,7 +5,10 @@
  */
 package Views;
 
+import Models.Car;
+import Models.Customer;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,8 +19,26 @@ public class SelectCustomer extends javax.swing.JPanel {
     /**
      * Creates new form SelectCustomer
      */
-    public SelectCustomer() {
+    private Customer[] customers;
+    public SelectCustomer(Customer[] customers) {
         initComponents();
+        this.customers = customers;
+        updateTable();
+    }
+    
+    private void updateTable() {
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows 
+        tableModel.setRowCount(0);
+
+        for (Customer customer : customers) {
+            String[] customerModel = {customer.getFirstName(), customer.getLastName()
+                    ,customer.getEmail(), customer.getPhoneNumber()};
+            tableModel.addRow(customerModel);
+        }
+
+        this.jTable1.setModel(tableModel);
     }
 
     /**
@@ -34,6 +55,12 @@ public class SelectCustomer extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jbSelect = new javax.swing.JButton();
 
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+
         jbAddCustomer.setText("Add Customer");
         jbAddCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,9 +76,17 @@ public class SelectCustomer extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "First Name", "Last Name", "Email", "Phone Number"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jbSelect.setText("Select");
@@ -102,6 +137,11 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbSelectActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        updateTable();
+    }//GEN-LAST:event_formFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -177,6 +178,9 @@ public class AddCustomer extends javax.swing.JPanel {
         {
             System.out.println("insert customer failed");
         }
+        
+        JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSubmitActionPerformed
 
 

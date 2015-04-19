@@ -15,12 +15,12 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private int ID;
 
     public Customer(){}
     public Customer (String firstName, String lastName,
-            String email, int phoneNumber, int ID) {
+            String email, String phoneNumber, int ID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -73,14 +73,14 @@ public class Customer {
     /**
      * @return the phoneNumber
      */
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
      * @param phoneNumber the phoneNumber to set
      */
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
