@@ -1,5 +1,8 @@
 package Models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -31,6 +34,10 @@ public class CarHistory
 
     public void setActionDate(Date actionDate) {
         this.actionDate = actionDate;
+
+        DateFormat readableFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        this.readableDate = readableFormat.format(this.actionDate);
     }
 
     public String getDescription() {
@@ -45,4 +52,5 @@ public class CarHistory
     public int carID;
     public Date actionDate;
     public String description;
+    public String readableDate;
 }
