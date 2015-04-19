@@ -3,10 +3,7 @@ import Models.Car;
 import Models.Customer;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Used for all database operations
@@ -408,5 +405,25 @@ public class Database
         }
 
         return true;
+    }
+
+    /**
+     * Adds history to a car
+     * @param car The car that you want to record history
+     * @param historyMessage the message you want to record
+     * @return
+     */
+    public boolean recordCarHistory(Car car, String historyMessage)
+    {
+        /**
+        Date currentDate = new Date();
+        String currentDate = new Date().toString();
+         */
+
+        //Calender currentCalender = Calendar.getInstance();
+
+        return true;
+
+
     }
 }

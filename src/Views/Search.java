@@ -417,7 +417,7 @@ public class Search extends javax.swing.JPanel
 
         if(selectedRows.length == 0 || selectedRows.length > 1)
         {
-            System.out.println("You must select only one car to buy.");
+            System.out.println("You must select only one car to view.");
             return;
         }
         Car selectedCar = this.currentCars[selectedRows[0]];
