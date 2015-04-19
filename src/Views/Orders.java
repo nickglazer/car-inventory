@@ -39,13 +39,11 @@ public class Orders extends javax.swing.JPanel {
         jlBank = new javax.swing.JLabel();
         jlLoanNumber = new javax.swing.JLabel();
         jlLoanDuration = new javax.swing.JLabel();
-        jlOrderID = new javax.swing.JLabel();
         jlDate = new javax.swing.JLabel();
         jtfDownPayment = new javax.swing.JTextField();
         jtfBank = new javax.swing.JTextField();
         jtfLoanNumber = new javax.swing.JTextField();
         jtfLoanDuration = new javax.swing.JTextField();
-        jtfOrderID = new javax.swing.JTextField();
         jtfDate = new javax.swing.JTextField();
         jbSave = new javax.swing.JButton();
         jbSelectCustomer = new javax.swing.JButton();
@@ -57,8 +55,6 @@ public class Orders extends javax.swing.JPanel {
         jlLoanNumber.setText("Loan Number");
 
         jlLoanDuration.setText("Loan Duration");
-
-        jlOrderID.setText("Order ID");
 
         jlDate.setText("Date");
 
@@ -96,12 +92,10 @@ public class Orders extends javax.swing.JPanel {
                             .addComponent(jlBank)
                             .addComponent(jlLoanNumber)
                             .addComponent(jlLoanDuration)
-                            .addComponent(jlOrderID)
                             .addComponent(jlDate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jtfDate, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfOrderID, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,13 +126,9 @@ public class Orders extends javax.swing.JPanel {
                     .addComponent(jlLoanDuration))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlOrderID)
-                    .addComponent(jtfOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDate)
                     .addComponent(jtfDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addComponent(jbSave)
                 .addContainerGap())
         );
@@ -147,8 +137,9 @@ public class Orders extends javax.swing.JPanel {
     private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame(); 
-        AddCustomer add = new AddCustomer();
+        SelectCustomer add = new SelectCustomer();
         add.setVisible(true);
+        frame.setSize(500,400);
         frame.add(add);
         frame.setVisible(true);
     }//GEN-LAST:event_jbSelectCustomerActionPerformed
@@ -170,12 +161,10 @@ public class Orders extends javax.swing.JPanel {
     private javax.swing.JLabel jlDownPayment;
     private javax.swing.JLabel jlLoanDuration;
     private javax.swing.JLabel jlLoanNumber;
-    private javax.swing.JLabel jlOrderID;
     private javax.swing.JTextField jtfBank;
     private javax.swing.JTextField jtfDate;
     private javax.swing.JTextField jtfDownPayment;
     private javax.swing.JTextField jtfLoanDuration;
     private javax.swing.JTextField jtfLoanNumber;
-    private javax.swing.JTextField jtfOrderID;
     // End of variables declaration//GEN-END:variables
 }

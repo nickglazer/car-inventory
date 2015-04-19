@@ -5,6 +5,8 @@
  */
 package Views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Nicholas
@@ -32,6 +34,11 @@ public class SelectCustomer extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
 
         jbAddCustomer.setText("Add Customer");
+        jbAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAddCustomerActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,6 +76,16 @@ public class SelectCustomer extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddCustomerActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame(); 
+        AddCustomer add = new AddCustomer();
+        add.setVisible(true);
+        frame.setSize(500,400);
+        frame.add(add);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jbAddCustomerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
