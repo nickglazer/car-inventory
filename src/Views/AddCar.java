@@ -503,6 +503,11 @@ public class AddCar extends javax.swing.JPanel {
         Database database = new Database();
         database.insertCar(stringFields, intFields);
 
+        String sqlStatement = String.format("select * from Cars where Vin = '%s'", vin);
+        Car insertedCar = database.carsFromResults(database.executeQuery(sqlStatement))[0];
+
+        database.recordCarHistory(insertedCar, "New");
+
         this.clearFields();
 
     }                                     
