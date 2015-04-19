@@ -3,6 +3,8 @@ import Models.Car;
 import Models.Customer;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -174,18 +176,8 @@ public class Database
         return null;
     }
 
-    /**
-     * Returns list of cars for given search fields
-     * @param stringFields Database map for the string columns
-     * @param intFields Database map for the int columns
-     * @return Array of cars returned from search or null if there's no cars for that search
-     */
-    public Car[] searchForCars(Map stringFields, Map intFields)
+    public Car[] carsFromResults(ResultSet results)
     {
-        String sqlStatement = this.carSearchSQL(stringFields, intFields);
-
-        ResultSet results = this.executeQuery(sqlStatement);
-
         ArrayList<Car> cars = new ArrayList<Car>(1);
 
         int rowCount = 0;
@@ -216,6 +208,21 @@ public class Database
         {
             return null;
         }
+    }
+
+    /**
+     * Returns list of cars for given search fields
+     * @param stringFields Database map for the string columns
+     * @param intFields Database map for the int columns
+     * @return Array of cars returned from search or null if there's no cars for that search
+     */
+    public Car[] searchForCars(Map stringFields, Map intFields)
+    {
+        String sqlStatement = this.carSearchSQL(stringFields, intFields);
+
+        ResultSet results = this.executeQuery(sqlStatement);
+
+        return this.carsFromResults(results);
     }
 
     /**
@@ -407,20 +414,35 @@ public class Database
         return true;
     }
 
+    public static String currentDate()
+    {
+        DateFormat mysqlFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar currentCalender = Calendar.getInstance();
+
+        return mysqlFormat.format(currentCalender.getTime());
+    }
+
     /**
      * Adds history to a car
      * @param car The car that you want to record history
-     * @param historyMessage the message you want to record
+     * @param description the message you want to record
      * @return
      */
-    public boolean recordCarHistory(Car car, String historyMessage)
+    public boolean recordCarHistory(Car car, String description)
     {
-        /**
-        Date currentDate = new Date();
-        String currentDate = new Date().toString();
-         */
+        String currentDate = Database.currentDate();
 
-        //Calender currentCalender = Calendar.getInstance();
+        String sqlStatement = "insert into Car_History (Car_ID, Action_Date, Description) values ";
+
+        sqlStatement += String.format("(%d, '%s, '%s')", car.getCarID(), currentDate, description);
+
+        int affectedRecords = this.executeUpdate(sqlStatement);
+
+        if(affectedRecords == 0)
+        {
+            return false;
+        }
 
         return true;
 
