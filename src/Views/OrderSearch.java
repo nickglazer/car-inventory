@@ -5,6 +5,10 @@
  */
 package Views;
 
+import Models.Customer;
+import Models.Order;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nicholas
@@ -143,6 +147,17 @@ public class OrderSearch extends javax.swing.JPanel {
 
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        //Delete all rows 
+        tableModel.setRowCount(0);
+        Order[] orders = {};
+        for (Order order : orders) {
+            String[] orderModel = {};
+            tableModel.addRow(orderModel);
+        }
+
+        this.jTable1.setModel(tableModel);
     }//GEN-LAST:event_jbSearchActionPerformed
 
 
