@@ -67,8 +67,6 @@ public class CarHistory extends javax.swing.JPanel {
         jlGas = new javax.swing.JLabel();
         jlVehicleInfomation = new javax.swing.JLabel();
         jlVehicleType = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtfHistory = new javax.swing.JTextArea();
         jtfMake = new javax.swing.JTextField();
         jtfTransmission = new javax.swing.JTextField();
         jtfModel = new javax.swing.JTextField();
@@ -78,6 +76,8 @@ public class CarHistory extends javax.swing.JPanel {
         jtfGas = new javax.swing.JTextField();
         jtfVehicleType = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jlBodyType.setText("Body Type");
 
@@ -137,11 +137,6 @@ public class CarHistory extends javax.swing.JPanel {
 
         jlVehicleType.setText("Vehicle Type");
 
-        jtfHistory.setEditable(false);
-        jtfHistory.setColumns(20);
-        jtfHistory.setRows(5);
-        jScrollPane1.setViewportView(jtfHistory);
-
         jtfMake.setEditable(false);
         jtfMake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +165,27 @@ public class CarHistory extends javax.swing.JPanel {
 
         jLabel1.setText("History");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "History"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,7 +193,7 @@ public class CarHistory extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -299,7 +315,7 @@ public class CarHistory extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -331,7 +347,8 @@ public class CarHistory extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel jlBodyType;
     private javax.swing.JLabel jlColor;
     private javax.swing.JLabel jlCylinders;
@@ -352,7 +369,6 @@ public class CarHistory extends javax.swing.JPanel {
     private javax.swing.JTextField jtfDrivetrain;
     private javax.swing.JTextField jtfEngine;
     private javax.swing.JTextField jtfGas;
-    private javax.swing.JTextArea jtfHistory;
     private javax.swing.JTextField jtfMake;
     private javax.swing.JTextField jtfMileage;
     private javax.swing.JTextField jtfModel;
