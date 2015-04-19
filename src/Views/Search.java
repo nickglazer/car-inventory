@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Models.Car;
+import Models.History;
 
 import javax.print.DocFlavor;
 import javax.swing.*;
@@ -424,9 +425,10 @@ public class Search extends javax.swing.JPanel
         }
         Car selectedCar = this.currentCars[selectedRows[0]];
         
-        JFrame frame = new JFrame(); 
+        JFrame frame = new JFrame();
         frame.setSize(500,400);
-        CarHistory history = new CarHistory(selectedCar);
+        History[] histories = new History[1];
+        CarHistory history = new CarHistory(selectedCar, histories);
         history.setVisible(true);
         frame.add(history);
         frame.setVisible(true);
