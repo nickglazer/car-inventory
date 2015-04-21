@@ -191,10 +191,19 @@ public class Database
 
                 Car resultCar = new Car();
                 resultCar.setCarID(results.getInt("CarID"));
+                resultCar.setVin(results.getString("Vin"));
                 resultCar.setMake(results.getString("Make"));
                 resultCar.setModel(results.getString("Model"));
+                resultCar.setColor(results.getString("Color"));
                 resultCar.setYear(results.getInt("Year"));
                 resultCar.setMileage(results.getInt("Mileage"));
+                resultCar.setEngine(results.getInt("Engine_Liters"));
+                resultCar.setCylinders(results.getInt("Engine_Cylinders"));
+                resultCar.setVehicleType(results.getString("Vehicle_Type"));
+                resultCar.setTransmission(results.getString("Transmission"));
+                resultCar.setDrivetrain(results.getString("Drivetrain"));
+                resultCar.setGas(results.getString("Gas"));
+                resultCar.setStatus(results.getString("Status"));
 
                 cars.add(resultCar);
             }
@@ -352,35 +361,7 @@ public class Database
     {
         ResultSet result = this.executeQuery("select * from Cars");
 
-        ArrayList<Car> cars = new ArrayList<Car>(1);
-
-        try
-        {
-            while(result.next())
-            {
-                Car resultCar = new Car();
-
-                resultCar.setCarID(result.getInt("CarID"));
-                resultCar.setVin(result.getString("Vin"));
-                resultCar.setMake(result.getString("Make"));
-                resultCar.setModel(result.getString("Model"));
-                resultCar.setColor(result.getString("Color"));
-                resultCar.setStatus(result.getString("Status"));
-                resultCar.setYear(result.getInt("Year"));
-                resultCar.setMileage(result.getInt("Mileage"));
-
-                cars.add(resultCar);
-            }
-
-            return (Car[]) cars.toArray(new Car[cars.size()]);
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Error querying results");
-            System.out.println(e);
-
-            return null;
-        }
+        return this.carsFromResults(result);
     }
 
     public Car[] allNewCars()
