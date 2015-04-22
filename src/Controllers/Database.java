@@ -247,7 +247,7 @@ public class Database
         String[] stringKeys = this.keysOfMap(stringFields);
         String[] intKeys = this.keysOfMap(intFields);
 
-        String sqlStatement = "select CarID, Make, Model, Year, Mileage from Cars ";
+        String sqlStatement = "select * from Cars ";
 
         int searchCount = 0;
 

@@ -32,12 +32,16 @@ public class Search extends javax.swing.JPanel
     private Car[] currentCars;
 
     private Map<String, String[]> carDictionary;
+    private boolean makeIsEditingModel;
 
     /**
      * Creates new form Search
      */
     public Search() {
         initComponents();
+        this.makeIsEditingModel = false;
+
+
 
         this.carDictionary = Car.modelDictionary();
     }
@@ -264,6 +268,8 @@ public class Search extends javax.swing.JPanel
     {
         String make = FormHandler.stringFromDropDown(jcbMake);
         String model = FormHandler.stringFromDropDown(jcbModel);
+
+
         String year = FormHandler.stringFromTextfield(jtfYear);
         String transmission = FormHandler.stringFromDropDown(jcbTransmission);
         String bodyType = FormHandler.stringFromDropDown(jcbBodyType);
@@ -298,6 +304,7 @@ public class Search extends javax.swing.JPanel
 
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
 
+        this.makeIsEditingModel = true;
         this.jcbModel.removeAllItems();
 
         if(this.jcbMake.getSelectedIndex() != 0)
@@ -308,6 +315,10 @@ public class Search extends javax.swing.JPanel
                 this.jcbModel.addItem(model);
             }
         }
+
+        this.jcbModel.addItem("-Model-");
+
+        this.makeIsEditingModel = false;
 
         this.performFilter();
     }//GEN-LAST:event_jcbMakeActionPerformed
@@ -361,7 +372,11 @@ public class Search extends javax.swing.JPanel
 
     private void jcbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelActionPerformed
         // TODO add your handling code here:
-        this.performFilter();
+        if(!this.makeIsEditingModel)
+        {
+            this.performFilter();
+        }
+
     }//GEN-LAST:event_jcbModelActionPerformed
 
     private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
