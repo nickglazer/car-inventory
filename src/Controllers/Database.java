@@ -414,10 +414,8 @@ public class Database
         return true;
     }
 
-    public Customer[] allCustomers()
+    public Customer[] customersFromResult(ResultSet result)
     {
-        ResultSet result = this.executeQuery("select * from Customers");
-
         ArrayList<Customer> customers = new ArrayList<Customer>(1);
 
         try
@@ -444,6 +442,13 @@ public class Database
 
             return null;
         }
+    }
+
+    public Customer[] allCustomers()
+    {
+        ResultSet result = this.executeQuery("select * from Customers");
+
+        return this.customersFromResult(result);
     }
 
     public static String currentDate()

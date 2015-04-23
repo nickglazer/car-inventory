@@ -5,11 +5,13 @@
  */
 package Views;
 
+import Controllers.Database;
 import Models.Customer;
 
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,13 +23,32 @@ public class SelectCustomer extends javax.swing.JPanel {
     /**
      * Creates new form SelectCustomer
      */
-    private Customer[] customers;
+    private ArrayList<Customer> customers;
     private Orders orderView;
     public SelectCustomer(Customer[] customers, Orders orderView) {
         initComponents();
-        this.customers = customers;
+        this.customers = new ArrayList<Customer>(Arrays.asList(customers));
         this.orderView = orderView;
         updateTable();
+    }
+
+    private void addCustomerToTable(DefaultTableModel tableModel, Customer customer)
+    {
+        this.customers.add(customer);
+        String[] customerModel = {customer.getFirstName(), customer.getLastName()
+                ,customer.getEmail(), customer.getPhoneNumber()};
+        tableModel.addRow(customerModel);
+    }
+
+    public void addLatestCustomer()
+    {
+        Database database = new Database();
+
+        Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM CarSales.Customers where " +
+                "Customer_ID = (select max(Customer_ID) from Customers)"))[0];
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+
+        this.addCustomerToTable(tableModel, latestCustomer);
     }
     
     private void updateTable() {
@@ -37,9 +58,9 @@ public class SelectCustomer extends javax.swing.JPanel {
         tableModel.setRowCount(0);
 
         for (Customer customer : customers) {
-            String[] customerModel = {customer.getFirstName(), customer.getLastName()
-                    ,customer.getEmail(), customer.getPhoneNumber()};
-            tableModel.addRow(customerModel);
+                String[] customerModel = {customer.getFirstName(), customer.getLastName()
+                        ,customer.getEmail(), customer.getPhoneNumber()};
+                tableModel.addRow(customerModel);
         }
 
         this.jTable1.setModel(tableModel);
@@ -131,7 +152,7 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void jbAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddCustomerActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame(); 
-        AddCustomer add = new AddCustomer();
+        AddCustomer add = new AddCustomer(this);
         add.setVisible(true);
         frame.setSize(500,400);
         frame.add(add);
@@ -141,7 +162,16 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
         // TODO add your handling code here:
 
-        this.orderView.selectedCustomer = customers[this.jTable1.getSelectedRow()];
+        if(this.jTable1.getSelectedRow() == -1)
+        {
+            JOptionPane.showMessageDialog(this,
+                    "You must select a customer to continue",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        this.orderView.selectedCustomer = customers.get(this.jTable1.getSelectedRow());
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSelectActionPerformed

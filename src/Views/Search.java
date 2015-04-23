@@ -267,8 +267,12 @@ public class Search extends javax.swing.JPanel
     private void setCurrentCars()
     {
         String make = FormHandler.stringFromDropDown(jcbMake);
-        String model = FormHandler.stringFromDropDown(jcbModel);
+        String model = (String) jcbModel.getSelectedItem();
 
+        if(model != null && model.equals("-Model-"))
+        {
+            model = null;
+        }
 
         String year = FormHandler.stringFromTextfield(jtfYear);
         String transmission = FormHandler.stringFromDropDown(jcbTransmission);
@@ -315,8 +319,10 @@ public class Search extends javax.swing.JPanel
                 this.jcbModel.addItem(model);
             }
         }
-
-        this.jcbModel.addItem("-Model-");
+        else
+        {
+            this.jcbModel.addItem("-Model-");
+        }
 
         this.makeIsEditingModel = false;
 

@@ -24,27 +24,12 @@ public class AddCustomer extends javax.swing.JPanel {
     /**
      * Creates new form AddCustomer
      */
-    public AddCustomer() {
+
+    public SelectCustomer customerView;
+
+    public AddCustomer(SelectCustomer customerView) {
         initComponents();
-        /**
-        JTextField[] textFields = FormHandler.panelTextFields(this);
-
-        for(JTextField textField : textFields)
-        {
-            textField.addFocusListener(new FocusListener() {
-                @Override
-                public void focusGained(FocusEvent e) {
-                    JTextField textField = (JTextField) e.getComponent();
-                    textField.setText("");
-                }
-
-                @Override
-                public void focusLost(FocusEvent e) {
-
-                }
-            });
-        }
-         */
+        this.customerView = customerView;
     }
 
     /**
@@ -177,8 +162,10 @@ public class AddCustomer extends javax.swing.JPanel {
         if(!insertSuccessful)
         {
             System.out.println("insert customer failed");
+            return;
         }
-        
+
+        this.customerView.addLatestCustomer();
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSubmitActionPerformed
