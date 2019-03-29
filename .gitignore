@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-*.iml
-/.idea
-/out`
-=======
 *.iml
 /.idea
 /out
->>>>>>> temp
+.DS_Store
