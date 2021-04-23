@@ -138,7 +138,6 @@ public class Orders extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
-        // TODO add your handling code here:\
         Database database = new Database();
         JFrame frame = new JFrame();
         SelectCustomer add = new SelectCustomer(database.allCustomers(), this);
@@ -153,7 +152,6 @@ public class Orders extends javax.swing.JPanel {
     }//GEN-LAST:event_jtfLoanNumberActionPerformed
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
-        // TODO add your handling code here:
         if (selectedCustomer != null) {
             float price = Float.parseFloat(jtfSalePrice.getText());
             int downPayment = Integer.parseInt(jtfDownPayment.getText());

@@ -19,7 +19,7 @@ public class OrderSearch extends javax.swing.JPanel {
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        //Delete all rows 
+        //Delete all rows
         tableModel.setRowCount(0);
     }
 
@@ -147,10 +147,9 @@ public class OrderSearch extends javax.swing.JPanel {
     }//GEN-LAST:event_jbDeleteActionPerformed
 
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        //Delete all rows 
+        //Delete all rows
         tableModel.setRowCount(0);
 
         String firstName = this.jTextField1.getText();
@@ -161,8 +160,8 @@ public class OrderSearch extends javax.swing.JPanel {
         Order[] orders = database.ordersByName(firstName, lastName);
 
         for (Order order : orders) {
-            String[] orderModel = {order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
-                firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate};
+            String[] orderModel = { order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
+                firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate };
 
             tableModel.addRow(orderModel);
         }

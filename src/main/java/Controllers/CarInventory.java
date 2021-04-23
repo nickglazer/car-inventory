@@ -67,7 +67,6 @@ public class CarInventory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtbSearchStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtbSearchStateChanged
-        // TODO add your handling code here:
         int index = jtbSearch.getSelectedIndex();
         if ((jtbSearch.getTitleAt(index)).contains("Search")) {
             searchPanel.showAllCars();

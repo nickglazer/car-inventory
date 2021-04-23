@@ -137,8 +137,6 @@ public class AddCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_jtfPhoneActionPerformed
 
     private void jbSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSubmitActionPerformed
-        // TODO add your handling code here:
-
         Customer newCustomer = new Customer();
 
         newCustomer.setFirstName(this.jtfFirstName.getText());

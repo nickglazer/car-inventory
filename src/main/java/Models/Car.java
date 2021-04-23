@@ -88,14 +88,14 @@ public class Car {
     }
 
     /**
-     * @return the vin
+     * @return the VIN
      */
     public String getVin() {
         return vin;
     }
 
     /**
-     * @param vin the vin to set
+     * @param vin the VIN to set
      */
     public void setVin(String vin) {
         this.vin = vin;

@@ -2,7 +2,7 @@ package main.java.Models;
 
 /**
  *
- * @author Nicholas
+ * @author Nicholas Glazer
  */
 public class Customer {
 
@@ -12,8 +12,10 @@ public class Customer {
     private String phoneNumber;
     private int ID;
 
-    public Customer(){}
-    public Customer (String firstName, String lastName,
+    public Customer() {
+    }
+
+    public Customer(String firstName, String lastName,
             String email, String phoneNumber, int ID) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,7 +52,6 @@ public class Customer {
         this.lastName = lastName;
     }
 
-
     /**
      * @return the email
      */
@@ -78,7 +79,6 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
 
     /**
      * @return the ID

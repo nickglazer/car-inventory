@@ -5,9 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Frank Brandstetter on 4/19/2015.
+ *
+ * @author Frank Brandstetter
  */
 public class History {
+
+    private int historyID;
+    private int carID;
+    private Date actionDate;
+    private String description;
+    public String readableDate;
 
     public History() {
     }
@@ -47,10 +54,4 @@ public class History {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private int historyID;
-    private int carID;
-    private Date actionDate;
-    private String description;
-    public String readableDate;
 }

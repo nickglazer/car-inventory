@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *
- * @author Nicholas
+ * @author Nicholas Glazer
  */
 public class Order {
 
@@ -168,5 +168,4 @@ public class Order {
 
         this.readableDate = readableFormat.format(this.orderDate);
     }
-
 }

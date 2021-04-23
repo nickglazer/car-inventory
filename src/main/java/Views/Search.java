@@ -13,10 +13,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ *
  * @author Nicholas
  */
-public class Search extends javax.swing.JPanel
-{
+public class Search extends javax.swing.JPanel {
+
     private Car[] currentCars;
 
     private final Map<String, String[]> carDictionary;
@@ -28,8 +29,6 @@ public class Search extends javax.swing.JPanel
     public Search() {
         initComponents();
         this.makeIsEditingModel = false;
-
-
 
         this.carDictionary = Car.modelDictionary();
     }
@@ -219,16 +218,14 @@ public class Search extends javax.swing.JPanel
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void showAllCars()
-    {
+    public void showAllCars() {
         Database database = new Database();
 
         this.currentCars = database.allNewCars();
         this.performSearch();
     }
 
-    public void performFilter()
-    {
+    public void performFilter() {
         this.setCurrentCars();
         this.performSearch();
     }
@@ -237,7 +234,7 @@ public class Search extends javax.swing.JPanel
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        //Delete all rows 
+        //Delete all rows
         tableModel.setRowCount(0);
 
         if (this.currentCars == null) {
@@ -252,13 +249,11 @@ public class Search extends javax.swing.JPanel
         this.jTable1.setModel(tableModel);
     }
 
-    private void setCurrentCars()
-    {
+    private void setCurrentCars() {
         String make = FormHandler.stringFromDropDown(jcbMake);
         String model = (String) jcbModel.getSelectedItem();
 
-        if(model != null && model.equals("-Model-"))
-        {
+        if (model != null && model.equals("-Model-")) {
             model = null;
         }
 
@@ -283,7 +278,8 @@ public class Search extends javax.swing.JPanel
     }
 
     /**
-     * Takes a car and returns its car model. A "car model" is an array that is used in the search page's table
+     * Takes a car and returns its car model. A "car model" is an array that is
+     * used in the search page's table
      *
      * @param carToModel The car that you're interesting in getting its model
      * @return A string array that represents the car's model.
@@ -299,16 +295,12 @@ public class Search extends javax.swing.JPanel
         this.makeIsEditingModel = true;
         this.jcbModel.removeAllItems();
 
-        if(this.jcbMake.getSelectedIndex() != 0)
-        {
+        if (this.jcbMake.getSelectedIndex() != 0) {
             String selectedMake = (String) this.jcbMake.getSelectedItem();
-            for(String model : this.carDictionary.get(selectedMake))
-            {
+            for (String model : this.carDictionary.get(selectedMake)) {
                 this.jcbModel.addItem(model);
             }
-        }
-        else
-        {
+        } else {
             this.jcbModel.addItem("-Model-");
         }
 
@@ -318,7 +310,6 @@ public class Search extends javax.swing.JPanel
     }//GEN-LAST:event_jcbMakeActionPerformed
 
     private void jcbBodyTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBodyTypeActionPerformed
-        // TODO add your handling code here:
         this.performFilter();
     }//GEN-LAST:event_jcbBodyTypeActionPerformed
 
@@ -330,15 +321,15 @@ public class Search extends javax.swing.JPanel
 
         if (selectedRows.length == 0) {
             /**
-             * If there's nothing selected, let's get out
-             * TODO: Show error message
+             * If there's nothing selected, let's get out TODO: Show error
+             * message
              */
             return;
         }
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        String deleteStatement = "delete from Cars where CarID = ";
+        String deleteStatement = "delete from Car where CarID = ";
 
         int numDeletedRows = 0;
         for (int i = totalRows - 1; i > -1; i--) {
@@ -361,31 +352,27 @@ public class Search extends javax.swing.JPanel
         int affectedRows = database.executeUpdate(deleteStatement);
 
         this.jTable1.setModel(tableModel);
-
     }//GEN-LAST:event_jbDeleteActionPerformed
 
     private void jcbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelActionPerformed
-        // TODO add your handling code here:
-        if(!this.makeIsEditingModel)
-        {
+        if (!this.makeIsEditingModel) {
             this.performFilter();
         }
 
     }//GEN-LAST:event_jcbModelActionPerformed
 
     private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
-        // TODO add your handling code here:
         try {
             int result = Integer.parseInt(jtfYear.getText());
             this.performFilter();
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
-            "Invalid Year.",
-            "Error",
-            JOptionPane.ERROR_MESSAGE);
+                    "Invalid Year.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
-            
-        
+
+
     }//GEN-LAST:event_jtfYearActionPerformed
 
     private void jcbTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTransmissionActionPerformed
@@ -404,20 +391,17 @@ public class Search extends javax.swing.JPanel
     }//GEN-LAST:event_jcbColorActionPerformed
 
     private void jbBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyActionPerformed
-        // TODO add your handling code here:
-
         int[] selectedRows = this.jTable1.getSelectedRows();
 
-        if(selectedRows.length == 0 || selectedRows.length > 1)
-        {
+        if (selectedRows.length == 0 || selectedRows.length > 1) {
             System.out.println("You must select only one car to buy.");
             return;
         }
 
         Car selectedCar = this.currentCars[selectedRows[0]];
 
-        JFrame frame = new JFrame(); 
-        frame.setSize(500,400);
+        JFrame frame = new JFrame();
+        frame.setSize(500, 400);
         Orders order = new Orders(this);
         order.purchaseCar = selectedCar;
         order.setVisible(true);
@@ -430,18 +414,16 @@ public class Search extends javax.swing.JPanel
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jbViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbViewActionPerformed
-        // TODO add your handling code here:
         int[] selectedRows = this.jTable1.getSelectedRows();
 
-        if(selectedRows.length == 0 || selectedRows.length > 1)
-        {
+        if (selectedRows.length == 0 || selectedRows.length > 1) {
             System.out.println("You must select only one car to view.");
             return;
         }
         Car selectedCar = this.currentCars[selectedRows[0]];
-        
+
         JFrame frame = new JFrame();
-        frame.setSize(500,400);
+        frame.setSize(500, 400);
 
         Database database = new Database();
         History[] carHistory = database.historyForCar(selectedCar);
@@ -449,12 +431,12 @@ public class Search extends javax.swing.JPanel
         history.setVisible(true);
         frame.add(history);
         frame.setVisible(true);
-        
+
     }//GEN-LAST:event_jbViewActionPerformed
 
     private void jLabel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel1FocusGained
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_jLabel1FocusGained
 
 

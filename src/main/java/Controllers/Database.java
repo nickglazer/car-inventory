@@ -12,18 +12,16 @@ import java.util.*;
 
 /**
  * Used for all database operations
- *
- * @author Rechee Jozil
  */
 public class Database {
 
+    // TODO make url and credentials based on env or flag
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-
-    private static final String DB_URL = "jdbc:mysql://recheejinstance.cx1ynpvooriw.us-west-2.rds.amazonaws.com:3306/CarSales";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/car_inventory";
 
     //  Database credentials
-    private static final String USER = "recheej";
-    private static final String PASS = "usf_dev1992";
+    private static final String USER = "user";
+    private static final String PASS = "password";
 
     public Database() {
 
@@ -61,10 +59,7 @@ public class Database {
      */
     public void insertCar(Map stringFields, Map intFields) {
         String insertStatement = this.createCarInsertStatement(intFields, stringFields);
-
-        int affectedRows = this.executeUpdate(insertStatement);
-
-        System.out.println(affectedRows);
+        this.executeUpdate(insertStatement);
     }
 
     /**
@@ -131,13 +126,11 @@ public class Database {
 
             if (insertCount == totalInsertSize) {
                 columnStatement += String.format("%s)", key);
-
                 valuesStatement += String.format("%d)", Integer.parseInt(fieldToInsert));
 
-                return String.format("insert into Cars %s values %s", columnStatement, valuesStatement);
+                return String.format("INSERT INTO Car %s VALUES %s", columnStatement, valuesStatement);
             } else {
                 columnStatement += String.format("%s, ", key);
-
                 valuesStatement += String.format("%d, ", Integer.parseInt(fieldToInsert));
             }
         }
@@ -153,13 +146,11 @@ public class Database {
 
             if (insertCount == totalInsertSize) {
                 columnStatement += String.format("%s)", key);
-
                 valuesStatement += String.format("'%s')", fieldToInsert);
 
-                return String.format("insert into Cars %s values %s", columnStatement, valuesStatement);
+                return String.format("INSERT INTO Car %s VALUES %s", columnStatement, valuesStatement);
             } else {
                 columnStatement += String.format("%s, ", key);
-
                 valuesStatement += String.format("'%s', ", fieldToInsert);
             }
 
@@ -233,7 +224,7 @@ public class Database {
         String[] stringKeys = this.keysOfMap(stringFields);
         String[] intKeys = this.keysOfMap(intFields);
 
-        String sqlStatement = "select * from Cars ";
+        String sqlStatement = "SELECT * FROM Car ";
 
         int searchCount = 0;
 
@@ -249,9 +240,9 @@ public class Database {
             searchCount++;
 
             if (searchCount == 1) {
-                whereStatement += String.format("where %s = '%s' ", key, searchField);
+                whereStatement += String.format("WHERE %s = '%s' ", key, searchField);
             } else {
-                whereStatement += String.format("and %s = '%s' ", key, searchField);
+                whereStatement += String.format("AND %s = '%s' ", key, searchField);
             }
         }
 
@@ -265,16 +256,16 @@ public class Database {
             searchCount++;
 
             if (searchCount == 1) {
-                whereStatement += String.format("where %s = %d ", key, Integer.parseInt(searchField));
+                whereStatement += String.format("WHERE %s = %d ", key, Integer.parseInt(searchField));
             } else {
-                whereStatement += String.format("and %s = %d ", key, Integer.parseInt(searchField));
+                whereStatement += String.format("AND %s = %d ", key, Integer.parseInt(searchField));
             }
         }
 
         if (searchCount == 0) {
-            whereStatement += "where Status <> 'Purchased'";
+            whereStatement += "WHERE Status <> 'Purchased'";
         } else {
-            whereStatement += "and Status <> 'Purchased'";
+            whereStatement += "AND Status <> 'Purchased'";
         }
 
         sqlStatement += whereStatement;
@@ -325,19 +316,19 @@ public class Database {
      * @return A car array with all cars in the database
      */
     public Car[] getAllCars() {
-        ResultSet result = this.executeQuery("select * from Cars");
+        ResultSet result = this.executeQuery("SELECT * FROM Car");
 
         return this.carsFromResults(result);
     }
 
     public Car[] allNewCars() {
-        String sqlStatement = "select * from Cars where Status <> 'Purchased'";
+        String sqlStatement = "SELECT * FROM Car WHERE Status <> 'Purchased'";
 
         return this.carsFromResults(this.executeQuery(sqlStatement));
     }
 
     private int deleteCars(Car[] carsToDelete) {
-        String deleteStatement = "delete from Cars where CarID = ";
+        String deleteStatement = "DELETE FROM Car WHERE CarID = ";
 
         for (int i = 0; i < carsToDelete.length; i++) {
             Car currentCar = carsToDelete[i];
@@ -345,7 +336,7 @@ public class Database {
             if (i == 0) {
                 deleteStatement += Integer.toString(currentCar.getCarID());
             } else {
-                deleteStatement += String.format(" and CarID = %d", currentCar.getCarID());
+                deleteStatement += String.format(" AND CarID = %d", currentCar.getCarID());
             }
         }
 
@@ -359,14 +350,18 @@ public class Database {
      * @return True if insert was successful. False otherwise
      */
     public boolean addCustomer(Customer customerToInsert) {
-        String sqlStatement = "insert into Customers (First_Name, Last_Name, Email, Phone) ";
+        String sqlStatement = "INSERT INTO Customer (First_Name, Last_Name, Email, Phone) ";
 
-        sqlStatement += String.format("values ('%s', '%s', '%s', '%s')", customerToInsert.getFirstName(), customerToInsert.getLastName(),
+        sqlStatement += String.format("VALUES ('%s', '%s', '%s', '%s')", customerToInsert.getFirstName(), customerToInsert.getLastName(),
                 customerToInsert.getEmail(), customerToInsert.getPhoneNumber());
 
         int rowsAffected = this.executeUpdate(sqlStatement);
 
-        return rowsAffected != 0;
+        if (rowsAffected == 0) {
+            return false;
+        }
+
+        return true;
     }
 
     public Customer[] customersFromResult(ResultSet result) {
@@ -395,33 +390,36 @@ public class Database {
     }
 
     public Customer[] allCustomers() {
-        ResultSet result = this.executeQuery("select * from Customers");
+        ResultSet result = this.executeQuery("SELECT * FROM Customer");
 
         return this.customersFromResult(result);
     }
 
     public static String currentDate() {
         DateFormat mysqlFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         Calendar currentCalender = Calendar.getInstance();
 
         return mysqlFormat.format(currentCalender.getTime());
     }
 
     public boolean insertOrder(Order order, int carID, int customerID) {
-        String sqlStatement = "insert into Orders (Customer_ID, Car_ID, Order_Date, Price, Down_Payment, ";
-        sqlStatement += "Bank, Loan_Number, Loan_Months) values ";
+        String sqlStatement = "INSERT INTO CustomerOrder (Customer_ID, Car_ID, Order_Date, Price, Down_Payment, ";
+        sqlStatement += "Bank, Loan_Number, Loan_Months) VALUES ";
         sqlStatement += String.format("(%d, %d, '%s', %f, %d, '%s', %d, %d)", customerID, carID,
                 Database.currentDate(), order.getSalesPrice(), order.getDownPayment(), order.getBank(),
                 order.getLoanNumber(), order.getLoanMonths());
 
         int affectedRecords = this.executeUpdate(sqlStatement);
 
-        return affectedRecords != 0;
+        if (affectedRecords == 0) {
+            return false;
+        }
+
+        return true;
     }
 
     public void setCarStatus(Car car, String status) {
-        String sqlStatement = String.format("update Cars set Status = '%s' where CarID = '%s'", status, car.getCarID());
+        String sqlStatement = String.format("UPDATE Car SET Status = '%s' WHERE CarID = '%s'", status, car.getCarID());
 
         this.executeUpdate(sqlStatement);
     }
@@ -436,17 +434,21 @@ public class Database {
     public boolean recordCarHistory(Car car, String description) {
         String currentDate = Database.currentDate();
 
-        String sqlStatement = "insert into Car_History (Car_ID, Action_Date, Description) values ";
+        String sqlStatement = "INSERT INTO CarHistory (Car_ID, Action_Date, Description) VALUES ";
 
         sqlStatement += String.format("(%d, '%s', '%s')", car.getCarID(), currentDate, description);
 
         int affectedRecords = this.executeUpdate(sqlStatement);
 
-        return affectedRecords != 0;
+        if (affectedRecords == 0) {
+            return false;
+        }
+
+        return true;
     }
 
     public History[] historyForCar(Car car) {
-        String sqlStatement = String.format("select * from Car_History where Car_ID = %d", car.getCarID());
+        String sqlStatement = String.format("SELECT * FROM CarHistory WHERE Car_ID = %d", car.getCarID());
 
         ResultSet results = this.executeQuery(sqlStatement);
 
@@ -474,9 +476,9 @@ public class Database {
     }
 
     public Order[] ordersByName(String firstName, String lastName) {
-        String sqlStatement = "SELECT * FROM CarSales.Orders inner join Cars on Cars.CarID = Orders.Car_ID "
-                + "inner join Customers on Customers.Customer_ID = Orders.Customer_ID ";
-        sqlStatement += String.format("and Customers.First_Name = '%s' and Customers.Last_Name = '%s'", firstName, lastName);
+        String sqlStatement = "SELECT * FROM CustomerOrder INNER JOIN Car ON Car.CarID = CustomerOrder.Car_ID "
+                + "INNER JOIN Customer ON Customer.Customer_ID = CustomerOrder.Customer_ID ";
+        sqlStatement += String.format("AND Customer.First_Name = '%s' AND Customer.Last_Name = '%s'", firstName, lastName);
 
         ResultSet results = this.executeQuery(sqlStatement);
 
@@ -484,7 +486,7 @@ public class Database {
 
         try {
             while (results.next()) {
-                sqlStatement = String.format("select * from Cars where CarID = %d", results.getInt("CarID"));
+                sqlStatement = String.format("SELECT * FROM Car WHERE CarID = %d", results.getInt("CarID"));
 
                 Car orderCar = this.carsFromResults(this.executeQuery(sqlStatement))[0];
 
@@ -494,6 +496,7 @@ public class Database {
                 newOrder.setCustomerID(results.getInt("Customer_ID"));
                 newOrder.setCarID(orderCar.getCarID());
                 newOrder.setOrderDate(results.getDate("Order_Date"));
+                // TODO where is price?
                 newOrder.setSalesPrice(results.getFloat("Down_Payment"));
                 newOrder.setBank(results.getString("Bank"));
                 newOrder.setLoanNumber(results.getInt("Loan_Number"));

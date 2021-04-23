@@ -1,13 +1,13 @@
 package main.java.Views;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import main.java.Controllers.Database;
 import main.java.Controllers.FormHandler;
 import main.java.Models.Car;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.Component;
 
 /**
@@ -19,30 +19,25 @@ public class AddCar extends javax.swing.JPanel {
     /**
      * Creates new form AddCar
      */
-
     private final JTextField[] textFields;
     private final JComboBox[] comboBoxes;
     private final Map<String, String[]> modelDictionary;
-    public AddCar()
-    {
+
+    public AddCar() {
         initComponents();
 
         //Let's go through and add the textfields and comboboxes to their own arrays
-
         ArrayList<JTextField> textFieldList = new ArrayList<>();
         ArrayList<JComboBox> comoBoxList = new ArrayList<>();
 
         Component[] components = this.getComponents();
 
-        for(Component panelComponent : components)
-        {
-            if(panelComponent.getClass() == JTextField.class)
-            {
+        for (Component panelComponent : components) {
+            if (panelComponent.getClass() == JTextField.class) {
                 textFieldList.add((JTextField) panelComponent);
             }
 
-            if(panelComponent.getClass() == JComboBox.class)
-            {
+            if (panelComponent.getClass() == JComboBox.class) {
                 comoBoxList.add((JComboBox) panelComponent);
             }
         }
@@ -341,31 +336,26 @@ public class AddCar extends javax.swing.JPanel {
 
         this.jcbModel.removeAllItems();
 
-        if(this.jcbMake.getSelectedIndex() != 0)
-        {
+        if (this.jcbMake.getSelectedIndex() != 0) {
             String selectedMake = (String) this.jcbMake.getSelectedItem();
-            for(String model : this.modelDictionary.get(selectedMake))
-            {
+            for (String model : this.modelDictionary.get(selectedMake)) {
                 this.jcbModel.addItem(model);
             }
         }
 
     }//GEN-LAST:event_jcbMakeActionPerformed
 
-    private String stringFromDropDown(JComboBox comboBox)
-    {
-        if(comboBox.getSelectedIndex() == 0)
-        {
+    private String stringFromDropDown(JComboBox comboBox) {
+        if (comboBox.getSelectedIndex() == 0) {
             return null;
         }
 
         return (String) comboBox.getSelectedItem();
+
     }
 
-    private String stringFromTextfield(JTextField textField)
-    {
-        if(textField.getText().equals(""))
-        {
+    private String stringFromTextfield(JTextField textField) {
+        if (textField.getText().equals("")) {
             return null;
         }
 
@@ -375,17 +365,13 @@ public class AddCar extends javax.swing.JPanel {
     /**
      * Clear all the text fields and combo boxes
      */
-    private void clearFields()
-    {
-        for(JTextField panelTextField : this.textFields)
-        {
+    private void clearFields() {
+        for (JTextField panelTextField : this.textFields) {
             panelTextField.setText("");
         }
 
-        for(JComboBox panelComboBox : this.comboBoxes)
-        {
-            if(panelComboBox == this.jcbModel)
-            {
+        for (JComboBox panelComboBox : this.comboBoxes) {
+            if (panelComboBox == this.jcbModel) {
                 this.jcbModel.addItem("-Model-");
             }
 
@@ -393,11 +379,10 @@ public class AddCar extends javax.swing.JPanel {
         }
     }
 
-    private void jbAddActionPerformed(java.awt.event.ActionEvent evt)
-    {            
+    private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {
         ArrayList<String> errors = new ArrayList<>();
         int result;
-        
+
         String make = FormHandler.stringFromDropDown(this.jcbMake);
         if (make == null) {
             errors.add("Invalid Make");
@@ -406,48 +391,47 @@ public class AddCar extends javax.swing.JPanel {
         String color = FormHandler.stringFromDropDown(jcbColor);
         String model = (String) this.jcbModel.getSelectedItem();
 
-        if(model.equals("-Model-"))
-        {
+        if (model.equals("-Model-")) {
             model = null;
         }
         String engineLiters = FormHandler.stringFromTextfield(jtfEngine);
         if (engineLiters != null) {
             try {
                 result = Integer.parseInt(engineLiters);
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 errors.add("Invalid Engine Displacement");
             }
         }
-        
+
         String cylinders = FormHandler.stringFromTextfield(jtfCylinders);
         if (cylinders != null) {
             try {
                 result = Integer.parseInt(cylinders);
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 errors.add("Invalid Cylinders");
             }
         }
-        
+
         String year = FormHandler.stringFromTextfield(jtfYear);
         if (year != null) {
             try {
                 result = Integer.parseInt(year);
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 errors.add("Invalid Year");
             }
         }
-        
+
         String driveTrain = FormHandler.stringFromDropDown(this.jcbDrivetrain);
         String gas = FormHandler.stringFromDropDown(this.jcbGasType);
         String mileage = FormHandler.stringFromTextfield(jtfMileage);
         if (mileage != null) {
             try {
                 result = Integer.parseInt(mileage);
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 errors.add("Invalid Mileage");
             }
         }
-        
+
         String bodyType = FormHandler.stringFromDropDown(this.jcbBodyType);
         String vehicleType = FormHandler.stringFromDropDown(this.jcbVehicleType);
         String vin = FormHandler.stringFromTextfield(jtfVIN);
@@ -466,10 +450,10 @@ public class AddCar extends javax.swing.JPanel {
             }
             String message = builder.toString();
             JOptionPane.showMessageDialog(this,
-                message,
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-                return;
+                    message,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
@@ -492,14 +476,14 @@ public class AddCar extends javax.swing.JPanel {
         Database database = new Database();
         database.insertCar(stringFields, intFields);
 
-        String sqlStatement = String.format("select * from Cars where Vin = '%s'", vin);
+        String sqlStatement = String.format("select * from Car where Vin = '%s'", vin);
         Car insertedCar = database.carsFromResults(database.executeQuery(sqlStatement))[0];
 
         database.recordCarHistory(insertedCar, "New");
 
         this.clearFields();
 
-    }                                     
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

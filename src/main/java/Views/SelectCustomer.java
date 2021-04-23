@@ -38,8 +38,8 @@ public class SelectCustomer extends javax.swing.JPanel {
     public void addLatestCustomer() {
         Database database = new Database();
 
-        Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM CarSales.Customers where "
-                + "Customer_ID = (select max(Customer_ID) from Customers)"))[0];
+        Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM Customer WHERE "
+                + "Customer_ID = (select max(Customer_ID) from Customer)"))[0];
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         this.addCustomerToTable(tableModel, latestCustomer);
@@ -48,7 +48,7 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void updateTable() {
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        //Delete all rows 
+        //Delete all rows
         tableModel.setRowCount(0);
 
         for (Customer customer : customers) {
@@ -144,7 +144,6 @@ public class SelectCustomer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddCustomerActionPerformed
-        // TODO add your handling code here:
         JFrame frame = new JFrame();
         AddCustomer add = new AddCustomer(this);
         add.setVisible(true);
@@ -154,8 +153,6 @@ public class SelectCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_jbAddCustomerActionPerformed
 
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
-        // TODO add your handling code here:
-
         if (this.jTable1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this,
                     "You must select a customer to continue",
@@ -170,7 +167,6 @@ public class SelectCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_jbSelectActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        // TODO add your handling code here:
         updateTable();
     }//GEN-LAST:event_formFocusGained
 

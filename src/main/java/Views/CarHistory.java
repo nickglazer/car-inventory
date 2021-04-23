@@ -12,6 +12,7 @@ public class CarHistory extends javax.swing.JPanel {
 
     /**
      * Creates new form CarHistory
+     *
      * @param viewCar
      * @param carHistory
      */
@@ -33,7 +34,7 @@ public class CarHistory extends javax.swing.JPanel {
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
-        //Delete all rows 
+        //Delete all rows
         tableModel.setRowCount(0);
 
         for (History history : carHistory) {
@@ -42,7 +43,6 @@ public class CarHistory extends javax.swing.JPanel {
         }
 
         this.jTable1.setModel(tableModel);
-
     }
 
     /**

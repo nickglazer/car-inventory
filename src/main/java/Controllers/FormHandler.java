@@ -5,7 +5,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by recheejozil on 3/19/15.
+ *
+ * @author recheejozil
  */
 public class FormHandler {
 
@@ -22,7 +23,7 @@ public class FormHandler {
             return null;
         }
 
-        return (String) comboBox.getSelectedItem();
+        return comboBox.getSelectedItem().toString();
 
     }
 
