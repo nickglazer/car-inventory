@@ -264,13 +264,13 @@ public class Search extends javax.swing.JPanel {
 
         Map stringFields = new HashMap<String, String>();
         Map intFields = new HashMap<String, String>();
-        stringFields.put("Make", make);
-        stringFields.put("Model", model);
-        stringFields.put("Transmission", transmission);
-        stringFields.put("Body_Type", bodyType);
-        stringFields.put("Vehicle_Type", vehicleType);
-        stringFields.put("Color", color);
-        intFields.put("Year", year);
+        stringFields.put("make", make);
+        stringFields.put("model", model);
+        stringFields.put("transmission", transmission);
+        stringFields.put("bodyType", bodyType);
+        stringFields.put("vehicleType", vehicleType);
+        stringFields.put("color", color);
+        intFields.put("year", year);
 
         Database database = new Database();
         this.currentCars = database.searchForCars(stringFields, intFields);
@@ -419,7 +419,6 @@ public class Search extends javax.swing.JPanel {
 
     private void jLabel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel1FocusGained
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jLabel1FocusGained
 
 

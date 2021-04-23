@@ -187,20 +187,20 @@ public class Database {
     public Car parseCarFromResult(ResultSet results) {
         try {
             Car resultCar = new Car();
-            resultCar.setCarID(results.getInt("CarID"));
-            resultCar.setVin(results.getString("Vin"));
-            resultCar.setMake(results.getString("Make"));
-            resultCar.setModel(results.getString("Model"));
-            resultCar.setColor(results.getString("Color"));
-            resultCar.setYear(results.getInt("Year"));
-            resultCar.setMileage(results.getInt("Mileage"));
-            resultCar.setEngine(results.getInt("Engine_Liters"));
-            resultCar.setCylinders(results.getInt("Engine_Cylinders"));
-            resultCar.setVehicleType(results.getString("Vehicle_Type"));
-            resultCar.setTransmission(results.getString("Transmission"));
-            resultCar.setDrivetrain(results.getString("Drivetrain"));
-            resultCar.setGas(results.getString("Gas"));
-            resultCar.setStatus(results.getString("Status"));
+            resultCar.setCarID(results.getInt("carID"));
+            resultCar.setVin(results.getString("vin"));
+            resultCar.setMake(results.getString("make"));
+            resultCar.setModel(results.getString("model"));
+            resultCar.setColor(results.getString("color"));
+            resultCar.setYear(results.getInt("year"));
+            resultCar.setMileage(results.getInt("mileage"));
+            resultCar.setEngine(results.getInt("engineDisplacementLiters"));
+            resultCar.setCylinders(results.getInt("engineCylinders"));
+            resultCar.setVehicleType(results.getString("vehicleType"));
+            resultCar.setTransmission(results.getString("transmission"));
+            resultCar.setDrivetrain(results.getString("drivetrain"));
+            resultCar.setGas(results.getString("gas"));
+            resultCar.setStatus(results.getString("status"));
 
             return resultCar;
         } catch (SQLException e) {
@@ -340,14 +340,14 @@ public class Database {
     }
 
     public int deleteCars(List<Car> carsToDelete) {
-        String deleteStatement = "DELETE FROM Car WHERE CarID = ";
+        String deleteStatement = "DELETE FROM Car WHERE carID = ";
 
         int i = 0;
         for (Car currentCar : carsToDelete) {
             if (i == 0) {
                 deleteStatement += Integer.toString(currentCar.getCarID());
             } else {
-                deleteStatement += String.format(" OR CarID = %d", currentCar.getCarID());
+                deleteStatement += String.format(" OR carID = %d", currentCar.getCarID());
             }
             i++;
         }
@@ -362,7 +362,7 @@ public class Database {
      * @return True if insert was successful. False otherwise
      */
     public boolean addCustomer(Customer customerToInsert) {
-        String sqlStatement = "INSERT INTO Customer (First_Name, Last_Name, Email, Phone) ";
+        String sqlStatement = "INSERT INTO Customer (firstName, lastName, email, phone) ";
 
         sqlStatement += String.format("VALUES ('%s', '%s', '%s', '%s')", customerToInsert.getFirstName(), customerToInsert.getLastName(),
                 customerToInsert.getEmail(), customerToInsert.getPhoneNumber());
@@ -399,11 +399,11 @@ public class Database {
 
             Customer resultCustomer = new Customer();
 
-            resultCustomer.setFirstName(result.getString("First_Name"));
-            resultCustomer.setLastName(result.getString("Last_Name"));
-            resultCustomer.setEmail(result.getString("Email"));
-            resultCustomer.setPhoneNumber(result.getString("Phone"));
-            resultCustomer.setID(result.getInt("Customer_ID"));
+            resultCustomer.setFirstName(result.getString("firstName"));
+            resultCustomer.setLastName(result.getString("lastName"));
+            resultCustomer.setEmail(result.getString("email"));
+            resultCustomer.setPhoneNumber(result.getString("phone"));
+            resultCustomer.setID(result.getInt("customerID"));
 
             return resultCustomer;
         } catch (SQLException e) {
@@ -427,8 +427,8 @@ public class Database {
     }
 
     public boolean insertOrder(Order order, int carID, int customerID) {
-        String sqlStatement = "INSERT INTO CustomerOrder (Customer_ID, Car_ID, Order_Date, Price, Down_Payment, ";
-        sqlStatement += "Bank, Loan_Number, Loan_Months) VALUES ";
+        String sqlStatement = "INSERT INTO CustomerOrder (customerID, carID, orderDate, price, downPayment, ";
+        sqlStatement += "bank, loanNumber, loanDurationMonths) VALUES ";
         sqlStatement += String.format("(%d, %d, '%s', %f, %d, '%s', %d, %d)", customerID, carID,
                 Database.currentDate(), order.getSalesPrice(), order.getDownPayment(), order.getBank(),
                 order.getLoanNumber(), order.getLoanMonths());
@@ -443,7 +443,7 @@ public class Database {
     }
 
     public void setCarStatus(Car car, String status) {
-        String sqlStatement = String.format("UPDATE Car SET Status = '%s' WHERE CarID = '%s'", status, car.getCarID());
+        String sqlStatement = String.format("UPDATE Car SET Status = '%s' WHERE carID = '%s'", status, car.getCarID());
 
         this.executeUpdate(sqlStatement);
     }
@@ -458,7 +458,7 @@ public class Database {
     public boolean recordCarHistory(Car car, String description) {
         String currentDate = Database.currentDate();
 
-        String sqlStatement = "INSERT INTO CarHistory (Car_ID, Action_Date, Description) VALUES ";
+        String sqlStatement = "INSERT INTO CarHistory (carID, actionDate, description) VALUES ";
 
         sqlStatement += String.format("(%d, '%s', '%s')", car.getCarID(), currentDate, description);
 
@@ -472,7 +472,7 @@ public class Database {
     }
 
     public History[] historyForCar(Car car) {
-        String sqlStatement = String.format("SELECT * FROM CarHistory WHERE Car_ID = %d", car.getCarID());
+        String sqlStatement = String.format("SELECT * FROM CarHistory WHERE carID = %d", car.getCarID());
 
         ResultSet results = this.executeQuery(sqlStatement);
 
@@ -482,10 +482,10 @@ public class Database {
             while (results.next()) {
                 History newHistory = new History();
 
-                newHistory.setHistoryID(results.getInt("History_ID"));
-                newHistory.setCarID(results.getInt("Car_ID"));
-                newHistory.setActionDate(results.getDate("Action_Date"));
-                newHistory.setDescription(results.getString("Description"));
+                newHistory.setHistoryID(results.getInt("historyID"));
+                newHistory.setCarID(results.getInt("carID"));
+                newHistory.setActionDate(results.getDate("actionDate"));
+                newHistory.setDescription(results.getString("description"));
 
                 carHistory.add(newHistory);
             }
@@ -500,13 +500,13 @@ public class Database {
     }
 
     public Order[] ordersByName(String firstName, String lastName) {
-        String sqlStatement = "SELECT * FROM CustomerOrder INNER JOIN Car ON Car.CarID = CustomerOrder.Car_ID "
-                + "INNER JOIN Customer ON Customer.Customer_ID = CustomerOrder.Customer_ID ";
+        String sqlStatement = "SELECT * FROM CustomerOrder INNER JOIN Car ON Car.carID = CustomerOrder.carID "
+                + "INNER JOIN Customer ON Customer.customerID = CustomerOrder.customerID ";
         if (!"".equals(firstName)) {
-            sqlStatement += String.format("AND Customer.First_Name = '%s'", firstName);
+            sqlStatement += String.format("AND Customer.firstName = '%s'", firstName);
         }
         if (!"".equals(lastName)) {
-            sqlStatement += String.format(" AND Customer.Last_Name = '%s'", lastName);
+            sqlStatement += String.format(" AND Customer.lastName = '%s'", lastName);
         }
 
         ResultSet results = this.executeQuery(sqlStatement);
@@ -521,15 +521,15 @@ public class Database {
                 Order newOrder = new Order();
                 newOrder.orderCar = orderCar;
                 newOrder.customer = customer;
-                newOrder.setOrderID(results.getInt("Order_ID"));
-                newOrder.setCustomerID(results.getInt("Customer_ID"));
+                newOrder.setOrderID(results.getInt("orderID"));
+                newOrder.setCustomerID(results.getInt("customerID"));
                 newOrder.setCarID(orderCar.getCarID());
-                newOrder.setOrderDate(results.getDate("Order_Date"));
-                newOrder.setDownPayment(results.getInt("Down_Payment"));
-                newOrder.setSalesPrice(results.getFloat("Price"));
-                newOrder.setBank(results.getString("Bank"));
-                newOrder.setLoanNumber(results.getInt("Loan_Number"));
-                newOrder.setLoanMonths(results.getInt("Loan_Months"));
+                newOrder.setOrderDate(results.getDate("orderDate"));
+                newOrder.setDownPayment(results.getInt("downPayment"));
+                newOrder.setSalesPrice(results.getFloat("price"));
+                newOrder.setBank(results.getString("bank"));
+                newOrder.setLoanNumber(results.getInt("loanNumber"));
+                newOrder.setLoanMonths(results.getInt("loanDurationMonths"));
 
                 orders.add(newOrder);
             }

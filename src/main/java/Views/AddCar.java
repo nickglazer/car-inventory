@@ -132,7 +132,7 @@ public class AddCar extends javax.swing.JPanel {
 
         jlBodyType.setText("Body Type");
 
-        jcbVehicleType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Coupe", "Sedan", "Van", "Truck", " " }));
+        jcbVehicleType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Coupe", "Sedan", "Van", "Truck" }));
 
         jlMileage.setText("Mileage");
 
@@ -198,11 +198,11 @@ public class AddCar extends javax.swing.JPanel {
                                     .addComponent(jlDrivetrain))
                                 .addGap(24, 24, 24))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jcbModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlTransmission)
                                     .addComponent(jlEngine))))
@@ -224,7 +224,6 @@ public class AddCar extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jtfVIN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlColor)
                     .addGroup(layout.createSequentialGroup()
@@ -240,7 +239,7 @@ public class AddCar extends javax.swing.JPanel {
                             .addComponent(jcbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfCylinders, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcbGasType, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,25 +452,26 @@ public class AddCar extends javax.swing.JPanel {
         Map intFields = new HashMap<String, String>();
         Map stringFields = new HashMap<String, String>();
 
-        stringFields.put("Vin", vin);
-        stringFields.put("Make", make);
-        stringFields.put("Transmission", transmission);
-        stringFields.put("Model", model);
-        stringFields.put("Color", color);
-        intFields.put("Year", year);
-        intFields.put("Mileage", mileage);
-        intFields.put("Engine_Liters", engineLiters);
-        intFields.put("Engine_Cylinders", cylinders);
-        stringFields.put("Body_Type", bodyType);
-        stringFields.put("Vehicle_Type", vehicleType);
-        stringFields.put("Drivetrain", driveTrain);
-        stringFields.put("Gas", gas);
-        stringFields.put("Status", "New");
+        stringFields.put("vin", vin);
+        stringFields.put("make", make);
+        stringFields.put("transmission", transmission);
+        stringFields.put("model", model);
+        stringFields.put("color", color);
+        intFields.put("year", year);
+        intFields.put("mileage", mileage);
+        intFields.put("engineDisplacementLiters", engineLiters);
+        intFields.put("engineCylinders", cylinders);
+        stringFields.put("bodyType", bodyType);
+        stringFields.put("vehicleType", vehicleType);
+        stringFields.put("drivetrain", driveTrain);
+        stringFields.put("gas", gas);
+        stringFields.put("status", "New");
 
         Database database = new Database();
         database.insertCar(stringFields, intFields);
 
-        String sqlStatement = String.format("select * from Car where Vin = '%s'", vin);
+        // TODO move out of view
+        String sqlStatement = String.format("SELECT * FROM Car WHERE vin = '%s'", vin);
         Car insertedCar = database.carsFromResults(database.executeQuery(sqlStatement))[0];
 
         database.recordCarHistory(insertedCar, "New");

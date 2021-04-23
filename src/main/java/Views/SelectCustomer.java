@@ -39,7 +39,7 @@ public class SelectCustomer extends javax.swing.JPanel {
         Database database = new Database();
 
         Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM Customer WHERE "
-                + "Customer_ID = (select max(Customer_ID) from Customer)"))[0];
+                + "customerID = (select max(customerID) from Customer)"))[0];
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         this.addCustomerToTable(tableModel, latestCustomer);

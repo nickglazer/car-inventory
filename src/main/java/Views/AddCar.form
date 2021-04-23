@@ -44,12 +44,12 @@
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jcbMake" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcbModel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="23" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jlTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlEngine" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -80,7 +80,6 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jlColor" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -101,7 +100,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="138" max="32767" attributes="0"/>
+              <EmptySpace pref="132" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -297,12 +296,11 @@
     <Component class="javax.swing.JComboBox" name="jcbVehicleType">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="4">
             <StringItem index="0" value="Coupe"/>
             <StringItem index="1" value="Sedan"/>
             <StringItem index="2" value="Van"/>
             <StringItem index="3" value="Truck"/>
-            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
       </Properties>

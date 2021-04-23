@@ -2,50 +2,51 @@ CREATE DATABASE IF NOT EXISTS car_inventory;
 USE car_inventory;
 
 CREATE TABLE IF NOT EXISTS Car (
-    CarID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    Vin VARCHAR(17),
-    Make VARCHAR(20),
-    Model VARCHAR(20),
-    Color VARCHAR(20),
-    Status VARCHAR(20),
-    Year int(4),
-    Mileage int,
-    Engine_Liters int(2),
-    Engine_Cylinders int(2),
-    Vehicle_Type varchar(20),
-    Body_Type varchar(20),
-    Transmission varchar(20),
-    Drivetrain varchar(20),
-    Gas varchar(20),
-    PRIMARY KEY (CarID)
+    carID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    vin VARCHAR(17),
+    make VARCHAR(20),
+    model VARCHAR(20),
+    color VARCHAR(20),
+    status VARCHAR(20),
+    year int(4),
+    mileage int,
+    engineDisplacementLiters int(2),
+    engineCylinders int(2),
+    vehicleType varchar(20),
+    bodyType varchar(20),
+    transmission varchar(20),
+    drivetrain varchar(20),
+    gas varchar(20),
+    PRIMARY KEY (carID),
+    UNIQUE (vin)
 );
 
 CREATE TABLE IF NOT EXISTS Customer (
-    Customer_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    First_Name varchar(20),
-    Last_Name varchar(20),
-    Email varchar(20),
-    Phone varchar(20),
-    PRIMARY KEY (Customer_ID)
+    customerID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    firstName varchar(20),
+    lastName varchar(20),
+    email varchar(20),
+    phone varchar(20),
+    PRIMARY KEY (customerID)
 );
 
 CREATE TABLE IF NOT EXISTS CustomerOrder (
-    Order_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    Customer_ID bigint(20) unsigned NOT NULL,
-    Car_ID bigint(20) unsigned NOT NULL,
-    Price float,
-    Down_Payment int,
-    Bank varchar(20),
-    Loan_Number bigint(20),
-    Loan_Months int,
-    Order_Date Date,
-    PRIMARY KEY (Order_ID)
+    orderID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    customerID bigint(20) unsigned NOT NULL,
+    carID bigint(20) unsigned NOT NULL,
+    price float,
+    downPayment int,
+    bank varchar(20),
+    loanNumber bigint(20),
+    loanDurationMonths int,
+    orderDate Date,
+    PRIMARY KEY (orderID)
 );
 
 CREATE TABLE IF NOT EXISTS CarHistory (
-    History_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    Car_ID bigint(20) unsigned NOT NULL,
-    Action_Date Date,
-    Description varchar(20),
-    PRIMARY KEY (HISTORY_ID)
+    historyID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    carID bigint(20) unsigned NOT NULL,
+    actionDate Date,
+    description varchar(20),
+    PRIMARY KEY (historyID)
 );

@@ -25,22 +25,24 @@ public class Car {
     public static Map<String, String[]> modelDictionary() {
         Map models = new HashMap<String, String[]>();
 
-        String[] acuraModels = {"ILX", "MDX", "RDX", "RLX", "TLX", "Legend", "Integra", "ZDX"};
-        Arrays.sort(acuraModels);
+        String[] acuraModels
+                = { "ILX", "Integra", "Legend", "MDX", "RDX", "RLX", "TLX", "ZDX" };
         models.put("Acura", acuraModels);
 
-        String[] chevroletModels = {"Malibu", "Caprice", "Impala", "SS", "Volt", "Corvette", "Camaro", "Tahoe", "Silverado"};
-        Arrays.sort(chevroletModels);
+        String[] chevroletModels
+                = { "Camaro", "Caprice", "Corvette", "Impala", "Malibu", "Silverado", "SS", "Tahoe", "Volt" };
         models.put("Chevrolet", chevroletModels);
 
-        String[] dodgeModels = {"Grand Caravan", "Challenger", "Charger", "Dart", "Durango", "Journey", "Viper"};
-        Arrays.sort(dodgeModels);
+        String[] dodgeModels 
+                = { "Challenger", "Charger", "Dart", "Durango", "Grand Caravan", "Journey", "Viper" };
         models.put("Dodge", dodgeModels);
 
-        String[] hondaModels = {"Accord", "Civic", "Civic Coupe", "CR-V", "Odyssey", "Pilot"};
+        String[] hondaModels 
+                = { "Accord", "Civic", "CR-V", "Odyssey", "Pilot" };
         models.put("Honda", hondaModels);
 
-        String[] toyotaModels = {"Avalon", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV4", "Sienna", "Tacoma"};
+        String[] toyotaModels 
+                = { "Avalon", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV4", "Sienna", "Tacoma" };
         models.put("Toyota", toyotaModels);
 
         return models;
