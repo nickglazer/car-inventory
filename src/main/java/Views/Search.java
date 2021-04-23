@@ -3,11 +3,10 @@ package main.java.Views;
 import main.java.Controllers.Database;
 import main.java.Controllers.FormHandler;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import main.java.Models.Car;
 import main.java.Models.History;
+
+import java.util.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -314,10 +313,9 @@ public class Search extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbBodyTypeActionPerformed
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
-
         int[] selectedRows = this.jTable1.getSelectedRows();
-
         int totalRows = this.jTable1.getRowCount();
+        List<Car> carsToDelete = new ArrayList<>();
 
         if (selectedRows.length == 0) {
             /**
@@ -327,31 +325,16 @@ public class Search extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
-
-        String deleteStatement = "delete from Car where CarID = ";
-
-        int numDeletedRows = 0;
         for (int i = totalRows - 1; i > -1; i--) {
             if (this.jTable1.isRowSelected(i)) {
                 Car selectedCar = this.currentCars[i];
-
-                if (numDeletedRows == 0) {
-                    deleteStatement += Integer.toString(selectedCar.getCarID());
-                } else {
-                    deleteStatement += String.format(" or CarID = %d", selectedCar.getCarID());
-                }
-
-                tableModel.removeRow(i);
-                numDeletedRows++;
+                carsToDelete.add(selectedCar);
             }
         }
 
         Database database = new Database();
-
-        int affectedRows = database.executeUpdate(deleteStatement);
-
-        this.jTable1.setModel(tableModel);
+        database.deleteCars(carsToDelete);
+        this.showAllCars();
     }//GEN-LAST:event_jbDeleteActionPerformed
 
     private void jcbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelActionPerformed

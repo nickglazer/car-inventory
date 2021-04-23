@@ -327,17 +327,17 @@ public class Database {
         return this.carsFromResults(this.executeQuery(sqlStatement));
     }
 
-    private int deleteCars(Car[] carsToDelete) {
+    public int deleteCars(List<Car> carsToDelete) {
         String deleteStatement = "DELETE FROM Car WHERE CarID = ";
 
-        for (int i = 0; i < carsToDelete.length; i++) {
-            Car currentCar = carsToDelete[i];
-
+        int i = 0;
+        for (Car currentCar : carsToDelete) {
             if (i == 0) {
                 deleteStatement += Integer.toString(currentCar.getCarID());
             } else {
-                deleteStatement += String.format(" AND CarID = %d", currentCar.getCarID());
+                deleteStatement += String.format(" OR CarID = %d", currentCar.getCarID());
             }
+            i++;
         }
 
         return this.executeUpdate(deleteStatement);
