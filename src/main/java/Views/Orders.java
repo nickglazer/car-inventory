@@ -58,12 +58,6 @@ public class Orders extends javax.swing.JPanel {
 
         jlLoanDuration.setText("Loan Duration");
 
-        jtfLoanNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfLoanNumberActionPerformed(evt);
-            }
-        });
-
         jbSave.setText("Submit");
         jbSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,20 +84,20 @@ public class Orders extends javax.swing.JPanel {
                     .addComponent(jbSave)
                     .addComponent(jbSelectCustomer)
                     .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlDownPayment)
-                                    .addComponent(jlBank)
-                                    .addComponent(jlLoanNumber)
-                                    .addComponent(jlLoanDuration)
-                                    .addComponent(jlDownPayment1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlDownPayment)
+                            .addComponent(jlBank)
+                            .addComponent(jlLoanNumber)
+                            .addComponent(jlLoanDuration)
+                            .addComponent(jlDownPayment1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtfLoanDuration, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfLoanNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfBank, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfDownPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(570, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,10 +141,6 @@ public class Orders extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_jbSelectCustomerActionPerformed
 
-    private void jtfLoanNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLoanNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfLoanNumberActionPerformed
-
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         if (selectedCustomer != null) {
             float price = Float.parseFloat(jtfSalePrice.getText());
@@ -179,7 +169,6 @@ public class Orders extends javax.swing.JPanel {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jbSaveActionPerformed
 
 

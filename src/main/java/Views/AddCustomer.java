@@ -42,24 +42,6 @@ public class AddCustomer extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        jtfLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfLastNameActionPerformed(evt);
-            }
-        });
-
-        jtfEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfEmailActionPerformed(evt);
-            }
-        });
-
-        jtfPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfPhoneActionPerformed(evt);
-            }
-        });
-
         jbSubmit.setText("Submit");
         jbSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,10 +73,10 @@ public class AddCustomer extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtfPhone, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                        .addComponent(jtfPhone, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfFirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
                 .addContainerGap(304, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,18 +105,6 @@ public class AddCustomer extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfLastNameActionPerformed
-
-    private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfEmailActionPerformed
-
-    private void jtfPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfPhoneActionPerformed
 
     private void jbSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSubmitActionPerformed
         Customer newCustomer = new Customer();

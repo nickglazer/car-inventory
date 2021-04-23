@@ -108,9 +108,6 @@
     <Component class="javax.swing.JTextField" name="jtfBank">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfLoanNumber">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfLoanNumberActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfLoanDuration">
     </Component>

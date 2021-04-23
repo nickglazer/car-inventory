@@ -90,11 +90,6 @@ public class CarHistory extends javax.swing.JPanel {
         jlMileage.setText("Mileage");
 
         jtfMileage.setEditable(false);
-        jtfMileage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfMileageActionPerformed(evt);
-            }
-        });
 
         jlMake.setText("Make");
 
@@ -103,11 +98,6 @@ public class CarHistory extends javax.swing.JPanel {
         jlYear.setText("Year");
 
         jtfYear.setEditable(false);
-        jtfYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfYearActionPerformed(evt);
-            }
-        });
 
         jlTransmission.setText("Transmission");
 
@@ -118,11 +108,6 @@ public class CarHistory extends javax.swing.JPanel {
         jlVIN.setText("VIN #");
 
         jtfVIN.setEditable(false);
-        jtfVIN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfVINActionPerformed(evt);
-            }
-        });
 
         jtfEngine.setEditable(false);
 
@@ -131,11 +116,6 @@ public class CarHistory extends javax.swing.JPanel {
         jlCylinders.setText("Cylinders");
 
         jtfCylinders.setEditable(false);
-        jtfCylinders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCylindersActionPerformed(evt);
-            }
-        });
 
         jlGas.setText("Gas");
 
@@ -144,18 +124,8 @@ public class CarHistory extends javax.swing.JPanel {
         jlVehicleType.setText("Vehicle Type");
 
         jtfMake.setEditable(false);
-        jtfMake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfMakeActionPerformed(evt);
-            }
-        });
 
         jtfTransmission.setEditable(false);
-        jtfTransmission.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTransmissionActionPerformed(evt);
-            }
-        });
 
         jtfModel.setEditable(false);
 
@@ -319,30 +289,6 @@ public class CarHistory extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfCylindersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCylindersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCylindersActionPerformed
-
-    private void jtfVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfVINActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfVINActionPerformed
-
-    private void jtfMileageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfMileageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfMileageActionPerformed
-
-    private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfYearActionPerformed
-
-    private void jtfMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfMakeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfMakeActionPerformed
-
-    private void jtfTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTransmissionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTransmissionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

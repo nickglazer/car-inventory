@@ -96,12 +96,6 @@ public class AddCar extends javax.swing.JPanel {
 
         jlYear.setText("Year");
 
-        jtfYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfYearActionPerformed(evt);
-            }
-        });
-
         jcbModel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Model-" }));
 
         jlTransmission.setText("Transmission");
@@ -115,12 +109,6 @@ public class AddCar extends javax.swing.JPanel {
         jlColor.setText("Color");
 
         jlCylinders.setText("Cylinders");
-
-        jtfCylinders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCylindersActionPerformed(evt);
-            }
-        });
 
         jlGas.setText("Gas");
 
@@ -136,12 +124,6 @@ public class AddCar extends javax.swing.JPanel {
 
         jlMileage.setText("Mileage");
 
-        jtfMileage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfMileageActionPerformed(evt);
-            }
-        });
-
         jcbMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Make-", "Acura", "Chevrolet", "Dodge", "Honda", "Toyota" }));
         jcbMake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,11 +136,6 @@ public class AddCar extends javax.swing.JPanel {
         jcbColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Color-", "Black", "Blue", "Brown", "Green", "Orange", "Red", "White", "Yellow" }));
 
         jcbBodyType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Body-", "2 Door", "4 Door" }));
-        jcbBodyType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbBodyTypeActionPerformed(evt);
-            }
-        });
 
         jbAdd.setText("Add");
         jbAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -168,12 +145,6 @@ public class AddCar extends javax.swing.JPanel {
         });
 
         jlVIN.setText("VIN #");
-
-        jtfVIN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfVINActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -305,30 +276,8 @@ public class AddCar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfYearActionPerformed
-
-    private void jcbBodyTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBodyTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbBodyTypeActionPerformed
-
-    private void jtfMileageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfMileageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfMileageActionPerformed
-
-    private void jtfCylindersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCylindersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCylindersActionPerformed
-
-    private void jtfVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfVINActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfVINActionPerformed
-
     private void jcbMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMakeActionPerformed
-        // TODO add your handling code here:
-
-        this.jcbModel.removeAllItems();
+                this.jcbModel.removeAllItems();
 
         if (this.jcbMake.getSelectedIndex() != 0) {
             String selectedMake = (String) this.jcbMake.getSelectedItem();
@@ -336,7 +285,6 @@ public class AddCar extends javax.swing.JPanel {
                 this.jcbModel.addItem(model);
             }
         }
-
     }//GEN-LAST:event_jcbMakeActionPerformed
 
     private String stringFromDropDown(JComboBox comboBox) {

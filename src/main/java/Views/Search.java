@@ -22,13 +22,9 @@ public class Search extends javax.swing.JPanel {
     private final Map<String, String[]> carDictionary;
     private boolean makeIsEditingModel;
 
-    /**
-     * Creates new form Search
-     */
     public Search() {
         initComponents();
         this.makeIsEditingModel = false;
-
         this.carDictionary = Car.modelDictionary();
     }
 
@@ -43,7 +39,6 @@ public class Search extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jtfYear = new javax.swing.JTextField();
         jcbMake = new javax.swing.JComboBox();
         jcbModel = new javax.swing.JComboBox();
@@ -55,6 +50,7 @@ public class Search extends javax.swing.JPanel {
         jbDelete = new javax.swing.JButton();
         jlYear = new javax.swing.JLabel();
         jbView = new javax.swing.JButton();
+        jShowPurchasedCheckBox = new javax.swing.JCheckBox();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,18 +63,7 @@ public class Search extends javax.swing.JPanel {
                 "Make", "Model", "Year", "Mileage"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
-
-        jLabel1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jLabel1FocusGained(evt);
-            }
-        });
 
         jtfYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +136,13 @@ public class Search extends javax.swing.JPanel {
             }
         });
 
+        jShowPurchasedCheckBox.setText("Show Purchased Vehicles");
+        jShowPurchasedCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jShowPurchasedCheckBoxStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,27 +161,27 @@ public class Search extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jlYear)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbDelete)
-                            .addComponent(jbBuy)
-                            .addComponent(jbView))))
-                .addContainerGap())
+                        .addComponent(jShowPurchasedCheckBox)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jShowPurchasedCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbView)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,8 +211,12 @@ public class Search extends javax.swing.JPanel {
 
     public void showAllCars() {
         Database database = new Database();
+        if (this.jShowPurchasedCheckBox.isSelected()) {
+            this.currentCars = database.getAllCars();
+        } else {
+            this.currentCars = database.allNewCars();
+        }
 
-        this.currentCars = database.allNewCars();
         this.performSearch();
     }
 
@@ -341,12 +337,10 @@ public class Search extends javax.swing.JPanel {
         if (!this.makeIsEditingModel) {
             this.performFilter();
         }
-
     }//GEN-LAST:event_jcbModelActionPerformed
 
     private void jtfYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfYearActionPerformed
         try {
-            int result = Integer.parseInt(jtfYear.getText());
             this.performFilter();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
@@ -354,22 +348,17 @@ public class Search extends javax.swing.JPanel {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_jtfYearActionPerformed
 
     private void jcbTransmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTransmissionActionPerformed
-        // TODO add your handling code here:
         this.performFilter();
     }//GEN-LAST:event_jcbTransmissionActionPerformed
 
     private void jcbCarTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCarTypeActionPerformed
-        // TODO add your handling code here:
         this.performFilter();
     }//GEN-LAST:event_jcbCarTypeActionPerformed
 
     private void jcbColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbColorActionPerformed
-        // TODO add your handling code here:
         this.performFilter();
     }//GEN-LAST:event_jcbColorActionPerformed
 
@@ -392,10 +381,6 @@ public class Search extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_jbBuyActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void jbViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbViewActionPerformed
         int[] selectedRows = this.jTable1.getSelectedRows();
 
@@ -417,14 +402,13 @@ public class Search extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jbViewActionPerformed
 
-    private void jLabel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1FocusGained
-
+    private void jShowPurchasedCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jShowPurchasedCheckBoxStateChanged
+        this.showAllCars();
+    }//GEN-LAST:event_jShowPurchasedCheckBoxStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox jShowPurchasedCheckBox;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbBuy;
     private javax.swing.JButton jbDelete;

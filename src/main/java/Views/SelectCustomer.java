@@ -170,7 +170,6 @@ public class SelectCustomer extends javax.swing.JPanel {
         updateTable();
     }//GEN-LAST:event_formFocusGained
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
