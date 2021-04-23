@@ -24,70 +24,60 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlPurchaseInformation" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlMileage" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlVIN" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="jtfMileage" min="-2" pref="75" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtfYear" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="jtfVIN" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlMake" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlModel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jcbMake" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jtfYear" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="jtfMileage" min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jlEngine" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jcbTransmission" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jtfEngine" min="-2" pref="75" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jlBodyType" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlDrivetrain" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jcbModel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="jlVehicleInfomation" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlYear" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
-                              <Component id="jlBodyType" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jcbMake" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcbModel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jlTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlEngine" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jcbDrivetrain" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcbBodyType" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfEngine" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="jcbBodyType" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlPurchaseInformation" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlMileage" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlVehicleInfomation" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlYear" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jlVIN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jtfVIN" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -111,7 +101,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace pref="138" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -141,19 +131,19 @@
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jtfYear" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jlDrivetrain" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jcbDrivetrain" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jcbDrivetrain" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jcbBodyType" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jcbBodyType" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlBodyType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlMileage" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtfMileage" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlBodyType" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -188,7 +178,7 @@
               <Component id="jlPurchaseInformation" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
               <Component id="jbAdd" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -232,7 +222,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlEngine">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Engine"/>
+        <Property name="text" type="java.lang.String" value="Displacement"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlDrivetrain">

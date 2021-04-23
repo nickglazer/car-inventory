@@ -21,6 +21,7 @@ public class Order {
     private Date orderDate;
     public String readableDate;
     public Car orderCar;
+    public Customer customer;
 
     public Order() {
 

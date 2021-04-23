@@ -167,21 +167,7 @@ public class Database {
             while (results.next()) {
                 rowCount++;
 
-                Car resultCar = new Car();
-                resultCar.setCarID(results.getInt("CarID"));
-                resultCar.setVin(results.getString("Vin"));
-                resultCar.setMake(results.getString("Make"));
-                resultCar.setModel(results.getString("Model"));
-                resultCar.setColor(results.getString("Color"));
-                resultCar.setYear(results.getInt("Year"));
-                resultCar.setMileage(results.getInt("Mileage"));
-                resultCar.setEngine(results.getInt("Engine_Liters"));
-                resultCar.setCylinders(results.getInt("Engine_Cylinders"));
-                resultCar.setVehicleType(results.getString("Vehicle_Type"));
-                resultCar.setTransmission(results.getString("Transmission"));
-                resultCar.setDrivetrain(results.getString("Drivetrain"));
-                resultCar.setGas(results.getString("Gas"));
-                resultCar.setStatus(results.getString("Status"));
+                Car resultCar = parseCarFromResult(results);
 
                 cars.add(resultCar);
             }
@@ -192,6 +178,34 @@ public class Database {
 
             return cars.toArray(new Car[cars.size()]);
         } catch (SQLException e) {
+            System.out.println("Error querying results");
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public Car parseCarFromResult(ResultSet results) {
+        try {
+            Car resultCar = new Car();
+            resultCar.setCarID(results.getInt("CarID"));
+            resultCar.setVin(results.getString("Vin"));
+            resultCar.setMake(results.getString("Make"));
+            resultCar.setModel(results.getString("Model"));
+            resultCar.setColor(results.getString("Color"));
+            resultCar.setYear(results.getInt("Year"));
+            resultCar.setMileage(results.getInt("Mileage"));
+            resultCar.setEngine(results.getInt("Engine_Liters"));
+            resultCar.setCylinders(results.getInt("Engine_Cylinders"));
+            resultCar.setVehicleType(results.getString("Vehicle_Type"));
+            resultCar.setTransmission(results.getString("Transmission"));
+            resultCar.setDrivetrain(results.getString("Drivetrain"));
+            resultCar.setGas(results.getString("Gas"));
+            resultCar.setStatus(results.getString("Status"));
+
+            return resultCar;
+        } catch (SQLException e) {
+             System.out.println("Error querying results");
+            System.out.println(e);
             return null;
         }
     }
@@ -317,13 +331,11 @@ public class Database {
      */
     public Car[] getAllCars() {
         ResultSet result = this.executeQuery("SELECT * FROM Car");
-
         return this.carsFromResults(result);
     }
 
     public Car[] allNewCars() {
         String sqlStatement = "SELECT * FROM Car WHERE Status <> 'Purchased'";
-
         return this.carsFromResults(this.executeQuery(sqlStatement));
     }
 
@@ -369,14 +381,7 @@ public class Database {
 
         try {
             while (result.next()) {
-                Customer resultCustomer = new Customer();
-
-                resultCustomer.setFirstName(result.getString("First_Name"));
-                resultCustomer.setLastName(result.getString("Last_Name"));
-                resultCustomer.setEmail(result.getString("Email"));
-                resultCustomer.setPhoneNumber(result.getString("Phone"));
-                resultCustomer.setID(result.getInt("Customer_ID"));
-
+                Customer resultCustomer = parseCustomerFromResult(result);
                 customers.add(resultCustomer);
             }
 
@@ -385,6 +390,25 @@ public class Database {
             System.out.println("Error querying results");
             System.out.println(e);
 
+            return null;
+        }
+    }
+
+    public Customer parseCustomerFromResult(ResultSet result) {
+        try {
+
+            Customer resultCustomer = new Customer();
+
+            resultCustomer.setFirstName(result.getString("First_Name"));
+            resultCustomer.setLastName(result.getString("Last_Name"));
+            resultCustomer.setEmail(result.getString("Email"));
+            resultCustomer.setPhoneNumber(result.getString("Phone"));
+            resultCustomer.setID(result.getInt("Customer_ID"));
+
+            return resultCustomer;
+        } catch (SQLException e) {
+            System.out.println("Error querying results");
+            System.out.println(e);
             return null;
         }
     }
@@ -478,7 +502,12 @@ public class Database {
     public Order[] ordersByName(String firstName, String lastName) {
         String sqlStatement = "SELECT * FROM CustomerOrder INNER JOIN Car ON Car.CarID = CustomerOrder.Car_ID "
                 + "INNER JOIN Customer ON Customer.Customer_ID = CustomerOrder.Customer_ID ";
-        sqlStatement += String.format("AND Customer.First_Name = '%s' AND Customer.Last_Name = '%s'", firstName, lastName);
+        if (!"".equals(firstName)) {
+            sqlStatement += String.format("AND Customer.First_Name = '%s'", firstName);
+        }
+        if (!"".equals(lastName)) {
+            sqlStatement += String.format(" AND Customer.Last_Name = '%s'", lastName);
+        }
 
         ResultSet results = this.executeQuery(sqlStatement);
 
@@ -486,18 +515,18 @@ public class Database {
 
         try {
             while (results.next()) {
-                sqlStatement = String.format("SELECT * FROM Car WHERE CarID = %d", results.getInt("CarID"));
-
-                Car orderCar = this.carsFromResults(this.executeQuery(sqlStatement))[0];
+                Car orderCar = this.parseCarFromResult(results);
+                Customer customer = this.parseCustomerFromResult(results);
 
                 Order newOrder = new Order();
                 newOrder.orderCar = orderCar;
+                newOrder.customer = customer;
                 newOrder.setOrderID(results.getInt("Order_ID"));
                 newOrder.setCustomerID(results.getInt("Customer_ID"));
                 newOrder.setCarID(orderCar.getCarID());
                 newOrder.setOrderDate(results.getDate("Order_Date"));
-                // TODO where is price?
-                newOrder.setSalesPrice(results.getFloat("Down_Payment"));
+                newOrder.setDownPayment(results.getInt("Down_Payment"));
+                newOrder.setSalesPrice(results.getFloat("Price"));
                 newOrder.setBank(results.getString("Bank"));
                 newOrder.setLoanNumber(results.getInt("Loan_Number"));
                 newOrder.setLoanMonths(results.getInt("Loan_Months"));

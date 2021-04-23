@@ -18,9 +18,20 @@ public class OrderSearch extends javax.swing.JPanel {
         initComponents();
 
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
-
         //Delete all rows
         tableModel.setRowCount(0);
+                
+        Database database = new Database();
+        Order[] orders = database.ordersByName("", "");
+
+        for (Order order : orders) {
+            String[] orderModel = { order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
+                order.customer.getFirstName(), order.customer.getLastName(), Float.toString(order.getSalesPrice()), order.readableDate };
+
+            tableModel.addRow(orderModel);
+        }
+
+        this.jTable1.setModel(tableModel);
     }
 
     /**
@@ -156,12 +167,11 @@ public class OrderSearch extends javax.swing.JPanel {
         String lastName = this.jTextField2.getText();
 
         Database database = new Database();
-
         Order[] orders = database.ordersByName(firstName, lastName);
 
         for (Order order : orders) {
             String[] orderModel = { order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
-                firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate };
+                order.customer.getFirstName(), order.customer.getLastName(), Float.toString(order.getSalesPrice()), order.readableDate };
 
             tableModel.addRow(orderModel);
         }
