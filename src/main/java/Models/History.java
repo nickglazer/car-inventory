@@ -1,16 +1,16 @@
-package Models;
+package main.java.Models;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Created by Frank Brandstetter on 4/19/2015.
  */
-public class History
-{
-    public History(){}
+public class History {
+
+    public History() {
+    }
 
     public int getHistoryID() {
         return historyID;

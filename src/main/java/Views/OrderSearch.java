@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
-import Controllers.Database;
-import Models.Customer;
-import Models.Order;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
+import main.java.Controllers.Database;
+import main.java.Models.Order;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -169,7 +162,7 @@ public class OrderSearch extends javax.swing.JPanel {
 
         for (Order order : orders) {
             String[] orderModel = {order.orderCar.getMake(), order.orderCar.getModel(), Integer.toString(order.orderCar.getYear()),
-                    firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate};
+                firstName, lastName, Float.toString(order.getSalesPrice()), order.readableDate};
 
             tableModel.addRow(orderModel);
         }

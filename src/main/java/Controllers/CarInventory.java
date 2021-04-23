@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controllers;
+package main.java.Controllers;
 
-import Views.Search;
-import Views.AddCar;
-import Views.OrderSearch;
+import main.java.Views.Search;
+import main.java.Views.AddCar;
+import main.java.Views.OrderSearch;
 
 /**
  *
@@ -18,6 +13,7 @@ public class CarInventory extends javax.swing.JFrame {
     Search searchPanel;
     AddCar addCar;
     OrderSearch orderSearch;
+
     /**
      * Creates new form NewJFrame
      */

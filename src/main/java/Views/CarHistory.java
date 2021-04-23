@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
-import Models.Car;
-import Models.History;
+import main.java.Models.Car;
+import main.java.Models.History;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,8 +12,9 @@ public class CarHistory extends javax.swing.JPanel {
 
     /**
      * Creates new form CarHistory
+     * @param viewCar
+     * @param carHistory
      */
-
     public CarHistory(Car viewCar, History[] carHistory) {
         initComponents();
         jtfBodyType.setText("" + viewCar.getBody());
@@ -34,7 +30,7 @@ public class CarHistory extends javax.swing.JPanel {
         jtfVIN.setText(viewCar.getVin());
         jtfVehicleType.setText(viewCar.getVehicleType());
         jtfYear.setText("" + viewCar.getYear());
-        
+
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         //Delete all rows 
@@ -46,10 +42,8 @@ public class CarHistory extends javax.swing.JPanel {
         }
 
         this.jTable1.setModel(tableModel);
-            
+
     }
-    
- 
 
     /**
      * This method is called from within the constructor to initialize the form.

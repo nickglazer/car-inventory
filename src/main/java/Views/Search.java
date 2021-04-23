@@ -1,28 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
-import Controllers.Database;
-import Controllers.FormHandler;
+import main.java.Controllers.Database;
+import main.java.Controllers.FormHandler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import Models.Car;
-import Models.History;
+import main.java.Models.Car;
+import main.java.Models.History;
 
-import javax.print.DocFlavor;
 import javax.swing.*;
-
 import javax.swing.table.DefaultTableModel;
-import javax.xml.crypto.Data;
 
 /**
  * @author Nicholas
@@ -31,7 +19,7 @@ public class Search extends javax.swing.JPanel
 {
     private Car[] currentCars;
 
-    private Map<String, String[]> carDictionary;
+    private final Map<String, String[]> carDictionary;
     private boolean makeIsEditingModel;
 
     /**

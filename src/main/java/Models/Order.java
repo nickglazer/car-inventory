@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package Models;
+package main.java.Models;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,11 +23,11 @@ public class Order {
     public Car orderCar;
 
     public Order() {
-        
+
     }
-    
-    public Order (float salesPrice, int customerID, int carID, int downPayment,
-     String bank, int loanNumber, int loanMonths, int orderID, Date orderDate) {
+
+    public Order(float salesPrice, int customerID, int carID, int downPayment,
+            String bank, int loanNumber, int loanMonths, int orderID, Date orderDate) {
         this.salesPrice = salesPrice;
         this.customerID = customerID;
         this.carID = carID;
@@ -44,7 +38,7 @@ public class Order {
         this.orderID = orderID;
         this.orderDate = orderDate;
     }
-    
+
     /**
      * @return the salesPrice
      */
@@ -167,14 +161,12 @@ public class Order {
     /**
      * @param orderDate the orderDate to set
      */
-    public void setOrderDate(Date orderDate)
-    {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
 
         DateFormat readableFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         this.readableDate = readableFormat.format(this.orderDate);
     }
-    
-    
+
 }

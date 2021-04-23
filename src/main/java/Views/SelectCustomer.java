@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
-import Controllers.Database;
-import Models.Customer;
+import main.java.Controllers.Database;
+import main.java.Models.Customer;
 
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -23,34 +18,33 @@ public class SelectCustomer extends javax.swing.JPanel {
     /**
      * Creates new form SelectCustomer
      */
-    private ArrayList<Customer> customers;
-    private Orders orderView;
+    private final ArrayList<Customer> customers;
+    private final Orders orderView;
+
     public SelectCustomer(Customer[] customers, Orders orderView) {
         initComponents();
-        this.customers = new ArrayList<Customer>(Arrays.asList(customers));
+        this.customers = new ArrayList<>(Arrays.asList(customers));
         this.orderView = orderView;
         updateTable();
     }
 
-    private void addCustomerToTable(DefaultTableModel tableModel, Customer customer)
-    {
+    private void addCustomerToTable(DefaultTableModel tableModel, Customer customer) {
         this.customers.add(customer);
-        String[] customerModel = {customer.getFirstName(), customer.getLastName()
-                ,customer.getEmail(), customer.getPhoneNumber()};
+        String[] customerModel = {customer.getFirstName(), customer.getLastName(),
+            customer.getEmail(), customer.getPhoneNumber()};
         tableModel.addRow(customerModel);
     }
 
-    public void addLatestCustomer()
-    {
+    public void addLatestCustomer() {
         Database database = new Database();
 
-        Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM CarSales.Customers where " +
-                "Customer_ID = (select max(Customer_ID) from Customers)"))[0];
+        Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM CarSales.Customers where "
+                + "Customer_ID = (select max(Customer_ID) from Customers)"))[0];
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
         this.addCustomerToTable(tableModel, latestCustomer);
     }
-    
+
     private void updateTable() {
         DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
 
@@ -58,9 +52,9 @@ public class SelectCustomer extends javax.swing.JPanel {
         tableModel.setRowCount(0);
 
         for (Customer customer : customers) {
-                String[] customerModel = {customer.getFirstName(), customer.getLastName()
-                        ,customer.getEmail(), customer.getPhoneNumber()};
-                tableModel.addRow(customerModel);
+            String[] customerModel = {customer.getFirstName(), customer.getLastName(),
+                customer.getEmail(), customer.getPhoneNumber()};
+            tableModel.addRow(customerModel);
         }
 
         this.jTable1.setModel(tableModel);
@@ -151,10 +145,10 @@ public class SelectCustomer extends javax.swing.JPanel {
 
     private void jbAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddCustomerActionPerformed
         // TODO add your handling code here:
-        JFrame frame = new JFrame(); 
+        JFrame frame = new JFrame();
         AddCustomer add = new AddCustomer(this);
         add.setVisible(true);
-        frame.setSize(500,400);
+        frame.setSize(500, 400);
         frame.add(add);
         frame.setVisible(true);
     }//GEN-LAST:event_jbAddCustomerActionPerformed
@@ -162,8 +156,7 @@ public class SelectCustomer extends javax.swing.JPanel {
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
         // TODO add your handling code here:
 
-        if(this.jTable1.getSelectedRow() == -1)
-        {
+        if (this.jTable1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this,
                     "You must select a customer to continue",
                     "Error",

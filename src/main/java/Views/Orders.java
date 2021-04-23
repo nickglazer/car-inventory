@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
-import Controllers.Database;
-import Models.Car;
-import Models.Customer;
-import Models.Order;
+import main.java.Controllers.Database;
+import main.java.Models.Car;
+import main.java.Models.Customer;
+import main.java.Models.Order;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -28,9 +22,10 @@ public class Orders extends javax.swing.JPanel {
     public Search search;
     public Car purchaseCar;
     public Customer selectedCustomer;
+
     public Orders(Search search) {
         initComponents();
-        this.search  = search;
+        this.search = search;
     }
 
     /**
@@ -145,10 +140,10 @@ public class Orders extends javax.swing.JPanel {
     private void jbSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectCustomerActionPerformed
         // TODO add your handling code here:\
         Database database = new Database();
-        JFrame frame = new JFrame(); 
+        JFrame frame = new JFrame();
         SelectCustomer add = new SelectCustomer(database.allCustomers(), this);
         add.setVisible(true);
-        frame.setSize(500,400);
+        frame.setSize(500, 400);
         frame.add(add);
         frame.setVisible(true);
     }//GEN-LAST:event_jbSelectCustomerActionPerformed
@@ -159,8 +154,7 @@ public class Orders extends javax.swing.JPanel {
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
         // TODO add your handling code here:
-        if (selectedCustomer != null)
-        {
+        if (selectedCustomer != null) {
             float price = Float.parseFloat(jtfSalePrice.getText());
             int downPayment = Integer.parseInt(jtfDownPayment.getText());
             String bank = jtfBank.getText();
@@ -177,17 +171,15 @@ public class Orders extends javax.swing.JPanel {
             database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
             database.recordCarHistory(this.purchaseCar, "Purchased");
             database.setCarStatus(this.purchaseCar, "Purchased");
-        
+
             search.performFilter();
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(this,
-                "Select a Customer",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+                    "Select a Customer",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jbSaveActionPerformed

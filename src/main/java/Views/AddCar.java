@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views;
+package main.java.Views;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Map;
-import Controllers.Database;
-import Controllers.FormHandler;
-import Models.Car;
+import main.java.Controllers.Database;
+import main.java.Controllers.FormHandler;
+import main.java.Models.Car;
 
 import java.awt.Component;
 
@@ -26,17 +20,17 @@ public class AddCar extends javax.swing.JPanel {
      * Creates new form AddCar
      */
 
-    private JTextField[] textFields;
-    private JComboBox[] comboBoxes;
-    private Map<String, String[]> modelDictionary;
+    private final JTextField[] textFields;
+    private final JComboBox[] comboBoxes;
+    private final Map<String, String[]> modelDictionary;
     public AddCar()
     {
         initComponents();
 
         //Let's go through and add the textfields and comboboxes to their own arrays
 
-        ArrayList<JTextField> textFieldList = new ArrayList<JTextField>();
-        ArrayList<JComboBox> comoBoxList = new ArrayList<JComboBox>();
+        ArrayList<JTextField> textFieldList = new ArrayList<>();
+        ArrayList<JComboBox> comoBoxList = new ArrayList<>();
 
         Component[] components = this.getComponents();
 
@@ -360,20 +354,16 @@ public class AddCar extends javax.swing.JPanel {
 
     private String stringFromDropDown(JComboBox comboBox)
     {
-        String dropDownString;
         if(comboBox.getSelectedIndex() == 0)
         {
             return null;
         }
 
         return (String) comboBox.getSelectedItem();
-
     }
 
     private String stringFromTextfield(JTextField textField)
     {
-        String textFieldString;
-
         if(textField.getText().equals(""))
         {
             return null;
@@ -383,7 +373,7 @@ public class AddCar extends javax.swing.JPanel {
     }
 
     /**
-     * Clear all the textfields and combo boxes
+     * Clear all the text fields and combo boxes
      */
     private void clearFields()
     {

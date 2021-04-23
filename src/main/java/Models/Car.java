@@ -1,12 +1,9 @@
-package Models;
+package main.java.Models;
 
-import javax.print.DocFlavor;
-import java.lang.reflect.Array;
 import java.util.*;
 
+public class Car {
 
-public class Car
-{
     private int carID;
     private String vin;
     private String make;
@@ -25,8 +22,7 @@ public class Car
     private ArrayList<Date> date;
     private ArrayList<String> description;
 
-    public static Map<String, String[]> modelDictionary()
-    {
+    public static Map<String, String[]> modelDictionary() {
         Map models = new HashMap<String, String[]>();
 
         String[] acuraModels = {"ILX", "MDX", "RDX", "RLX", "TLX", "Legend", "Integra", "ZDX"};
@@ -49,14 +45,13 @@ public class Car
 
         return models;
     }
-    
-    public Car (
-     int carID, String vin, String make, String model, String color, String status,
-     int year, int mileage, int cylinders, int engine, int body,
-     String vehicleType, String transmission, String drivetrain, String gas)
-    {
+
+    public Car(
+            int carID, String vin, String make, String model, String color, String status,
+            int year, int mileage, int cylinders, int engine, int body,
+            String vehicleType, String transmission, String drivetrain, String gas) {
         this.carID = carID;
-        this.vin= vin;
+        this.vin = vin;
         this.make = make;
         this.model = model;
         this.color = color;
@@ -70,12 +65,13 @@ public class Car
         this.transmission = transmission;
         this.drivetrain = drivetrain;
         this.gas = gas;
-        
+
         date = new ArrayList();
         description = new ArrayList();
     }
 
-    public Car(){}
+    public Car() {
+    }
 
     /**
      * @return the carID
@@ -315,4 +311,3 @@ public class Car
         this.description = description;
     }
 }
-
