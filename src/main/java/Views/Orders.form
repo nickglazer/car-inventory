@@ -20,7 +20,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbSave" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbSelectCustomer" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jbSelectCustomer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlSelectedCustomer" min="-2" pref="174" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlDownPayment" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -41,7 +45,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="570" max="32767" attributes="0"/>
+              <EmptySpace pref="418" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,7 +53,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jbSelectCustomer" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbSelectCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlSelectedCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlDownPayment1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,6 +140,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sale Price"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlSelectedCustomer">
     </Component>
   </SubComponents>
 </Form>

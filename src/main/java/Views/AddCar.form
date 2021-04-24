@@ -30,37 +30,44 @@
                           <Component id="jlModel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jtfYear" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="jtfMileage" min="-2" pref="75" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlBodyType" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlDrivetrain" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jcbMake" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcbModel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlEngine" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlTransmission" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlEngine" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jtfYear" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="jtfMileage" min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jlBodyType" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlDrivetrain" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jcbDrivetrain" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfEngine" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="jcbBodyType" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbTransmission" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfEngine" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="jcbDrivetrain" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbBodyType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlVehicleType" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlGas" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlCylinders" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlColor" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -71,36 +78,23 @@
                           <Component id="jlVehicleInfomation" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlYear" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlVIN" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jtfVIN" min="-2" pref="75" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jlVIN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jtfVIN" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlColor" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jlVehicleType" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jcbVehicleType" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlGas" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlCylinders" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jcbColor" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfCylinders" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="jcbGasType" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jcbVehicleType" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbGasType" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="jtfCylinders" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="jcbColor" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="132" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,6 +111,7 @@
                           <Component id="jlTransmission" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbMake" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbTransmission" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -130,9 +125,11 @@
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jtfYear" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jcbDrivetrain" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlDrivetrain" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jcbDrivetrain" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -147,10 +144,7 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlColor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcbColor" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jcbColor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlCylinders" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,13 +152,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlGas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlGas" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbGasType" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcbVehicleType" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jlVehicleType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbVehicleType" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

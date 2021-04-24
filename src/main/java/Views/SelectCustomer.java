@@ -40,13 +40,13 @@ public class SelectCustomer extends javax.swing.JPanel {
 
         Customer latestCustomer = database.customersFromResult(database.executeQuery("SELECT * FROM Customer WHERE "
                 + "customerID = (select max(customerID) from Customer)"))[0];
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) this.jtCustomers.getModel();
 
         this.addCustomerToTable(tableModel, latestCustomer);
     }
 
     private void updateTable() {
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) this.jtCustomers.getModel();
 
         //Delete all rows
         tableModel.setRowCount(0);
@@ -57,7 +57,7 @@ public class SelectCustomer extends javax.swing.JPanel {
             tableModel.addRow(customerModel);
         }
 
-        this.jTable1.setModel(tableModel);
+        this.jtCustomers.setModel(tableModel);
     }
 
     /**
@@ -71,7 +71,7 @@ public class SelectCustomer extends javax.swing.JPanel {
 
         jbAddCustomer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtCustomers = new javax.swing.JTable();
         jbSelect = new javax.swing.JButton();
 
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -87,7 +87,7 @@ public class SelectCustomer extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -105,8 +105,12 @@ public class SelectCustomer extends javax.swing.JPanel {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtCustomers);
 
         jbSelect.setText("Select");
         jbSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +157,7 @@ public class SelectCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_jbAddCustomerActionPerformed
 
     private void jbSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectActionPerformed
-        if (this.jTable1.getSelectedRow() == -1) {
+        if (this.jtCustomers.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this,
                     "You must select a customer to continue",
                     "Error",
@@ -161,7 +165,7 @@ public class SelectCustomer extends javax.swing.JPanel {
             return;
         }
 
-        this.orderView.selectedCustomer = customers.get(this.jTable1.getSelectedRow());
+        this.orderView.customerSelected(customers.get(this.jtCustomers.getSelectedRow()));
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbSelectActionPerformed
@@ -172,8 +176,8 @@ public class SelectCustomer extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbAddCustomer;
     private javax.swing.JButton jbSelect;
+    private javax.swing.JTable jtCustomers;
     // End of variables declaration//GEN-END:variables
 }
