@@ -5,6 +5,10 @@ import main.java.Models.Customer;
 import main.java.Models.History;
 import main.java.Models.Order;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,16 +19,25 @@ import java.util.*;
  */
 public class Database {
 
-    // TODO make url and credentials based on env or flag
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/car_inventory";
+    private static String DB_URL;
 
     //  Database credentials
-    private static final String USER = "user";
-    private static final String PASS = "password";
+    private static String USER;
+    private static String PASS;
 
     public Database() {
+        try ( InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
 
+            Database.DB_URL
+                    = String.format("jdbc:mysql://%s/%s", prop.getProperty("db_host"), prop.getProperty("db_name"));
+            Database.USER = prop.getProperty("db_user");
+            Database.PASS = prop.getProperty("db_password");
+        } catch (IOException ex) {
+            System.out.println("Cannot read configuration");
+        }
     }
 
     /**
@@ -204,7 +217,7 @@ public class Database {
 
             return resultCar;
         } catch (SQLException e) {
-             System.out.println("Error querying results");
+            System.out.println("Error querying results");
             System.out.println(e);
             return null;
         }

@@ -1,0 +1,4 @@
+db.name=car_inventory
+db.host=localhost:3306
+db.user=user
+db.password=password

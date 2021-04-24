@@ -25,7 +25,6 @@ public class CarInventory extends javax.swing.JFrame {
         jtbSearch.addTab("Search", searchPanel);
         jtbSearch.addTab("Add Car", addCar);
         jtbSearch.addTab("Orders", orderSearch);
-
     }
 
     /**
