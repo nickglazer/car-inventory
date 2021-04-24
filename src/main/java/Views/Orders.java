@@ -171,7 +171,7 @@ public class Orders extends javax.swing.JPanel {
             Database database = new Database();
             database.insertOrder(order, this.purchaseCar.getCarID(), this.selectedCustomer.getID());
             database.recordCarHistory(this.purchaseCar, "Purchased");
-            database.setCarStatus(this.purchaseCar, "Purchased");
+            database.setCarStatus(this.purchaseCar, "purchased");
 
             search.performFilter();
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);

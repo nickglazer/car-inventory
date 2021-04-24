@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS CustomerOrder (
 CREATE TABLE IF NOT EXISTS CarHistory (
     historyID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     carID bigint(20) unsigned NOT NULL,
-    actionDate Date,
-    description varchar(20),
+    actionDate timestamp NOT NULL,
+    description varchar(255),
     PRIMARY KEY (historyID)
 );

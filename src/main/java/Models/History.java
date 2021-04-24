@@ -41,7 +41,7 @@ public class History {
 
     public void setActionDate(Date actionDate) {
         this.actionDate = actionDate;
-        DateFormat readableFormat = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat readableFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         this.readableDate = readableFormat.format(this.actionDate);
     }
 

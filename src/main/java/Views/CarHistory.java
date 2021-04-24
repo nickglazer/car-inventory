@@ -1,5 +1,6 @@
 package main.java.Views;
 
+import main.java.Controllers.Database;
 import main.java.Models.Car;
 import main.java.Models.History;
 import javax.swing.table.DefaultTableModel;
@@ -9,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Nicholas
  */
 public class CarHistory extends javax.swing.JPanel {
+    
+    private final Car viewCar;
 
     /**
      * Creates new form CarHistory
@@ -17,6 +20,7 @@ public class CarHistory extends javax.swing.JPanel {
      * @param carHistory
      */
     public CarHistory(Car viewCar, History[] carHistory) {
+        this.viewCar = viewCar;
         initComponents();
         jtfBodyType.setText("" + viewCar.getBody());
         jtfColor.setText(viewCar.getColor());
@@ -32,17 +36,22 @@ public class CarHistory extends javax.swing.JPanel {
         jtfVehicleType.setText(viewCar.getVehicleType());
         jtfYear.setText("" + viewCar.getYear());
 
-        DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+        this.renderCarHistory(carHistory);
+    }
+    
+    private void renderCarHistory(History[] carHistory) {
+        DefaultTableModel tableModel = (DefaultTableModel) this.jtCarHistory.getModel();
 
         //Delete all rows
         tableModel.setRowCount(0);
 
         for (History history : carHistory) {
-            String[] customerModel = {history.readableDate, history.getDescription()};
+            String[] customerModel
+                    = { history.readableDate, history.getDescription() };
             tableModel.addRow(customerModel);
         }
 
-        this.jTable1.setModel(tableModel);
+        this.jtCarHistory.setModel(tableModel);
     }
 
     /**
@@ -83,65 +92,125 @@ public class CarHistory extends javax.swing.JPanel {
         jtfVehicleType = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtCarHistory = new javax.swing.JTable();
+        jtfCarHistoryEvent = new javax.swing.JTextField();
+        jbCarHistoryEventSubmit = new javax.swing.JButton();
+
+        setLayout(null);
 
         jlBodyType.setText("Body Type");
+        add(jlBodyType);
+        jlBodyType.setBounds(147, 129, 64, 16);
 
         jlMileage.setText("Mileage");
+        add(jlMileage);
+        jlMileage.setBounds(6, 129, 48, 16);
 
         jtfMileage.setEditable(false);
+        add(jtfMileage);
+        jtfMileage.setBounds(60, 124, 75, 26);
 
         jlMake.setText("Make");
+        add(jlMake);
+        jlMake.setBounds(6, 33, 33, 16);
 
         jlModel.setText("Model");
+        add(jlModel);
+        jlModel.setBounds(6, 65, 38, 16);
 
         jlYear.setText("Year");
+        add(jlYear);
+        jlYear.setBounds(6, 97, 27, 16);
 
         jtfYear.setEditable(false);
+        add(jtfYear);
+        jtfYear.setBounds(60, 92, 75, 26);
 
         jlTransmission.setText("Transmission");
+        add(jlTransmission);
+        jlTransmission.setBounds(148, 33, 85, 16);
 
         jlEngine.setText("Displacement");
+        add(jlEngine);
+        jlEngine.setBounds(148, 65, 86, 16);
 
         jlDrivetrain.setText("Drivetrain");
+        add(jlDrivetrain);
+        jlDrivetrain.setBounds(147, 97, 62, 16);
 
         jlVIN.setText("VIN #");
+        add(jlVIN);
+        jlVIN.setBounds(6, 161, 34, 16);
 
         jtfVIN.setEditable(false);
+        add(jtfVIN);
+        jtfVIN.setBounds(60, 156, 75, 26);
 
         jtfEngine.setEditable(false);
+        add(jtfEngine);
+        jtfEngine.setBounds(240, 60, 75, 26);
 
         jlColor.setText("Color");
+        add(jlColor);
+        jlColor.setBounds(327, 33, 34, 16);
 
         jlCylinders.setText("Cylinders");
+        add(jlCylinders);
+        jlCylinders.setBounds(327, 65, 59, 16);
 
         jtfCylinders.setEditable(false);
+        add(jtfCylinders);
+        jtfCylinders.setBounds(412, 60, 75, 26);
 
         jlGas.setText("Gas");
+        add(jlGas);
+        jlGas.setBounds(327, 97, 23, 16);
 
         jlVehicleInfomation.setText("Vehicle Information");
+        add(jlVehicleInfomation);
+        jlVehicleInfomation.setBounds(6, 6, 123, 16);
 
         jlVehicleType.setText("Vehicle Type");
+        add(jlVehicleType);
+        jlVehicleType.setBounds(327, 129, 79, 16);
 
         jtfMake.setEditable(false);
+        add(jtfMake);
+        jtfMake.setBounds(62, 28, 80, 26);
 
         jtfTransmission.setEditable(false);
+        add(jtfTransmission);
+        jtfTransmission.setBounds(240, 28, 75, 26);
 
         jtfModel.setEditable(false);
+        add(jtfModel);
+        jtfModel.setBounds(62, 60, 75, 26);
 
         jtfDrivetrain.setEditable(false);
+        add(jtfDrivetrain);
+        jtfDrivetrain.setBounds(240, 92, 75, 26);
 
         jtfBodyType.setEditable(false);
+        add(jtfBodyType);
+        jtfBodyType.setBounds(240, 124, 75, 26);
 
         jtfColor.setEditable(false);
+        add(jtfColor);
+        jtfColor.setBounds(412, 28, 75, 26);
 
         jtfGas.setEditable(false);
+        add(jtfGas);
+        jtfGas.setBounds(412, 92, 75, 26);
 
         jtfVehicleType.setEditable(false);
+        add(jtfVehicleType);
+        jtfVehicleType.setBounds(412, 124, 75, 26);
 
         jLabel1.setText("History");
+        add(jLabel1);
+        jLabel1.setBounds(6, 192, 46, 16);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtCarHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -159,142 +228,44 @@ public class CarHistory extends javax.swing.JPanel {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        jScrollPane2.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlModel)
-                                    .addComponent(jlMake))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfMake, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfModel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtfDrivetrain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlEngine)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfEngine, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlTransmission)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jtfTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jlVehicleInfomation)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlMileage)
-                                    .addComponent(jlVIN)
-                                    .addComponent(jlYear))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfYear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jlDrivetrain))
-                                    .addComponent(jtfVIN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfMileage, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jlBodyType)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtfBodyType, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlVehicleType)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jlColor)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCylinders)
-                                    .addComponent(jlGas))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfGas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfCylinders, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfColor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jLabel1))
-                .addContainerGap(263, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlVehicleInfomation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlMake)
-                            .addComponent(jlTransmission)
-                            .addComponent(jtfMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlModel)
-                                .addComponent(jtfModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtfEngine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlEngine)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlYear)
-                            .addComponent(jlDrivetrain))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlMileage)
-                            .addComponent(jtfMileage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlBodyType)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlColor)
-                            .addComponent(jtfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlCylinders)
-                            .addComponent(jtfCylinders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlGas)
-                            .addComponent(jtfGas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDrivetrain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlVehicleType)
-                            .addComponent(jtfVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfBodyType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlVIN)
-                    .addComponent(jtfVIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        jScrollPane2.setViewportView(jtCarHistory);
+
+        add(jScrollPane2);
+        jScrollPane2.setBounds(18, 222, 470, 200);
+
+        jtfCarHistoryEvent.setToolTipText("Enter car history event description here");
+        add(jtfCarHistoryEvent);
+        jtfCarHistoryEvent.setBounds(58, 187, 274, 26);
+
+        jbCarHistoryEventSubmit.setText("Submit Event");
+        jbCarHistoryEventSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCarHistoryEventSubmitActionPerformed(evt);
+            }
+        });
+        add(jbCarHistoryEventSubmit);
+        jbCarHistoryEventSubmit.setBounds(338, 187, 126, 29);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbCarHistoryEventSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCarHistoryEventSubmitActionPerformed
+        String carHistoryEvent = this.jtfCarHistoryEvent.getText();
+        Database database = new Database();
+        database.recordCarHistory(this.viewCar, carHistoryEvent);
+        History[] updatedCarHistory = database.historyForCar(viewCar);
+        this.renderCarHistory(updatedCarHistory);
+        this.jtfCarHistoryEvent.setText("");
+    }//GEN-LAST:event_jbCarHistoryEventSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbCarHistoryEventSubmit;
     private javax.swing.JLabel jlBodyType;
     private javax.swing.JLabel jlColor;
     private javax.swing.JLabel jlCylinders;
@@ -309,7 +280,9 @@ public class CarHistory extends javax.swing.JPanel {
     private javax.swing.JLabel jlVehicleInfomation;
     private javax.swing.JLabel jlVehicleType;
     private javax.swing.JLabel jlYear;
+    private javax.swing.JTable jtCarHistory;
     private javax.swing.JTextField jtfBodyType;
+    private javax.swing.JTextField jtfCarHistoryEvent;
     private javax.swing.JTextField jtfColor;
     private javax.swing.JTextField jtfCylinders;
     private javax.swing.JTextField jtfDrivetrain;

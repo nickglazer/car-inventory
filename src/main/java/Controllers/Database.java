@@ -277,9 +277,9 @@ public class Database {
         }
 
         if (searchCount == 0) {
-            whereStatement += "WHERE Status <> 'Purchased'";
+            whereStatement += "WHERE Status <> 'purchased'";
         } else {
-            whereStatement += "AND Status <> 'Purchased'";
+            whereStatement += "AND Status <> 'purchased'";
         }
 
         sqlStatement += whereStatement;
@@ -335,7 +335,7 @@ public class Database {
     }
 
     public Car[] allNewCars() {
-        String sqlStatement = "SELECT * FROM Car WHERE Status <> 'Purchased'";
+        String sqlStatement = "SELECT * FROM Car WHERE Status <> 'purchased'";
         return this.carsFromResults(this.executeQuery(sqlStatement));
     }
 
@@ -420,7 +420,7 @@ public class Database {
     }
 
     public static String currentDate() {
-        DateFormat mysqlFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat mysqlFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Calendar currentCalender = Calendar.getInstance();
 
         return mysqlFormat.format(currentCalender.getTime());
@@ -472,7 +472,7 @@ public class Database {
     }
 
     public History[] historyForCar(Car car) {
-        String sqlStatement = String.format("SELECT * FROM CarHistory WHERE carID = %d", car.getCarID());
+        String sqlStatement = String.format("SELECT * FROM CarHistory WHERE carID = %d ORDER BY actionDate DESC", car.getCarID());
 
         ResultSet results = this.executeQuery(sqlStatement);
 
@@ -484,7 +484,7 @@ public class Database {
 
                 newHistory.setHistoryID(results.getInt("historyID"));
                 newHistory.setCarID(results.getInt("carID"));
-                newHistory.setActionDate(results.getDate("actionDate"));
+                newHistory.setActionDate(results.getTimestamp("actionDate"));
                 newHistory.setDescription(results.getString("description"));
 
                 carHistory.add(newHistory);
